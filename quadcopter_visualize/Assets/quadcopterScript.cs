@@ -52,16 +52,22 @@ public class quadcopterScript : MonoBehaviour {
 
     private void update_angles()
     {
-        phi += dt * (w_x + Math.Sin(phi) * Math.Tan(theta) * w_y + Math.Cos(phi) * Math.Tan(theta) * w_z);
+        phi += dt * w_x;
+        theta += dt * w_y;
+        psi += dt * w_z;
+        /*phi += dt * (w_x + Math.Sin(phi) * Math.Tan(theta) * w_y + Math.Cos(phi) * Math.Tan(theta) * w_z);
         theta += dt * (Math.Cos(phi) * w_y - Math.Sin(phi) * w_z);
-        psi += dt * (Math.Sin(phi) / Math.Cos(theta) * w_y + Math.Cos(phi) / Math.Cos(theta) * w_z);
+        psi += dt * (Math.Sin(phi) / Math.Cos(theta) * w_y + Math.Cos(phi) / Math.Cos(theta) * w_z);*/
     }
 
     private void update_angular_speed()
     {
-        w_x += dt * ((arm_length * k * (u4 - u2) + (Jyy - Jzz) * w_y * w_z) / Jxx);
+        w_x += dt * (arm_length * k * (u4 - u2) / Jxx);
+        w_y += dt * (arm_length * k * (u3 - u1) / Jyy);
+        w_z += dt * (b * (-u1 + u2 - u3 + u4) / Jzz);
+        /*w_x += dt * ((arm_length * k * (u4 - u2) + (Jyy - Jzz) * w_y * w_z) / Jxx);
         w_y += dt * ((arm_length * k * (u3 - u1) + (Jzz - Jxx) * w_z * w_x) / Jyy);
-        w_z += dt * ((b * (-u1 + u2 - u3 + u4) + (Jxx - Jyy) * w_x * w_y) / Jzz);
+        w_z += dt * ((b * (-u1 + u2 - u3 + u4) + (Jxx - Jyy) * w_x * w_y) / Jzz);*/
     }
 
     void Start () {
@@ -76,7 +82,7 @@ public class quadcopterScript : MonoBehaviour {
         Jxx = Jyy = 2 * mass_frame * (Math.Pow(radius, 2)) / 5 + 2 * Math.Pow(arm_length, 2) * mass_engine;
         Jzz = 2 * mass_frame * (Math.Pow(radius, 2)) / 5 + 4 * Math.Pow(arm_length, 2) * mass_engine;
         mass = mass_frame + 4 * mass_engine;
-        equilibrium_thrust = mass * g / 4;
+        equilibrium_thrust = mass * g / (4 * k);
         if (u1 <= 0)
             u1 = equilibrium_thrust;
         if (u2 <= 0)
@@ -93,11 +99,35 @@ public class quadcopterScript : MonoBehaviour {
         update_speed();
         update_angles();
         update_angular_speed();
-        Vector3 position = new Vector3((float)x, (float)-z, (float)y);
-        transform.position = position;
+        /*Vector3 position = new Vector3((float)x, (float)-z, (float)y);
+        transform.position = position;*/
+        if (Math.Abs(phi) >= 45)
+        {
+            w_x = 0;
+            u1 = u2 = u3 = u4 = equilibrium_thrust;
+        }
+        if (Math.Abs(theta) >= 45)
+        {
+            w_y = 0;
+            u1 = u2 = u3 = u4 = equilibrium_thrust;
+        }
         Quaternion rotation = Quaternion.Euler((float)phi, (float)psi, (float)theta);
         transform.rotation = rotation;
-	}
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            u1 -= 0.05;
+            u2 -= 0.05;
+            u3 += 0.05;
+            u4 += 0.05;
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            u1 += 0.05;
+            u2 += 0.05;
+            u3 -= 0.05;
+            u4 -= 0.05;
+        }
+    }
 
     private void OnGUI()
     {
@@ -108,6 +138,7 @@ public class quadcopterScript : MonoBehaviour {
         GUI.Label(new Rect(10, 30, 500, 40), "Rotation: " + String.Format("Phi: {0:000.000} Theta: {1:000.000} Psi: {2:000.000}", phi, theta, psi));
         GUI.Label(new Rect(10, 50, 500, 60), "Speed: " + String.Format("Vx: {0:000.000} Vy: {1:000.000} Vz: {2:000.000}", v_x, v_y, v_z));
         GUI.Label(new Rect(10, 70, 500, 80), "Angular Speed: " + String.Format("Wx: {0:000.000} Wy: {1:000.000} Wz: {2:000.000}", w_x, w_y, w_z));
-        GUI.Label(new Rect(10, 90, 500, 100), "Current Time: " + Time.fixedTime.ToString("0:000.000"));
+        GUI.Label(new Rect(10, 90, 500, 100), "Engine Force: " + String.Format("Ufl: {0:000.000} Ufr: {1:000.000} Ubl: {2:000.000} Ubr: {3:000.000}", u1, u2, u3, u4));
+        GUI.Label(new Rect(10, 110, 500, 120), "Current Time: " + Time.fixedTime.ToString("0:000.000"));
     }
 }

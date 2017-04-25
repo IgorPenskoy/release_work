@@ -1,45 +1,39 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 
 public class quadcopterScript : MonoBehaviour {
 
-    public double mass_frame;
-    public double mass_engine;
-    public double radius;
-    public double arm_length;
     private const double k = 1;
     private const double b = 0.05;
     private const double g = 9.81;
     private const double dt = 0.001;
+
+    public double mass_frame = 0;
+    public double mass_engine = 0;
+    public double radius = 0;
+    public double arm_length = 0;
+    public double x = 0;
+    public double y = 0;
+    public double z = 0;
+    public double phi = 0;
+    public double theta = 0;
+    public double psi = 0;
+    public double u1 = 0;
+    public double u2 = 0;
+    public double u3 = 0;
+    public double u4 = 0;
+
     private double Jxx;
     private double Jyy;
     private double Jzz;
     private double mass;
-
-    public double x = 0;
-    public double y = 0;
-    public double z = 0;
-
     private double v_x;
     private double v_y;
     private double v_z;
-
-    public double phi = 0;
-    public double theta = 0;
-    public double psi = 0;
-
     private double w_x;
     private double w_y;
     private double w_z;
-
     private double equilibrium_thrust;
-
-    public double u1;
-    public double u2;
-    public double u3;
-    public double u4;
 
     private void update_coordinates()
     {
@@ -58,34 +52,53 @@ public class quadcopterScript : MonoBehaviour {
 
     private void update_angles()
     {
-        phi += dt * w_x; //(w_x + w_y * (Math.Sin(phi) * Math.Tan(theta)) + w_z * (Math.Cos(phi) * Math.Tan(theta)))
-        theta += dt * w_y; //(w_y * Math.Cos(phi) - w_z * Math.Sin(phi))
-        psi += dt * w_z; //(Math.Sin(phi) / Math.Cos(theta) * w_y + Math.Cos(phi) / Math.Cos(theta) * w_z)
+        phi += dt * (w_x + Math.Sin(phi) * Math.Tan(theta) * w_y + Math.Cos(phi) * Math.Tan(theta) * w_z);
+        theta += dt * (Math.Cos(phi) * w_y - Math.Sin(phi) * w_z);
+        psi += dt * (Math.Sin(phi) / Math.Cos(theta) * w_y + Math.Cos(phi) / Math.Cos(theta) * w_z);
     }
 
     private void update_angular_speed()
     {
-        w_x += dt * (arm_length * k * (u4 - u2) / Jxx);
-        w_y += dt * (arm_length * k * (u3 - u1) / Jyy);
-        w_z += dt * (b * (-u1 + u2 - u3 + u4) / Jzz);
+        w_x += dt * ((arm_length * k * (u4 - u2) + (Jyy - Jzz) * w_y * w_z) / Jxx);
+        w_y += dt * ((arm_length * k * (u3 - u1) + (Jzz - Jxx) * w_z * w_x) / Jyy);
+        w_z += dt * ((b * (-u1 + u2 - u3 + u4) + (Jxx - Jyy) * w_x * w_y) / Jzz);
     }
 
-    // Use this for initialization
     void Start () {
-        mass_frame = 0.5;
-        arm_length = 0.25;
-        mass_engine = 0.1;
-        radius = 0.2;
+        if (mass_frame <= 0)
+            mass_frame = 0.5;
+        if (arm_length <= 0)
+            arm_length = 0.25;
+        if (mass_engine <= 0)
+            mass_engine = 0.1;
+        if (radius <= 0)
+            radius = 0.2;
         Jxx = Jyy = 2 * mass_frame * (Math.Pow(radius, 2)) / 5 + 2 * Math.Pow(arm_length, 2) * mass_engine;
         Jzz = 2 * mass_frame * (Math.Pow(radius, 2)) / 5 + 4 * Math.Pow(arm_length, 2) * mass_engine;
         mass = mass_frame + 4 * mass_engine;
         equilibrium_thrust = mass * g / 4;
-        /*u1 = equilibrium_thrust;
-        u2 = equilibrium_thrust;
-        u3 = equilibrium_thrust;
-        u4 = equilibrium_thrust;*/
+        if (u1 <= 0)
+            u1 = equilibrium_thrust;
+        if (u2 <= 0)
+            u2 = equilibrium_thrust;
+        if (u3 <= 0)
+            u3 = equilibrium_thrust;
+        if (u4 <= 0)
+            u4 = equilibrium_thrust;
         Time.fixedDeltaTime = (float)dt;
     }
+
+    void FixedUpdate () {
+        update_coordinates();
+        update_speed();
+        update_angles();
+        update_angular_speed();
+        Vector3 position = new Vector3((float)x, (float)-z, (float)y);
+        transform.position = position;
+        Quaternion rotation = Quaternion.Euler((float)phi, (float)psi, (float)theta);
+        transform.rotation = rotation;
+	}
+
     private void OnGUI()
     {
         GUI.contentColor = Color.black;
@@ -97,20 +110,4 @@ public class quadcopterScript : MonoBehaviour {
         GUI.Label(new Rect(10, 70, 500, 80), "Angular Speed: " + String.Format("Wx: {0:000.000} Wy: {1:000.000} Wz: {2:000.000}", w_x, w_y, w_z));
         GUI.Label(new Rect(10, 90, 500, 100), "Current Time: " + Time.fixedTime.ToString("0:000.000"));
     }
-    // Update is called once per frame
-    void FixedUpdate () {
-        update_coordinates();
-        update_speed();
-        update_angles();
-        update_angular_speed();
-        Vector3 position = new Vector3((float)x, (float)-z, (float)y);
-        transform.position = position;
-        Quaternion rotation = Quaternion.Euler((float)phi, (float)psi, (float)theta);
-        transform.rotation = rotation;
-        if (phi >= 45.0)
-        {
-            w_x = 0;
-            u1 = u2 = u3 = u4 = equilibrium_thrust;
-        }
-	}
 }

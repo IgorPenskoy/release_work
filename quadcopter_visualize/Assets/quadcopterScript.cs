@@ -52,9 +52,9 @@ public class quadcopterScript : MonoBehaviour {
 
     private void update_angles()
     {
-        phi += dt * w_x;
-        theta += dt * w_y;
-        psi += dt * w_z;
+        phi = (phi + dt * w_x) % 360.0;
+        theta = (theta + dt * w_y) % 360.0;
+        psi = (psi + dt * w_z) % 360.0;
         /*phi += dt * (w_x + Math.Sin(phi) * Math.Tan(theta) * w_y + Math.Cos(phi) * Math.Tan(theta) * w_z);
         theta += dt * (Math.Cos(phi) * w_y - Math.Sin(phi) * w_z);
         psi += dt * (Math.Sin(phi) / Math.Cos(theta) * w_y + Math.Cos(phi) / Math.Cos(theta) * w_z);*/
@@ -79,6 +79,8 @@ public class quadcopterScript : MonoBehaviour {
             mass_engine = 0.1;
         if (radius <= 0)
             radius = 0.2;
+        w_x = w_y = w_z = 0.0;
+        v_x = v_y = v_z = 0.0;
         Jxx = Jyy = 2 * mass_frame * (Math.Pow(radius, 2)) / 5 + 2 * Math.Pow(arm_length, 2) * mass_engine;
         Jzz = 2 * mass_frame * (Math.Pow(radius, 2)) / 5 + 4 * Math.Pow(arm_length, 2) * mass_engine;
         mass = mass_frame + 4 * mass_engine;
@@ -95,38 +97,14 @@ public class quadcopterScript : MonoBehaviour {
     }
 
     void FixedUpdate () {
-        update_coordinates();
         update_speed();
-        update_angles();
+        update_coordinates();
         update_angular_speed();
-        /*Vector3 position = new Vector3((float)x, (float)-z, (float)y);
-        transform.position = position;*/
-        if (Math.Abs(phi) >= 45)
-        {
-            w_x = 0;
-            u1 = u2 = u3 = u4 = equilibrium_thrust;
-        }
-        if (Math.Abs(theta) >= 45)
-        {
-            w_y = 0;
-            u1 = u2 = u3 = u4 = equilibrium_thrust;
-        }
-        Quaternion rotation = Quaternion.Euler((float)phi, (float)psi, (float)theta);
+        update_angles();
+        Vector3 position = new Vector3((float)x, (float)-z, (float)y);
+        transform.position = position;
+        Quaternion rotation = Quaternion.Euler((float)-phi, (float)psi, (float)-theta);
         transform.rotation = rotation;
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            u1 -= 0.05;
-            u2 -= 0.05;
-            u3 += 0.05;
-            u4 += 0.05;
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            u1 += 0.05;
-            u2 += 0.05;
-            u3 -= 0.05;
-            u4 -= 0.05;
-        }
     }
 
     private void OnGUI()
@@ -134,10 +112,10 @@ public class quadcopterScript : MonoBehaviour {
         GUI.contentColor = Color.black;
         Vector3 position = transform.position;
         Quaternion rotation = transform.rotation;
-        GUI.Label(new Rect(10, 10, 500, 20), "Position: " + String.Format("X: {0:000.000} Y: {1:000.000} Z: {2:000.000}", x, y, -z));
-        GUI.Label(new Rect(10, 30, 500, 40), "Rotation: " + String.Format("Phi: {0:000.000} Theta: {1:000.000} Psi: {2:000.000}", phi, theta, psi));
-        GUI.Label(new Rect(10, 50, 500, 60), "Speed: " + String.Format("Vx: {0:000.000} Vy: {1:000.000} Vz: {2:000.000}", v_x, v_y, v_z));
-        GUI.Label(new Rect(10, 70, 500, 80), "Angular Speed: " + String.Format("Wx: {0:000.000} Wy: {1:000.000} Wz: {2:000.000}", w_x, w_y, w_z));
+        GUI.Label(new Rect(10, 10, 500, 20), "Position: " + String.Format("X: {0:000.000} Y: {1:000.000} Z: {2:000.000}", position.x, position.y, position.z));
+        GUI.Label(new Rect(10, 30, 500, 40), "Speed: " + String.Format("Vx: {0:000.000} Vy: {1:000.000} Vz: {2:000.000}", v_x, v_y, v_z));
+        GUI.Label(new Rect(10, 50, 500, 60), "Rotation: " + String.Format("Phi: {0:000.000} Theta: {1:000.000} Psi: {2:000.000}", (Math.Abs(phi) <= 180.0 ? phi : phi - 360 * Math.Sign(phi)), Math.Abs(theta) <= 180.0 ? theta : theta - 360 * Math.Sign(theta), -(Math.Abs(psi) <= 180.0 ? psi : psi - 360 * Math.Sign(psi))));
+        GUI.Label(new Rect(10, 70, 500, 80), "Angular Speed: " + String.Format("Wx: {0:000.000} Wy: {1:000.000} Wz: {2:000.000}", -w_x, w_y, w_z));
         GUI.Label(new Rect(10, 90, 500, 100), "Engine Force: " + String.Format("Ufl: {0:000.000} Ufr: {1:000.000} Ubl: {2:000.000} Ubr: {3:000.000}", u1, u2, u3, u4));
         GUI.Label(new Rect(10, 110, 500, 120), "Current Time: " + Time.fixedTime.ToString("0:000.000"));
     }

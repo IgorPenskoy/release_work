@@ -102,7 +102,7 @@ namespace quadcopter_research
                 x_chart.ChartAreas[0].AxisX.Minimum = x_chart.Series[0].Points[0].XValue;
                 x_chart.ChartAreas[0].AxisX.Maximum = elapsed_time;
             }
-            qm.update();
+            qm.update(reference);
         }
     }
 }

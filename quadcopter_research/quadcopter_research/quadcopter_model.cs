@@ -59,6 +59,10 @@ namespace quadcopter_research
         private double w_z;
         private double equilibrium_thrust;
 
+        private PID phi_PID;
+        private PID theta_PID;
+        private PID psi_PID;
+
         public quadcopter_model(double mass_frame_in = mass_frame_const,
                                 double mass_engine_in = mass_engine_const,
                                 double radius_in = radius_const,
@@ -74,6 +78,9 @@ namespace quadcopter_research
                                 double arm_length_in = arm_length_const,
                                 double dt_in = dt_const)
         {
+            phi_PID = new PID(dt_in, 2, 0, 2);
+            theta_PID = new PID(dt_in);
+            psi_PID = new PID(dt_in);
             if (mass_frame_in <= 0)
                 mass_frame = mass_frame_const;
             else
@@ -136,11 +143,19 @@ namespace quadcopter_research
             v_z += dt * (Math.Cos(phi) * Math.Cos(theta) * F_div_mass - g);
         }
 
-        private void update_angles()
+        private void update_angles(vector3 reference)
         {
+            //u1 = u2 = u3 = u4 = equilibrium_thrust;
             phi = phi + dt * w_x;
             theta = theta + dt * w_y;
             psi = psi + dt * w_z;
+            double phi_effect = phi_PID.get_effect(phi, reference.x);
+            double theta_effect = theta_PID.get_effect(theta, reference.y);
+            double psi_effect = psi_PID.get_effect(psi, reference.z);
+            u1 += -theta_effect + psi_effect;
+            u2 += -phi_effect - psi_effect;
+            u3 += theta_effect + psi_effect;
+            u4 += phi_effect + psi_effect;
             /*phi += dt * (w_x + Math.Sin(phi) * Math.Tan(theta) * w_y + Math.Cos(phi) * Math.Tan(theta) * w_z);
             theta += dt * (Math.Cos(phi) * w_y - Math.Sin(phi) * w_z);
             psi += dt * (Math.Sin(phi) / Math.Cos(theta) * w_y + Math.Cos(phi) / Math.Cos(theta) * w_z);*/
@@ -161,12 +176,12 @@ namespace quadcopter_research
             return new vector3(phi, theta, psi);
         }
 
-        public void update()
+        public void update(vector3 reference)
         {
             update_speed();
             update_coordinates();
             update_angular_speed();
-            update_angles();
+            update_angles(reference);
         }
     }
 }

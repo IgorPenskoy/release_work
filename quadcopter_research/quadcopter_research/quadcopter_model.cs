@@ -6,6 +6,20 @@ using System.Threading.Tasks;
 
 namespace quadcopter_research
 {
+    class vector3
+    {
+        public double x { get; set; }
+        public double y { get; set; }
+        public double z { get; set; }
+
+        public vector3(double x_in = 0.0, double y_in = 0.0, double z_in = 0.0)
+        {
+            x = x_in;
+            y = y_in;
+            z = z_in;
+        }
+    }
+
     class quadcopter_model
     {
         private const double k = 1;
@@ -91,6 +105,13 @@ namespace quadcopter_research
             u1 = u2 = u3 = u4 = equilibrium_thrust;
         }
 
+        public void set_angles(double phi_in, double theta_in, double psi_in)
+        {
+            phi = phi_in;
+            theta = theta_in;
+            psi = psi_in;
+        }
+
         public void reset()
         {
             x = y = z = 0.0;
@@ -127,7 +148,7 @@ namespace quadcopter_research
 
         private void update_angular_speed()
         {
-            w_x += dt * (arm_length * k * (u4 - u2) / Jxx) + 0.01;
+            w_x += dt * (arm_length * k * (u4 - u2) / Jxx);
             w_y += dt * (arm_length * k * (u3 - u1) / Jyy);
             w_z += dt * (b * (-u1 + u2 - u3 + u4) / Jzz);
             /*w_x += dt * ((arm_length * k * (u4 - u2) + (Jyy - Jzz) * w_y * w_z) / Jxx);
@@ -135,9 +156,9 @@ namespace quadcopter_research
             w_z += dt * ((b * (-u1 + u2 - u3 + u4) + (Jxx - Jyy) * w_x * w_y) / Jzz);*/
         }
 
-        public double get_phi()
+        public vector3 get_angles()
         {
-            return phi;
+            return new vector3(phi, theta, psi);
         }
 
         public void update()

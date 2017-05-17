@@ -16,8 +16,10 @@ namespace quadcopter_research
         private double prevErr;
         private double sumErr;
         private double dt;
+        private double max;
+        private double min;
 
-        public PID(double dt_in, double P_in = 1.0, double I_in = 0.0, double D_in = 0.0)
+        public PID(double dt_in, double max_in, double min_in, double P_in = 1.0, double I_in = 0.0, double D_in = 0.0)
         {
             P = P_in;
             I = I_in;
@@ -25,14 +27,20 @@ namespace quadcopter_research
             sumErr = 0.0;
             prevErr = 0.0;
             dt = dt_in;
+            max = max_in;
+            min = min_in;
         }
 
         public double get_effect(double current, double target)
         {
             double err = target - current;
             sumErr += err;
+            double force = P * err + I * sumErr * dt + D * (err - prevErr) / dt;
             prevErr = err;
-            double force = P * err + I * sumErr * dt - D * Math.Abs(err - prevErr) / dt;
+            if (force > max)
+                force = max;
+            if (force < min)
+                force = min;
             return force;
         }
     }

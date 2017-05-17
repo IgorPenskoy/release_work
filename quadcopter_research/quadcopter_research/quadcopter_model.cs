@@ -63,6 +63,16 @@ namespace quadcopter_research
         private PID theta_PID;
         private PID psi_PID;
 
+        public double radian_to_angle(double radian)
+        {
+            return radian * 180.0 / Math.PI;
+        }
+
+        public double angle_to_radian(double angle)
+        {
+            return angle * Math.PI / 180.0;
+        }
+
         public quadcopter_model(double mass_frame_in = mass_frame_const,
                                 double mass_engine_in = mass_engine_const,
                                 double radius_in = radius_const,
@@ -78,9 +88,9 @@ namespace quadcopter_research
                                 double arm_length_in = arm_length_const,
                                 double dt_in = dt_const)
         {
-            phi_PID = new PID(dt_in, 2, 0, 2);
-            theta_PID = new PID(dt_in);
-            psi_PID = new PID(dt_in);
+            phi_PID = new PID(dt_in, 10, -10, 100, 0, 2);
+            theta_PID = new PID(dt_in, 0.1, -0.1);
+            psi_PID = new PID(dt_in, 0.1, -0.1);
             if (mass_frame_in <= 0)
                 mass_frame = mass_frame_const;
             else
@@ -114,9 +124,9 @@ namespace quadcopter_research
 
         public void set_angles(double phi_in, double theta_in, double psi_in)
         {
-            phi = phi_in;
-            theta = theta_in;
-            psi = psi_in;
+            phi = angle_to_radian(phi_in);
+            theta = angle_to_radian(theta_in);
+            psi = angle_to_radian(psi_in);
         }
 
         public void reset()
@@ -145,17 +155,15 @@ namespace quadcopter_research
 
         private void update_angles(vector3 reference)
         {
-            //u1 = u2 = u3 = u4 = equilibrium_thrust;
+            u1 = u2 = u3 = u4 = equilibrium_thrust;
+            double phi_effect = phi_PID.get_effect(phi, angle_to_radian(reference.x));
+            double theta_effect = theta_PID.get_effect(theta, angle_to_radian(reference.y));
+            double psi_effect = psi_PID.get_effect(psi, angle_to_radian(reference.z));
+            u2 -= phi_effect / 2;
+            u4 += phi_effect / 2;
             phi = phi + dt * w_x;
             theta = theta + dt * w_y;
             psi = psi + dt * w_z;
-            double phi_effect = phi_PID.get_effect(phi, reference.x);
-            double theta_effect = theta_PID.get_effect(theta, reference.y);
-            double psi_effect = psi_PID.get_effect(psi, reference.z);
-            u1 += -theta_effect + psi_effect;
-            u2 += -phi_effect - psi_effect;
-            u3 += theta_effect + psi_effect;
-            u4 += phi_effect + psi_effect;
             /*phi += dt * (w_x + Math.Sin(phi) * Math.Tan(theta) * w_y + Math.Cos(phi) * Math.Tan(theta) * w_z);
             theta += dt * (Math.Cos(phi) * w_y - Math.Sin(phi) * w_z);
             psi += dt * (Math.Sin(phi) / Math.Cos(theta) * w_y + Math.Cos(phi) / Math.Cos(theta) * w_z);*/
@@ -173,7 +181,7 @@ namespace quadcopter_research
 
         public vector3 get_angles()
         {
-            return new vector3(phi, theta, psi);
+            return new vector3(radian_to_angle(phi), radian_to_angle(theta), radian_to_angle(psi));
         }
 
         public void update(vector3 reference)

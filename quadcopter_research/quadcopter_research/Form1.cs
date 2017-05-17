@@ -29,6 +29,20 @@ namespace quadcopter_research
             x_chart.ChartAreas[0].AxisX.Maximum = 10;
             x_chart.ChartAreas[0].AxisX.Interval = 1;
             x_chart.ChartAreas[0].AxisX.LabelStyle.Format = "#.";
+            y_chart.ChartAreas[0].AxisY.Minimum = -180;
+            y_chart.ChartAreas[0].AxisY.Maximum = 180;
+            y_chart.ChartAreas[0].AxisY.Interval = 10;
+            y_chart.ChartAreas[0].AxisX.Minimum = 0;
+            y_chart.ChartAreas[0].AxisX.Maximum = 10;
+            y_chart.ChartAreas[0].AxisX.Interval = 1;
+            y_chart.ChartAreas[0].AxisX.LabelStyle.Format = "#.";
+            z_chart.ChartAreas[0].AxisY.Minimum = -180;
+            z_chart.ChartAreas[0].AxisY.Maximum = 180;
+            z_chart.ChartAreas[0].AxisY.Interval = 10;
+            z_chart.ChartAreas[0].AxisX.Minimum = 0;
+            z_chart.ChartAreas[0].AxisX.Maximum = 10;
+            z_chart.ChartAreas[0].AxisX.Interval = 1;
+            z_chart.ChartAreas[0].AxisX.LabelStyle.Format = "#.";
         }
 
         private void start_button_Click(object sender, EventArgs e)
@@ -70,6 +84,14 @@ namespace quadcopter_research
             x_chart.Series[1].Points.Clear();
             x_chart.ChartAreas[0].AxisX.Minimum = 0;
             x_chart.ChartAreas[0].AxisX.Maximum = 10;
+            y_chart.Series[0].Points.Clear();
+            y_chart.Series[1].Points.Clear();
+            y_chart.ChartAreas[0].AxisX.Minimum = 0;
+            y_chart.ChartAreas[0].AxisX.Maximum = 10;
+            z_chart.Series[0].Points.Clear();
+            z_chart.Series[1].Points.Clear();
+            z_chart.ChartAreas[0].AxisX.Minimum = 0;
+            z_chart.ChartAreas[0].AxisX.Maximum = 10;
         }
 
         private void pause_button_Click(object sender, EventArgs e)
@@ -95,12 +117,24 @@ namespace quadcopter_research
             main_time_label.Text = elapsed_time.ToString();
             x_chart.Series[0].Points.AddXY(Math.Round(elapsed_time, 3), reference.x);
             x_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), angles.x);
+            y_chart.Series[0].Points.AddXY(Math.Round(elapsed_time, 3), reference.y);
+            y_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), angles.y);
+            z_chart.Series[0].Points.AddXY(Math.Round(elapsed_time, 3), reference.z);
+            z_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), angles.z);
             if (elapsed_time > 10)
             {
                 x_chart.Series[0].Points.RemoveAt(0);
                 x_chart.Series[1].Points.RemoveAt(0);
                 x_chart.ChartAreas[0].AxisX.Minimum = x_chart.Series[0].Points[0].XValue;
                 x_chart.ChartAreas[0].AxisX.Maximum = elapsed_time;
+                y_chart.Series[0].Points.RemoveAt(0);
+                y_chart.Series[1].Points.RemoveAt(0);
+                y_chart.ChartAreas[0].AxisX.Minimum = y_chart.Series[0].Points[0].XValue;
+                y_chart.ChartAreas[0].AxisX.Maximum = elapsed_time;
+                z_chart.Series[0].Points.RemoveAt(0);
+                z_chart.Series[1].Points.RemoveAt(0);
+                z_chart.ChartAreas[0].AxisX.Minimum = z_chart.Series[0].Points[0].XValue;
+                z_chart.ChartAreas[0].AxisX.Maximum = elapsed_time;
             }
             qm.update(reference);
         }

@@ -31,6 +31,16 @@ namespace quadcopter_research
             min = min_in;
         }
 
+        public void set_PID(double dt_in, double max_in, double min_in, double P_in, double I_in, double D_in)
+        {
+            dt = dt_in;
+            max = max_in;
+            min = min_in;
+            P = P_in;
+            I = I_in;
+            D = D_in;
+        }
+
         public double get_effect(double current, double target)
         {
             double err = target - current;

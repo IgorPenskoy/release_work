@@ -59,10 +59,6 @@ namespace quadcopter_research
         private double w_z;
         private double equilibrium_thrust;
 
-        private PID phi_PID;
-        private PID theta_PID;
-        private PID psi_PID;
-
         public double radian_to_angle(double radian)
         {
             return radian * 180.0 / Math.PI;
@@ -88,9 +84,6 @@ namespace quadcopter_research
                                 double arm_length_in = arm_length_const,
                                 double dt_in = dt_const)
         {
-            phi_PID   = new PID(dt_in, 10, -10, 100, 0, 20);
-            theta_PID = new PID(dt_in, 10, -10, 100, 0, 20);
-            psi_PID   = new PID(dt_in, 10, -10, 120, 10, 30);
             if (mass_frame_in <= 0)
                 mass_frame = mass_frame_const;
             else
@@ -153,22 +146,11 @@ namespace quadcopter_research
             v_z += dt * (Math.Cos(phi) * Math.Cos(theta) * F_div_mass - g);
         }
 
-        private void update_angles(vector3 reference)
+        private void update_angles()
         {
-            u1 = u2 = u3 = u4 = equilibrium_thrust;
-            double phi_effect = phi_PID.get_effect(phi, angle_to_radian(reference.x));
-            double theta_effect = theta_PID.get_effect(theta, angle_to_radian(reference.y));
-            double psi_effect = psi_PID.get_effect(psi, angle_to_radian(reference.z));
-            u1 += -theta_effect / 2 - psi_effect / 2;
-            u2 += -phi_effect / 2 + psi_effect / 2;
-            u3 += theta_effect / 2 - psi_effect / 2;
-            u4 += phi_effect / 2 + psi_effect / 2;
             phi = phi + dt * w_x;
             theta = theta + dt * w_y;
             psi = psi + dt * w_z;
-            /*phi += dt * (w_x + Math.Sin(phi) * Math.Tan(theta) * w_y + Math.Cos(phi) * Math.Tan(theta) * w_z);
-            theta += dt * (Math.Cos(phi) * w_y - Math.Sin(phi) * w_z);
-            psi += dt * (Math.Sin(phi) / Math.Cos(theta) * w_y + Math.Cos(phi) / Math.Cos(theta) * w_z);*/
         }
 
         private void update_angular_speed()
@@ -176,9 +158,15 @@ namespace quadcopter_research
             w_x += dt * (arm_length * k * (u4 - u2) / Jxx);
             w_y += dt * (arm_length * k * (u3 - u1) / Jyy);
             w_z += dt * (b * (-u1 + u2 - u3 + u4) / Jzz);
-            /*w_x += dt * ((arm_length * k * (u4 - u2) + (Jyy - Jzz) * w_y * w_z) / Jxx);
-            w_y += dt * ((arm_length * k * (u3 - u1) + (Jzz - Jxx) * w_z * w_x) / Jyy);
-            w_z += dt * ((b * (-u1 + u2 - u3 + u4) + (Jxx - Jyy) * w_x * w_y) / Jzz);*/
+        }
+
+        private void update_forces(double phi_effect, double theta_effect, double psi_effect)
+        {
+            u1 = u2 = u3 = u4 = equilibrium_thrust;
+            u1 += -theta_effect / 2 - psi_effect / 2;
+            u2 += -phi_effect / 2 + psi_effect / 2;
+            u3 += theta_effect / 2 - psi_effect / 2;
+            u4 += phi_effect / 2 + psi_effect / 2;
         }
 
         public vector3 get_angles()
@@ -186,12 +174,13 @@ namespace quadcopter_research
             return new vector3(radian_to_angle(phi), radian_to_angle(theta), radian_to_angle(psi));
         }
 
-        public void update(vector3 reference)
+        public void update(double phi_effect, double theta_effect, double psi_effect)
         {
             update_speed();
             update_coordinates();
             update_angular_speed();
-            update_angles(reference);
+            update_angles();
+            update_forces(phi_effect, theta_effect, psi_effect);
         }
     }
 }

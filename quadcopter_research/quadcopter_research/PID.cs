@@ -8,7 +8,7 @@ namespace quadcopter_research
 {
     class PID
     {
-
+        private const double error_epsilon = 0.1;
         private double P;
         private double I;
         private double D;
@@ -34,6 +34,8 @@ namespace quadcopter_research
         public double get_effect(double current, double target)
         {
             double err = target - current;
+            if (Math.Abs(err) < error_epsilon)
+                sumErr = 0;
             sumErr += err;
             double force = P * err + I * sumErr * dt + D * (err - prevErr) / dt;
             prevErr = err;

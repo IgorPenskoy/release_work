@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea43 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend43 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series85 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series86 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea44 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend44 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series87 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series88 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea45 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend45 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series89 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series90 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.start_button = new System.Windows.Forms.Button();
             this.stop_button = new System.Windows.Forms.Button();
             this.continue_button = new System.Windows.Forms.Button();
@@ -49,19 +49,19 @@
             this.main_time_label_text = new System.Windows.Forms.Label();
             this.main_time_label = new System.Windows.Forms.Label();
             this.reference_label = new System.Windows.Forms.Label();
-            this.state_label = new System.Windows.Forms.Label();
+            this.inital_state_label = new System.Windows.Forms.Label();
             this.z_reference_label = new System.Windows.Forms.Label();
             this.y_reference_label = new System.Windows.Forms.Label();
             this.x_reference_label = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.x_initial_label = new System.Windows.Forms.Label();
+            this.y_initial_label = new System.Windows.Forms.Label();
+            this.z_initial_label = new System.Windows.Forms.Label();
             this.x_reference_edit = new System.Windows.Forms.NumericUpDown();
             this.y_reference_edit = new System.Windows.Forms.NumericUpDown();
             this.z_reference_edit = new System.Windows.Forms.NumericUpDown();
-            this.z_state_edit = new System.Windows.Forms.NumericUpDown();
-            this.y_state_edit = new System.Windows.Forms.NumericUpDown();
-            this.x_state_edit = new System.Windows.Forms.NumericUpDown();
+            this.z_initial_edit = new System.Windows.Forms.NumericUpDown();
+            this.y_initial_edit = new System.Windows.Forms.NumericUpDown();
+            this.x_initial_edit = new System.Windows.Forms.NumericUpDown();
             this.control_process_tabs = new System.Windows.Forms.TabControl();
             this.x_tab = new System.Windows.Forms.TabPage();
             this.y_tab = new System.Windows.Forms.TabPage();
@@ -72,9 +72,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.x_reference_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.y_reference_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.z_reference_edit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.z_state_edit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.y_state_edit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.x_state_edit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.z_initial_edit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.y_initial_edit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.x_initial_edit)).BeginInit();
             this.control_process_tabs.SuspendLayout();
             this.x_tab.SuspendLayout();
             this.y_tab.SuspendLayout();
@@ -155,72 +155,72 @@
             this.reference_label.AutoSize = true;
             this.reference_label.Location = new System.Drawing.Point(12, 9);
             this.reference_label.Name = "reference_label";
-            this.reference_label.Size = new System.Drawing.Size(53, 13);
+            this.reference_label.Size = new System.Drawing.Size(125, 13);
             this.reference_label.TabIndex = 6;
-            this.reference_label.Text = "Уставка:";
+            this.reference_label.Text = "Требуемое положение:";
             // 
-            // state_label
+            // inital_state_label
             // 
-            this.state_label.AutoSize = true;
-            this.state_label.Location = new System.Drawing.Point(12, 117);
-            this.state_label.Name = "state_label";
-            this.state_label.Size = new System.Drawing.Size(114, 13);
-            this.state_label.TabIndex = 7;
-            this.state_label.Text = "Текущее положение:";
+            this.inital_state_label.AutoSize = true;
+            this.inital_state_label.Location = new System.Drawing.Point(12, 117);
+            this.inital_state_label.Name = "inital_state_label";
+            this.inital_state_label.Size = new System.Drawing.Size(118, 13);
+            this.inital_state_label.TabIndex = 7;
+            this.inital_state_label.Text = "Исходное положение:";
             // 
             // z_reference_label
             // 
             this.z_reference_label.AutoSize = true;
-            this.z_reference_label.Location = new System.Drawing.Point(34, 77);
+            this.z_reference_label.Location = new System.Drawing.Point(40, 76);
             this.z_reference_label.Name = "z_reference_label";
-            this.z_reference_label.Size = new System.Drawing.Size(161, 13);
+            this.z_reference_label.Size = new System.Drawing.Size(162, 13);
             this.z_reference_label.TabIndex = 8;
-            this.z_reference_label.Text = "Требуемый угол вокруг оси Z:";
+            this.z_reference_label.Text = "Требуемый угол рысканья (Z):";
             // 
             // y_reference_label
             // 
             this.y_reference_label.AutoSize = true;
-            this.y_reference_label.Location = new System.Drawing.Point(34, 55);
+            this.y_reference_label.Location = new System.Drawing.Point(40, 55);
             this.y_reference_label.Name = "y_reference_label";
-            this.y_reference_label.Size = new System.Drawing.Size(161, 13);
+            this.y_reference_label.Size = new System.Drawing.Size(154, 13);
             this.y_reference_label.TabIndex = 9;
-            this.y_reference_label.Text = "Требуемый угол вокруг оси Y:";
+            this.y_reference_label.Text = "Требуемый угол тангажа (Y):";
             // 
             // x_reference_label
             // 
             this.x_reference_label.AutoSize = true;
-            this.x_reference_label.Location = new System.Drawing.Point(34, 32);
+            this.x_reference_label.Location = new System.Drawing.Point(40, 32);
             this.x_reference_label.Name = "x_reference_label";
-            this.x_reference_label.Size = new System.Drawing.Size(161, 13);
+            this.x_reference_label.Size = new System.Drawing.Size(142, 13);
             this.x_reference_label.TabIndex = 10;
-            this.x_reference_label.Text = "Требуемый угол вокруг оси X:";
+            this.x_reference_label.Text = "Требуемый угол крена (X):";
             // 
-            // label4
+            // x_initial_label
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(47, 139);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(148, 13);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Текущий угол вокруг оси X:";
+            this.x_initial_label.AutoSize = true;
+            this.x_initial_label.Location = new System.Drawing.Point(47, 139);
+            this.x_initial_label.Name = "x_initial_label";
+            this.x_initial_label.Size = new System.Drawing.Size(135, 13);
+            this.x_initial_label.TabIndex = 13;
+            this.x_initial_label.Text = "Исходный угол крена (X):";
             // 
-            // label5
+            // y_initial_label
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(47, 162);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(148, 13);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Текущий угол вокруг оси Y:";
+            this.y_initial_label.AutoSize = true;
+            this.y_initial_label.Location = new System.Drawing.Point(47, 162);
+            this.y_initial_label.Name = "y_initial_label";
+            this.y_initial_label.Size = new System.Drawing.Size(147, 13);
+            this.y_initial_label.TabIndex = 12;
+            this.y_initial_label.Text = "Исходный угол тангажа (Y):";
             // 
-            // label6
+            // z_initial_label
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(47, 184);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(148, 13);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Текущий угол вокруг оси Z:";
+            this.z_initial_label.AutoSize = true;
+            this.z_initial_label.Location = new System.Drawing.Point(47, 184);
+            this.z_initial_label.Name = "z_initial_label";
+            this.z_initial_label.Size = new System.Drawing.Size(155, 13);
+            this.z_initial_label.TabIndex = 11;
+            this.z_initial_label.Text = "Исходный угол рысканья (Z):";
             // 
             // x_reference_edit
             // 
@@ -282,65 +282,65 @@
             this.z_reference_edit.Size = new System.Drawing.Size(60, 20);
             this.z_reference_edit.TabIndex = 16;
             // 
-            // z_state_edit
+            // z_initial_edit
             // 
-            this.z_state_edit.DecimalPlaces = 2;
-            this.z_state_edit.Location = new System.Drawing.Point(201, 182);
-            this.z_state_edit.Maximum = new decimal(new int[] {
+            this.z_initial_edit.DecimalPlaces = 2;
+            this.z_initial_edit.Location = new System.Drawing.Point(201, 182);
+            this.z_initial_edit.Maximum = new decimal(new int[] {
             180,
             0,
             0,
             0});
-            this.z_state_edit.MaximumSize = new System.Drawing.Size(60, 0);
-            this.z_state_edit.Minimum = new decimal(new int[] {
+            this.z_initial_edit.MaximumSize = new System.Drawing.Size(60, 0);
+            this.z_initial_edit.Minimum = new decimal(new int[] {
             180,
             0,
             0,
             -2147483648});
-            this.z_state_edit.MinimumSize = new System.Drawing.Size(60, 0);
-            this.z_state_edit.Name = "z_state_edit";
-            this.z_state_edit.Size = new System.Drawing.Size(60, 20);
-            this.z_state_edit.TabIndex = 19;
+            this.z_initial_edit.MinimumSize = new System.Drawing.Size(60, 0);
+            this.z_initial_edit.Name = "z_initial_edit";
+            this.z_initial_edit.Size = new System.Drawing.Size(60, 20);
+            this.z_initial_edit.TabIndex = 19;
             // 
-            // y_state_edit
+            // y_initial_edit
             // 
-            this.y_state_edit.DecimalPlaces = 2;
-            this.y_state_edit.Location = new System.Drawing.Point(201, 160);
-            this.y_state_edit.Maximum = new decimal(new int[] {
+            this.y_initial_edit.DecimalPlaces = 2;
+            this.y_initial_edit.Location = new System.Drawing.Point(201, 160);
+            this.y_initial_edit.Maximum = new decimal(new int[] {
             180,
             0,
             0,
             0});
-            this.y_state_edit.MaximumSize = new System.Drawing.Size(60, 0);
-            this.y_state_edit.Minimum = new decimal(new int[] {
+            this.y_initial_edit.MaximumSize = new System.Drawing.Size(60, 0);
+            this.y_initial_edit.Minimum = new decimal(new int[] {
             180,
             0,
             0,
             -2147483648});
-            this.y_state_edit.MinimumSize = new System.Drawing.Size(60, 0);
-            this.y_state_edit.Name = "y_state_edit";
-            this.y_state_edit.Size = new System.Drawing.Size(60, 20);
-            this.y_state_edit.TabIndex = 18;
+            this.y_initial_edit.MinimumSize = new System.Drawing.Size(60, 0);
+            this.y_initial_edit.Name = "y_initial_edit";
+            this.y_initial_edit.Size = new System.Drawing.Size(60, 20);
+            this.y_initial_edit.TabIndex = 18;
             // 
-            // x_state_edit
+            // x_initial_edit
             // 
-            this.x_state_edit.DecimalPlaces = 2;
-            this.x_state_edit.Location = new System.Drawing.Point(201, 137);
-            this.x_state_edit.Maximum = new decimal(new int[] {
+            this.x_initial_edit.DecimalPlaces = 2;
+            this.x_initial_edit.Location = new System.Drawing.Point(201, 137);
+            this.x_initial_edit.Maximum = new decimal(new int[] {
             180,
             0,
             0,
             0});
-            this.x_state_edit.MaximumSize = new System.Drawing.Size(60, 0);
-            this.x_state_edit.Minimum = new decimal(new int[] {
+            this.x_initial_edit.MaximumSize = new System.Drawing.Size(60, 0);
+            this.x_initial_edit.Minimum = new decimal(new int[] {
             180,
             0,
             0,
             -2147483648});
-            this.x_state_edit.MinimumSize = new System.Drawing.Size(60, 0);
-            this.x_state_edit.Name = "x_state_edit";
-            this.x_state_edit.Size = new System.Drawing.Size(60, 20);
-            this.x_state_edit.TabIndex = 17;
+            this.x_initial_edit.MinimumSize = new System.Drawing.Size(60, 0);
+            this.x_initial_edit.Name = "x_initial_edit";
+            this.x_initial_edit.Size = new System.Drawing.Size(60, 20);
+            this.x_initial_edit.TabIndex = 17;
             // 
             // control_process_tabs
             // 
@@ -361,7 +361,7 @@
             this.x_tab.Padding = new System.Windows.Forms.Padding(3);
             this.x_tab.Size = new System.Drawing.Size(660, 490);
             this.x_tab.TabIndex = 0;
-            this.x_tab.Text = "Угол поворота вокруг оси X";
+            this.x_tab.Text = "Угол крена (X)";
             this.x_tab.UseVisualStyleBackColor = true;
             // 
             // y_tab
@@ -372,32 +372,32 @@
             this.y_tab.Padding = new System.Windows.Forms.Padding(3);
             this.y_tab.Size = new System.Drawing.Size(660, 490);
             this.y_tab.TabIndex = 1;
-            this.y_tab.Text = "Угол поворота вокруг оси Y";
+            this.y_tab.Text = "Угол тангажа (Y)";
             this.y_tab.UseVisualStyleBackColor = true;
             // 
             // x_chart
             // 
-            chartArea7.Name = "ChartArea1";
-            this.x_chart.ChartAreas.Add(chartArea7);
-            legend7.Alignment = System.Drawing.StringAlignment.Center;
-            legend7.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend7.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend7.Name = "Legend1";
-            this.x_chart.Legends.Add(legend7);
+            chartArea43.Name = "ChartArea1";
+            this.x_chart.ChartAreas.Add(chartArea43);
+            legend43.Alignment = System.Drawing.StringAlignment.Center;
+            legend43.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend43.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend43.Name = "Legend1";
+            this.x_chart.Legends.Add(legend43);
             this.x_chart.Location = new System.Drawing.Point(3, 6);
             this.x_chart.Name = "x_chart";
-            series13.BorderWidth = 3;
-            series13.ChartArea = "ChartArea1";
-            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series13.Legend = "Legend1";
-            series13.Name = "Уставка";
-            series14.BorderWidth = 3;
-            series14.ChartArea = "ChartArea1";
-            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series14.Legend = "Legend1";
-            series14.Name = "Текущее";
-            this.x_chart.Series.Add(series13);
-            this.x_chart.Series.Add(series14);
+            series85.BorderWidth = 3;
+            series85.ChartArea = "ChartArea1";
+            series85.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series85.Legend = "Legend1";
+            series85.Name = "Уставка";
+            series86.BorderWidth = 3;
+            series86.ChartArea = "ChartArea1";
+            series86.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series86.Legend = "Legend1";
+            series86.Name = "Текущее";
+            this.x_chart.Series.Add(series85);
+            this.x_chart.Series.Add(series86);
             this.x_chart.Size = new System.Drawing.Size(643, 481);
             this.x_chart.TabIndex = 21;
             this.x_chart.Text = "Угол вокруг оси X";
@@ -409,59 +409,59 @@
             this.z_tab.Name = "z_tab";
             this.z_tab.Size = new System.Drawing.Size(660, 490);
             this.z_tab.TabIndex = 2;
-            this.z_tab.Text = "Угол поворота вокруг оси Z";
+            this.z_tab.Text = "Угол рысканья (Z)";
             this.z_tab.UseVisualStyleBackColor = true;
             // 
             // y_chart
             // 
-            chartArea8.Name = "ChartArea1";
-            this.y_chart.ChartAreas.Add(chartArea8);
-            legend8.Alignment = System.Drawing.StringAlignment.Center;
-            legend8.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend8.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend8.Name = "Legend1";
-            this.y_chart.Legends.Add(legend8);
+            chartArea44.Name = "ChartArea1";
+            this.y_chart.ChartAreas.Add(chartArea44);
+            legend44.Alignment = System.Drawing.StringAlignment.Center;
+            legend44.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend44.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend44.Name = "Legend1";
+            this.y_chart.Legends.Add(legend44);
             this.y_chart.Location = new System.Drawing.Point(3, 6);
             this.y_chart.Name = "y_chart";
-            series15.BorderWidth = 3;
-            series15.ChartArea = "ChartArea1";
-            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series15.Legend = "Legend1";
-            series15.Name = "Уставка";
-            series16.BorderWidth = 3;
-            series16.ChartArea = "ChartArea1";
-            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series16.Legend = "Legend1";
-            series16.Name = "Текущее";
-            this.y_chart.Series.Add(series15);
-            this.y_chart.Series.Add(series16);
+            series87.BorderWidth = 3;
+            series87.ChartArea = "ChartArea1";
+            series87.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series87.Legend = "Legend1";
+            series87.Name = "Уставка";
+            series88.BorderWidth = 3;
+            series88.ChartArea = "ChartArea1";
+            series88.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series88.Legend = "Legend1";
+            series88.Name = "Текущее";
+            this.y_chart.Series.Add(series87);
+            this.y_chart.Series.Add(series88);
             this.y_chart.Size = new System.Drawing.Size(643, 481);
             this.y_chart.TabIndex = 22;
             this.y_chart.Text = "Угол вокруг оси X";
             // 
             // z_chart
             // 
-            chartArea9.Name = "ChartArea1";
-            this.z_chart.ChartAreas.Add(chartArea9);
-            legend9.Alignment = System.Drawing.StringAlignment.Center;
-            legend9.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend9.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend9.Name = "Legend1";
-            this.z_chart.Legends.Add(legend9);
-            this.z_chart.Location = new System.Drawing.Point(3, 6);
+            chartArea45.Name = "ChartArea1";
+            this.z_chart.ChartAreas.Add(chartArea45);
+            legend45.Alignment = System.Drawing.StringAlignment.Center;
+            legend45.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend45.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend45.Name = "Legend1";
+            this.z_chart.Legends.Add(legend45);
+            this.z_chart.Location = new System.Drawing.Point(10, 22);
             this.z_chart.Name = "z_chart";
-            series17.BorderWidth = 3;
-            series17.ChartArea = "ChartArea1";
-            series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series17.Legend = "Legend1";
-            series17.Name = "Уставка";
-            series18.BorderWidth = 3;
-            series18.ChartArea = "ChartArea1";
-            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series18.Legend = "Legend1";
-            series18.Name = "Текущее";
-            this.z_chart.Series.Add(series17);
-            this.z_chart.Series.Add(series18);
+            series89.BorderWidth = 3;
+            series89.ChartArea = "ChartArea1";
+            series89.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series89.Legend = "Legend1";
+            series89.Name = "Уставка";
+            series90.BorderWidth = 3;
+            series90.ChartArea = "ChartArea1";
+            series90.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series90.Legend = "Legend1";
+            series90.Name = "Текущее";
+            this.z_chart.Series.Add(series89);
+            this.z_chart.Series.Add(series90);
             this.z_chart.Size = new System.Drawing.Size(643, 481);
             this.z_chart.TabIndex = 22;
             this.z_chart.Text = "Угол вокруг оси X";
@@ -472,19 +472,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(936, 532);
             this.Controls.Add(this.control_process_tabs);
-            this.Controls.Add(this.z_state_edit);
-            this.Controls.Add(this.y_state_edit);
-            this.Controls.Add(this.x_state_edit);
+            this.Controls.Add(this.z_initial_edit);
+            this.Controls.Add(this.y_initial_edit);
+            this.Controls.Add(this.x_initial_edit);
             this.Controls.Add(this.z_reference_edit);
             this.Controls.Add(this.y_reference_edit);
             this.Controls.Add(this.x_reference_edit);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.x_initial_label);
+            this.Controls.Add(this.y_initial_label);
+            this.Controls.Add(this.z_initial_label);
             this.Controls.Add(this.x_reference_label);
             this.Controls.Add(this.y_reference_label);
             this.Controls.Add(this.z_reference_label);
-            this.Controls.Add(this.state_label);
+            this.Controls.Add(this.inital_state_label);
             this.Controls.Add(this.reference_label);
             this.Controls.Add(this.main_time_label);
             this.Controls.Add(this.main_time_label_text);
@@ -493,13 +493,13 @@
             this.Controls.Add(this.stop_button);
             this.Controls.Add(this.start_button);
             this.Name = "main_form";
-            this.Text = "Нейро-нечеткий ПИД-регулятор";
+            this.Text = "Нейро-нечеткий ПИД-регулятор в задаче угловой стабилизации мультироторного БПЛА";
             ((System.ComponentModel.ISupportInitialize)(this.x_reference_edit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.y_reference_edit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.z_reference_edit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.z_state_edit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.y_state_edit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.x_state_edit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.z_initial_edit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.y_initial_edit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.x_initial_edit)).EndInit();
             this.control_process_tabs.ResumeLayout(false);
             this.x_tab.ResumeLayout(false);
             this.y_tab.ResumeLayout(false);
@@ -522,19 +522,19 @@
         private System.Windows.Forms.Label main_time_label_text;
         private System.Windows.Forms.Label main_time_label;
         private System.Windows.Forms.Label reference_label;
-        private System.Windows.Forms.Label state_label;
+        private System.Windows.Forms.Label inital_state_label;
         private System.Windows.Forms.Label z_reference_label;
         private System.Windows.Forms.Label y_reference_label;
         private System.Windows.Forms.Label x_reference_label;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label x_initial_label;
+        private System.Windows.Forms.Label y_initial_label;
+        private System.Windows.Forms.Label z_initial_label;
         private System.Windows.Forms.NumericUpDown x_reference_edit;
         private System.Windows.Forms.NumericUpDown y_reference_edit;
         private System.Windows.Forms.NumericUpDown z_reference_edit;
-        private System.Windows.Forms.NumericUpDown z_state_edit;
-        private System.Windows.Forms.NumericUpDown y_state_edit;
-        private System.Windows.Forms.NumericUpDown x_state_edit;
+        private System.Windows.Forms.NumericUpDown z_initial_edit;
+        private System.Windows.Forms.NumericUpDown y_initial_edit;
+        private System.Windows.Forms.NumericUpDown x_initial_edit;
         private System.Windows.Forms.TabControl control_process_tabs;
         private System.Windows.Forms.TabPage x_tab;
         private System.Windows.Forms.DataVisualization.Charting.Chart x_chart;

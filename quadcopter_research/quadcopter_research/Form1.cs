@@ -51,16 +51,16 @@ namespace quadcopter_research
             main_timer.Start();
             reference = new vector3((double)x_reference_edit.Value, (double)y_reference_edit.Value, (double)z_reference_edit.Value);
             qm.init();
-            qm.set_angles((double)x_state_edit.Value, (double)y_state_edit.Value, (double)z_state_edit.Value);
+            qm.set_angles((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
             start_button.Enabled = false;
             pause_button.Enabled = true;
             stop_button.Enabled = true;
             x_reference_edit.Enabled = false;
             y_reference_edit.Enabled = false;
             z_reference_edit.Enabled = false;
-            x_state_edit.Enabled = false;
-            y_state_edit.Enabled = false;
-            z_state_edit.Enabled = false;
+            x_initial_edit.Enabled = false;
+            y_initial_edit.Enabled = false;
+            z_initial_edit.Enabled = false;
 
         }
 
@@ -77,9 +77,9 @@ namespace quadcopter_research
             x_reference_edit.Enabled = true;
             y_reference_edit.Enabled = true;
             z_reference_edit.Enabled = true;
-            x_state_edit.Enabled = true;
-            y_state_edit.Enabled = true;
-            z_state_edit.Enabled = true;
+            x_initial_edit.Enabled = true;
+            y_initial_edit.Enabled = true;
+            z_initial_edit.Enabled = true;
             x_chart.Series[0].Points.Clear();
             x_chart.Series[1].Points.Clear();
             x_chart.ChartAreas[0].AxisX.Minimum = 0;
@@ -125,15 +125,15 @@ namespace quadcopter_research
             {
                 x_chart.Series[0].Points.RemoveAt(0);
                 x_chart.Series[1].Points.RemoveAt(0);
-                x_chart.ChartAreas[0].AxisX.Minimum = x_chart.Series[0].Points[0].XValue;
+                x_chart.ChartAreas[0].AxisX.Minimum = elapsed_time - 10;//x_chart.Series[0].Points[0].XValue;
                 x_chart.ChartAreas[0].AxisX.Maximum = elapsed_time;
                 y_chart.Series[0].Points.RemoveAt(0);
                 y_chart.Series[1].Points.RemoveAt(0);
-                y_chart.ChartAreas[0].AxisX.Minimum = y_chart.Series[0].Points[0].XValue;
+                y_chart.ChartAreas[0].AxisX.Minimum = elapsed_time - 10;//y_chart.Series[0].Points[0].XValue;
                 y_chart.ChartAreas[0].AxisX.Maximum = elapsed_time;
                 z_chart.Series[0].Points.RemoveAt(0);
                 z_chart.Series[1].Points.RemoveAt(0);
-                z_chart.ChartAreas[0].AxisX.Minimum = z_chart.Series[0].Points[0].XValue;
+                z_chart.ChartAreas[0].AxisX.Minimum = elapsed_time - 10;//z_chart.Series[0].Points[0].XValue;
                 z_chart.ChartAreas[0].AxisX.Maximum = elapsed_time;
             }
             qm.update(reference);

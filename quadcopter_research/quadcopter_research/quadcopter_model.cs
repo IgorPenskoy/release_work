@@ -88,9 +88,9 @@ namespace quadcopter_research
                                 double arm_length_in = arm_length_const,
                                 double dt_in = dt_const)
         {
-            phi_PID = new PID(dt_in, 10, -10, 100, 0, 2);
-            theta_PID = new PID(dt_in, 0.1, -0.1);
-            psi_PID = new PID(dt_in, 0.1, -0.1);
+            phi_PID   = new PID(dt_in, 10, -10, 100, 0, 20);
+            theta_PID = new PID(dt_in, 10, -10, 100, 0, 20);
+            psi_PID   = new PID(dt_in, 10, -10, 120, 10, 30);
             if (mass_frame_in <= 0)
                 mass_frame = mass_frame_const;
             else
@@ -159,8 +159,10 @@ namespace quadcopter_research
             double phi_effect = phi_PID.get_effect(phi, angle_to_radian(reference.x));
             double theta_effect = theta_PID.get_effect(theta, angle_to_radian(reference.y));
             double psi_effect = psi_PID.get_effect(psi, angle_to_radian(reference.z));
-            u2 -= phi_effect / 2;
-            u4 += phi_effect / 2;
+            u1 += -theta_effect / 2 - psi_effect / 2;
+            u2 += -phi_effect / 2 + psi_effect / 2;
+            u3 += theta_effect / 2 - psi_effect / 2;
+            u4 += phi_effect / 2 + psi_effect / 2;
             phi = phi + dt * w_x;
             theta = theta + dt * w_y;
             psi = psi + dt * w_z;

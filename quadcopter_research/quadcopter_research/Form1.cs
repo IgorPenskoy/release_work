@@ -37,8 +37,11 @@ namespace quadcopter_research
         private double z_period;
         private double z_period_error;
         private double x_overshoot_error_sign;
-        private double x_overshoot_prev_error;
         private bool x_overshoot_flag;
+        private double y_overshoot_error_sign;
+        private bool y_overshoot_flag;
+        private double z_overshoot_error_sign;
+        private bool z_overshoot_flag;
 
         public main_form()
         {
@@ -82,7 +85,7 @@ namespace quadcopter_research
             main_stopwatch.Start();
             main_timer.Start();
             reference = new vector3((double)x_reference_edit.Value, (double)y_reference_edit.Value, (double)z_reference_edit.Value);
-            qm.init(dt_in: main_timer.Interval / 1000.0);
+            qm.init((double) mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, main_timer.Interval / 1000.0);
             qm.set_angles((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
             phi_PID.set_PID(main_timer.Interval / 1000.0, (double)x_max_effect_edit.Value, (double)x_min_effect_edit.Value, (double)x_P_edit.Value, (double)x_I_edit.Value, (double)x_D_edit.Value);
             theta_PID.set_PID(main_timer.Interval / 1000.0, (double)y_max_effect_edit.Value, (double)y_min_effect_edit.Value, (double)y_P_edit.Value, (double)y_I_edit.Value, (double)y_D_edit.Value);
@@ -103,6 +106,10 @@ namespace quadcopter_research
 
             x_overshoot_error_sign = Math.Sign(reference.x - (double)x_initial_edit.Value);
             x_overshoot_flag = false;
+            y_overshoot_error_sign = Math.Sign(reference.y - (double)y_initial_edit.Value);
+            y_overshoot_flag = false;
+            z_overshoot_error_sign = Math.Sign(reference.z - (double)z_initial_edit.Value);
+            z_overshoot_flag = false;
 
             dt_box.Enabled = false;
             start_button.Enabled = false;
@@ -134,6 +141,14 @@ namespace quadcopter_research
             z_period_error_edit.Enabled = false;
             x_ziegler_button.Enabled = false;
             x_anfis_check_box.Enabled = false;
+            y_ziegler_button.Enabled = false;
+            y_anfis_check_box.Enabled = false;
+            z_ziegler_button.Enabled = false;
+            z_anfis_check_box.Enabled = false;
+            mass_frame_edit.Enabled = false;
+            mass_engine_edit.Enabled = false;
+            radius_edit.Enabled = false;
+            arm_length_edit.Enabled = false;
 
         }
 
@@ -145,6 +160,12 @@ namespace quadcopter_research
             x_overshoot_label.Text = "0";
             x_period_label.Text = "0";
             x_current_label.Text = "0";
+            y_overshoot_label.Text = "0";
+            y_period_label.Text = "0";
+            y_current_label.Text = "0";
+            z_overshoot_label.Text = "0";
+            z_period_label.Text = "0";
+            z_current_label.Text = "0";
             qm.reset();
             start_button.Enabled = true;
             pause_button.Enabled = false;
@@ -160,18 +181,16 @@ namespace quadcopter_research
             x_max_effect_edit.Enabled = true;
             x_min_effect_edit.Enabled = true;
             x_period_error_edit.Enabled = true;
-            y_P_edit.Enabled = true;
-            y_I_edit.Enabled = true;
-            y_D_edit.Enabled = true;
             y_max_effect_edit.Enabled = true;
             y_min_effect_edit.Enabled = true;
             y_period_error_edit.Enabled = true;
-            z_P_edit.Enabled = true;
-            z_I_edit.Enabled = true;
-            z_D_edit.Enabled = true;
             z_max_effect_edit.Enabled = true;
             z_min_effect_edit.Enabled = true;
             z_period_error_edit.Enabled = true;
+            mass_frame_edit.Enabled = true;
+            mass_engine_edit.Enabled = true;
+            radius_edit.Enabled = true;
+            arm_length_edit.Enabled = true;
             if (x_anfis_check_box.Checked == false)
             {
                 x_P_edit.Enabled = true;
@@ -180,6 +199,22 @@ namespace quadcopter_research
                 x_ziegler_button.Enabled = true;
             }
             x_anfis_check_box.Enabled = true;
+            if (y_anfis_check_box.Checked == false)
+            {
+                y_P_edit.Enabled = true;
+                y_I_edit.Enabled = true;
+                y_D_edit.Enabled = true;
+                y_ziegler_button.Enabled = true;
+            }
+            y_anfis_check_box.Enabled = true;
+            if (z_anfis_check_box.Checked == false)
+            {
+                z_P_edit.Enabled = true;
+                z_I_edit.Enabled = true;
+                z_D_edit.Enabled = true;
+                z_ziegler_button.Enabled = true;
+            }
+            z_anfis_check_box.Enabled = true;
             dt_box.Enabled = true;
 
             x_chart.Series[0].Points.Clear();
@@ -246,6 +281,28 @@ namespace quadcopter_research
             {
                 x_overshoot_flag = true;
             }
+            if (Math.Sign(reference.y - angles.y) != y_overshoot_error_sign && y_overshoot_flag == false)
+            {
+
+                y_overshoot = Math.Max(y_overshoot, Math.Abs(reference.y - angles.y));
+                y_overshoot_label.Text = y_overshoot.ToString("0.00");
+
+            }
+            if (y_overshoot > 0 && Math.Sign(reference.y - angles.y) == y_overshoot_error_sign)
+            {
+                y_overshoot_flag = true;
+            }
+            if (Math.Sign(reference.z - angles.z) != z_overshoot_error_sign && z_overshoot_flag == false)
+            {
+
+                z_overshoot = Math.Max(z_overshoot, Math.Abs(reference.z - angles.z));
+                z_overshoot_label.Text =z_overshoot.ToString("0.00");
+
+            }
+            if (z_overshoot > 0 && Math.Sign(reference.z - angles.z) == z_overshoot_error_sign)
+            {
+                z_overshoot_flag = true;
+            }
             x_chart.Series[0].Points.AddXY(Math.Round(elapsed_time, 3), reference.x);
             x_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), angles.x);
             y_chart.Series[0].Points.AddXY(Math.Round(elapsed_time, 3), reference.y);
@@ -278,7 +335,7 @@ namespace quadcopter_research
             
         }
 
-        private void anfis_check_box_CheckedChanged(object sender, EventArgs e)
+        private void x_anfis_check_box_CheckedChanged(object sender, EventArgs e)
         {
             if (x_anfis_check_box.Checked)
             {
@@ -293,6 +350,42 @@ namespace quadcopter_research
                 x_I_edit.Enabled = true;
                 x_D_edit.Enabled = true;
                 x_ziegler_button.Enabled = true;
+            }
+        }
+
+        private void y_anfis_check_box_CheckedChanged(object sender, EventArgs e)
+        {
+            if (y_anfis_check_box.Checked)
+            {
+                y_P_edit.Enabled = false;
+                y_I_edit.Enabled = false;
+                y_D_edit.Enabled = false;
+                y_ziegler_button.Enabled = false;
+            }
+            else
+            {
+                y_P_edit.Enabled = true;
+                y_I_edit.Enabled = true;
+                y_D_edit.Enabled = true;
+                y_ziegler_button.Enabled = true;
+            }
+        }
+
+        private void z_anfis_check_box_CheckedChanged(object sender, EventArgs e)
+        {
+            if (z_anfis_check_box.Checked)
+            {
+                z_P_edit.Enabled = false;
+                z_I_edit.Enabled = false;
+                z_D_edit.Enabled = false;
+                z_ziegler_button.Enabled = false;
+            }
+            else
+            {
+                z_P_edit.Enabled = true;
+                z_I_edit.Enabled = true;
+                z_D_edit.Enabled = true;
+                z_ziegler_button.Enabled = true;
             }
         }
     }

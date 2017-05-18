@@ -19,10 +19,26 @@ namespace quadcopter_research
         private PID phi_PID;
         private PID theta_PID;
         private PID psi_PID;
+        private vector3 angles;
+        private double elapsed_time;
+
+        private double phi_effect;
+        private double theta_effect;
+        private double psi_effect;
+
 
         private double x_overshoot;
         private double x_period;
         private double x_period_error;
+        private double y_overshoot;
+        private double y_period;
+        private double y_period_error;
+        private double z_overshoot;
+        private double z_period;
+        private double z_period_error;
+        private double x_overshoot_error_sign;
+        private double x_overshoot_prev_error;
+        private bool x_overshoot_flag;
 
         public main_form()
         {
@@ -71,6 +87,22 @@ namespace quadcopter_research
             phi_PID.set_PID(main_timer.Interval / 1000.0, (double)x_max_effect_edit.Value, (double)x_min_effect_edit.Value, (double)x_P_edit.Value, (double)x_I_edit.Value, (double)x_D_edit.Value);
             theta_PID.set_PID(main_timer.Interval / 1000.0, (double)y_max_effect_edit.Value, (double)y_min_effect_edit.Value, (double)y_P_edit.Value, (double)y_I_edit.Value, (double)y_D_edit.Value);
             psi_PID.set_PID(main_timer.Interval / 1000.0, (double)z_max_effect_edit.Value, (double)z_min_effect_edit.Value, (double)z_P_edit.Value, (double)z_I_edit.Value, (double)z_D_edit.Value);
+            x_period_error = (double)x_period_error_edit.Value;
+            x_period = 0.0;
+            x_overshoot = 0.0;
+            y_period_error = (double)y_period_error_edit.Value;
+            y_period = 0.0;
+            y_overshoot = 0.0;
+            z_period_error = (double)z_period_error_edit.Value;
+            z_period = 0.0;
+            z_overshoot = 0.0;
+
+            phi_effect = phi_PID.get_effect((double)x_initial_edit.Value, reference.x);
+            theta_effect = theta_PID.get_effect((double)y_initial_edit.Value, reference.y);
+            psi_effect = psi_PID.get_effect((double)z_initial_edit.Value, reference.z);
+
+            x_overshoot_error_sign = Math.Sign(reference.x - (double)x_initial_edit.Value);
+            x_overshoot_flag = false;
 
             dt_box.Enabled = false;
             start_button.Enabled = false;
@@ -100,6 +132,9 @@ namespace quadcopter_research
             z_max_effect_edit.Enabled = false;
             z_min_effect_edit.Enabled = false;
             z_period_error_edit.Enabled = false;
+            x_ziegler_button.Enabled = false;
+            x_anfis_check_box.Enabled = false;
+
         }
 
         private void stop_button_Click(object sender, EventArgs e)
@@ -107,6 +142,9 @@ namespace quadcopter_research
             main_stopwatch.Reset();
             main_timer.Stop();
             main_time_label.Text = main_stopwatch.ElapsedMilliseconds.ToString();
+            x_overshoot_label.Text = "0";
+            x_period_label.Text = "0";
+            x_current_label.Text = "0";
             qm.reset();
             start_button.Enabled = true;
             pause_button.Enabled = false;
@@ -119,9 +157,6 @@ namespace quadcopter_research
             x_initial_edit.Enabled = true;
             y_initial_edit.Enabled = true;
             z_initial_edit.Enabled = true;
-            x_P_edit.Enabled = true;
-            x_I_edit.Enabled = true;
-            x_D_edit.Enabled = true;
             x_max_effect_edit.Enabled = true;
             x_min_effect_edit.Enabled = true;
             x_period_error_edit.Enabled = true;
@@ -137,6 +172,15 @@ namespace quadcopter_research
             z_max_effect_edit.Enabled = true;
             z_min_effect_edit.Enabled = true;
             z_period_error_edit.Enabled = true;
+            if (x_anfis_check_box.Checked == false)
+            {
+                x_P_edit.Enabled = true;
+                x_I_edit.Enabled = true;
+                x_D_edit.Enabled = true;
+                x_ziegler_button.Enabled = true;
+            }
+            x_anfis_check_box.Enabled = true;
+            dt_box.Enabled = true;
 
             x_chart.Series[0].Points.Clear();
             x_chart.Series[1].Points.Clear();
@@ -170,12 +214,38 @@ namespace quadcopter_research
 
         private void main_timer_Tick(object sender, EventArgs e)
         {
-            vector3 angles = qm.get_angles();
-            double elapsed_time = main_stopwatch.Elapsed.TotalSeconds;
-            main_time_label.Text = elapsed_time.ToString();
-            x_current_label.Text = angles.x.ToString();
-            y_current_label.Text = angles.y.ToString();
-            z_current_label.Text = angles.z.ToString();
+            angles = qm.get_angles();
+            elapsed_time = main_stopwatch.Elapsed.TotalSeconds;
+            main_time_label.Text = elapsed_time.ToString("0.00");
+            x_current_label.Text = angles.x.ToString("0.00");
+            y_current_label.Text = angles.y.ToString("0.00");
+            z_current_label.Text = angles.z.ToString("0.00");
+            if (Math.Abs(reference.x - angles.x) > x_period_error)
+            {
+                x_period = elapsed_time;
+                x_period_label.Text = elapsed_time.ToString("0.00");
+            }
+            if (Math.Abs(reference.y - angles.y) > y_period_error)
+            {
+                y_period = elapsed_time;
+                y_period_label.Text = elapsed_time.ToString("0.00");
+            }
+            if (Math.Abs(reference.z - angles.z) > z_period_error)
+            {
+                z_period = elapsed_time;
+                z_period_label.Text = elapsed_time.ToString("0.00");
+            }
+            if (Math.Sign(reference.x - angles.x) != x_overshoot_error_sign && x_overshoot_flag == false)
+            {
+                
+                x_overshoot = Math.Max(x_overshoot, Math.Abs(reference.x - angles.x));
+                x_overshoot_label.Text = x_overshoot.ToString("0.00");
+
+            }
+            if (x_overshoot > 0 && Math.Sign(reference.x - angles.x) == x_overshoot_error_sign)
+            {
+                x_overshoot_flag = true;
+            }
             x_chart.Series[0].Points.AddXY(Math.Round(elapsed_time, 3), reference.x);
             x_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), angles.x);
             y_chart.Series[0].Points.AddXY(Math.Round(elapsed_time, 3), reference.y);
@@ -197,7 +267,33 @@ namespace quadcopter_research
                 z_chart.ChartAreas[0].AxisX.Minimum = elapsed_time - 10;
                 z_chart.ChartAreas[0].AxisX.Maximum = elapsed_time;
             }
-            qm.update(phi_PID.get_effect(angles.x, reference.x), theta_PID.get_effect(angles.y, reference.y), psi_PID.get_effect(angles.z, reference.z));
+            qm.update(phi_effect, theta_effect, psi_effect);
+            phi_effect = phi_PID.get_effect(angles.x, reference.x);
+            theta_effect = theta_PID.get_effect(angles.y, reference.y);
+            psi_effect = psi_PID.get_effect(angles.z, reference.z);
+        }
+
+        private void ziegler_button_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void anfis_check_box_CheckedChanged(object sender, EventArgs e)
+        {
+            if (x_anfis_check_box.Checked)
+            {
+                x_P_edit.Enabled = false;
+                x_I_edit.Enabled = false;
+                x_D_edit.Enabled = false;
+                x_ziegler_button.Enabled = false;
+            }
+            else
+            {
+                x_P_edit.Enabled = true;
+                x_I_edit.Enabled = true;
+                x_D_edit.Enabled = true;
+                x_ziegler_button.Enabled = true;
+            }
         }
     }
 }

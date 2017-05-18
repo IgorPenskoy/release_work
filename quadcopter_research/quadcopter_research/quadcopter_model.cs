@@ -36,6 +36,7 @@ namespace quadcopter_research
         private double mass_engine;
         private double radius;
         private double arm_length;
+
         private double x;
         private double y;
         private double z;

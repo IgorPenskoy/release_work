@@ -31,6 +31,8 @@ namespace quadcopter_research
         private PID theta_PID;
         private PID psi_PID;
 
+        private ZieglerNichols zn;
+
         private double elapsed_time;
 
         private double phi_effect;
@@ -65,6 +67,8 @@ namespace quadcopter_research
             phi_PID = new PID();
             theta_PID = new PID();
             psi_PID = new PID();
+
+            zn = new ZieglerNichols();
 
             dt_box.SelectedIndex = 0;
             x_chart.ChartAreas[0].AxisY.Minimum = -max_angle_degree;
@@ -344,9 +348,12 @@ namespace quadcopter_research
             }
         }
 
-        private void ziegler_button_Click(object sender, EventArgs e)
+        private void x_ziegler_button_Click(object sender, EventArgs e)
         {
-            
+            vector3 PID = zn.get_PID((double)x_P_edit.Value, (double)x_max_effect_edit.Value, (double)x_max_integral_edit.Value, qm, main_timer.Interval / timer_interval_divide);
+            x_P_edit.Value = (decimal)PID.x;
+            x_I_edit.Value = (decimal)PID.y;
+            x_D_edit.Value = (decimal)PID.z;
         }
 
         private void x_anfis_check_box_CheckedChanged(object sender, EventArgs e)
@@ -401,6 +408,22 @@ namespace quadcopter_research
                 z_D_edit.Enabled = true;
                 z_ziegler_button.Enabled = true;
             }
+        }
+
+        private void y_ziegler_button_Click(object sender, EventArgs e)
+        {
+            vector3 PID = zn.get_PID((double)y_P_edit.Value, (double)y_max_effect_edit.Value, (double)y_max_integral_edit.Value, qm, main_timer.Interval / timer_interval_divide);
+            y_P_edit.Value = (decimal)PID.x;
+            y_I_edit.Value = (decimal)PID.y;
+            y_D_edit.Value = (decimal)PID.z;
+        }
+
+        private void z_ziegler_button_Click(object sender, EventArgs e)
+        {
+            vector3 PID = zn.get_PID((double)z_P_edit.Value, (double)z_max_effect_edit.Value, (double)z_max_integral_edit.Value, qm, main_timer.Interval / timer_interval_divide);
+            z_P_edit.Value = (decimal)PID.x;
+            z_I_edit.Value = (decimal)PID.y;
+            z_D_edit.Value = (decimal)PID.z;
         }
     }
 }

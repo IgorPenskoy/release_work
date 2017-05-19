@@ -9,12 +9,13 @@ namespace quadcopter_research
     class PID
     {
         private const double error_epsilon = 0.1;
-        private double P;
+
+        public double P { get; private set; }
         private double I;
         private double D;
 
-        private double err;
         private double force;
+        private double err;
         private double prevErr;
         private double sumErr;
         private double dt;
@@ -42,10 +43,10 @@ namespace quadcopter_research
         {
             err = target - current;
             if (Math.Abs(err) < error_epsilon)
-                sumErr = 0;
+                sumErr = 0.0;
             sumErr += err;
-            if (sumErr > i_max)
-                sumErr = i_max;
+            if (Math.Abs(sumErr) > i_max)
+                sumErr = i_max * Math.Sign(sumErr);
             force = P * err + I * sumErr * dt + D * (err - prevErr) / dt;
             prevErr = err;
             if (Math.Abs(force) > max)

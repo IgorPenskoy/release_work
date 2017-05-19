@@ -34,6 +34,7 @@ namespace quadcopter_research
         private ZieglerNichols zn;
 
         private double elapsed_time;
+        private double dt;
 
         private double phi_effect;
         private double theta_effect;
@@ -97,16 +98,19 @@ namespace quadcopter_research
         private void start_button_Click(object sender, EventArgs e)
         {
             elapsed_time = 0.0;
+            main_timer.Interval = int.Parse(dt_box.SelectedItem.ToString());
+
+            dt = main_timer.Interval / timer_interval_divide;
 
             reference = new vector3((double)x_reference_edit.Value, (double)y_reference_edit.Value, (double)z_reference_edit.Value);
             angles = new vector3((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
 
-            qm.init((double) mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, main_timer.Interval / timer_interval_divide);
+            qm.init((double) mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt);
             qm.set_angles((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
 
-            phi_PID.init(main_timer.Interval / timer_interval_divide, (double)x_max_effect_edit.Value, (double)x_max_integral_edit.Value, (double)x_P_edit.Value, (double)x_I_edit.Value, (double)x_D_edit.Value);
-            theta_PID.init(main_timer.Interval / timer_interval_divide, (double)y_max_effect_edit.Value, (double)y_max_integral_edit.Value, (double)y_P_edit.Value, (double)y_I_edit.Value, (double)y_D_edit.Value);
-            psi_PID.init(main_timer.Interval / timer_interval_divide, (double)z_max_effect_edit.Value, (double)z_max_integral_edit.Value, (double)z_P_edit.Value, (double)z_I_edit.Value, (double)z_D_edit.Value);
+            phi_PID.init(dt, (double)x_max_effect_edit.Value, (double)x_max_integral_edit.Value, (double)x_P_edit.Value, (double)x_I_edit.Value, (double)x_D_edit.Value);
+            theta_PID.init(dt, (double)y_max_effect_edit.Value, (double)y_max_integral_edit.Value, (double)y_P_edit.Value, (double)y_I_edit.Value, (double)y_D_edit.Value);
+            psi_PID.init(dt, (double)z_max_effect_edit.Value, (double)z_max_integral_edit.Value, (double)z_P_edit.Value, (double)z_I_edit.Value, (double)z_D_edit.Value);
 
             x_period_error = (double)x_period_error_edit.Value;
             x_period = 0.0;
@@ -174,7 +178,6 @@ namespace quadcopter_research
             z_ziegler_button.Enabled = false;
             z_anfis_check_box.Enabled = false;
 
-            main_timer.Interval = int.Parse(dt_box.SelectedItem.ToString());
             main_stopwatch.Start();
             main_timer.Start();
         }
@@ -350,10 +353,38 @@ namespace quadcopter_research
 
         private void x_ziegler_button_Click(object sender, EventArgs e)
         {
-            vector3 PID = zn.get_PID((double)x_P_edit.Value, (double)x_max_effect_edit.Value, (double)x_max_integral_edit.Value, qm, main_timer.Interval / timer_interval_divide);
+            double dt = int.Parse(dt_box.SelectedItem.ToString()) / timer_interval_divide;
+            PID pid = new PID(dt, (double)x_max_effect_edit.Value, (double)x_max_integral_edit.Value, (double)x_P_edit.Value, 0.0, 0.0);
+            quadcopter_model qm = new quadcopter_model((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt);
+            zn.init(pid, qm, dt);
+            vector3 PID = zn.get_phi_PID();
             x_P_edit.Value = (decimal)PID.x;
             x_I_edit.Value = (decimal)PID.y;
             x_D_edit.Value = (decimal)PID.z;
+        }
+
+        private void y_ziegler_button_Click(object sender, EventArgs e)
+        {
+            double dt = int.Parse(dt_box.SelectedItem.ToString()) / timer_interval_divide;
+            PID pid = new PID(dt, (double)y_max_effect_edit.Value, (double)y_max_integral_edit.Value, (double)y_P_edit.Value, 0.0, 0.0);
+            quadcopter_model qm = new quadcopter_model((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt);
+            zn.init(pid, qm, dt);
+            vector3 PID = zn.get_theta_PID();
+            y_P_edit.Value = (decimal)PID.x;
+            y_I_edit.Value = (decimal)PID.y;
+            y_D_edit.Value = (decimal)PID.z;
+        }
+
+        private void z_ziegler_button_Click(object sender, EventArgs e)
+        {
+            double dt = int.Parse(dt_box.SelectedItem.ToString()) / timer_interval_divide;
+            PID pid = new PID(dt, (double)z_max_effect_edit.Value, (double)z_max_integral_edit.Value, (double)z_P_edit.Value, 0.0, 0.0);
+            quadcopter_model qm = new quadcopter_model((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt);
+            zn.init(pid, qm, dt);
+            vector3 PID = zn.get_psi_PID();
+            z_P_edit.Value = (decimal)PID.x;
+            z_I_edit.Value = (decimal)PID.y;
+            z_D_edit.Value = (decimal)PID.z;
         }
 
         private void x_anfis_check_box_CheckedChanged(object sender, EventArgs e)
@@ -408,22 +439,6 @@ namespace quadcopter_research
                 z_D_edit.Enabled = true;
                 z_ziegler_button.Enabled = true;
             }
-        }
-
-        private void y_ziegler_button_Click(object sender, EventArgs e)
-        {
-            vector3 PID = zn.get_PID((double)y_P_edit.Value, (double)y_max_effect_edit.Value, (double)y_max_integral_edit.Value, qm, main_timer.Interval / timer_interval_divide);
-            y_P_edit.Value = (decimal)PID.x;
-            y_I_edit.Value = (decimal)PID.y;
-            y_D_edit.Value = (decimal)PID.z;
-        }
-
-        private void z_ziegler_button_Click(object sender, EventArgs e)
-        {
-            vector3 PID = zn.get_PID((double)z_P_edit.Value, (double)z_max_effect_edit.Value, (double)z_max_integral_edit.Value, qm, main_timer.Interval / timer_interval_divide);
-            z_P_edit.Value = (decimal)PID.x;
-            z_I_edit.Value = (decimal)PID.y;
-            z_D_edit.Value = (decimal)PID.z;
         }
     }
 }

@@ -22,10 +22,10 @@ namespace quadcopter_research
 
     class quadcopter_model
     {
-        private const double k = 1;
-        private const double b = 0.05;
+        private const double k = 0.01;
+        private const double b = 0.001;
         private const double g = 9.81;
-        private const double dt_const = 0.001;
+        private const double dt_const = 0.05;
         private const double mass_frame_const = 0.5;
         private const double mass_engine_const = 0.1;
         private const double radius_const = 0.2;

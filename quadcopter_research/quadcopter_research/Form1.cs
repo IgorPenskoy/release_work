@@ -46,17 +46,32 @@ namespace quadcopter_research
         private double x_overshoot_error_sign;
         private bool x_overshoot_flag;
 
+        private double[] x_overshoot_array;
+        private double[] x_period_array;
+        private double[] x_current_array;
+
         private double y_overshoot;
         private double y_period;
         private double y_period_error;
         private double y_overshoot_error_sign;
         private bool y_overshoot_flag;
 
+        private double[] y_overshoot_array;
+        private double[] y_period_array;
+        private double[] y_current_array;
+
         private double z_overshoot;
         private double z_period;
         private double z_period_error;
         private double z_overshoot_error_sign;
         private bool z_overshoot_flag;
+
+        private double[] z_overshoot_array;
+        private double[] z_period_array;
+        private double[] z_current_array;
+
+        int i_sim;
+        int n_sim;
 
         public main_form()
         {
@@ -97,42 +112,9 @@ namespace quadcopter_research
 
         private void start_button_Click(object sender, EventArgs e)
         {
-            elapsed_time = 0.0;
             main_timer.Interval = int.Parse(dt_box.SelectedItem.ToString());
 
-            dt = main_timer.Interval / timer_interval_divide;
-
-            reference = new vector3((double)x_reference_edit.Value, (double)y_reference_edit.Value, (double)z_reference_edit.Value);
-            angles = new vector3((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
-
-            qm.init((double) mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt);
-            qm.set_angles((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
-
-            phi_PID.init(dt, (double)x_max_effect_edit.Value, (double)x_max_integral_edit.Value, (double)x_P_edit.Value, (double)x_I_edit.Value, (double)x_D_edit.Value);
-            theta_PID.init(dt, (double)y_max_effect_edit.Value, (double)y_max_integral_edit.Value, (double)y_P_edit.Value, (double)y_I_edit.Value, (double)y_D_edit.Value);
-            psi_PID.init(dt, (double)z_max_effect_edit.Value, (double)z_max_integral_edit.Value, (double)z_P_edit.Value, (double)z_I_edit.Value, (double)z_D_edit.Value);
-
-            x_period_error = (double)x_period_error_edit.Value;
-            x_period = 0.0;
-            x_overshoot = 0.0;
-            x_overshoot_error_sign = Math.Sign(reference.x - (double)x_initial_edit.Value);
-            x_overshoot_flag = false;
-
-            y_period_error = (double)y_period_error_edit.Value;
-            y_period = 0.0;
-            y_overshoot = 0.0;
-            y_overshoot_error_sign = Math.Sign(reference.y - (double)y_initial_edit.Value);
-            y_overshoot_flag = false;
-
-            z_period_error = (double)z_period_error_edit.Value;
-            z_period = 0.0;
-            z_overshoot = 0.0;
-            z_overshoot_error_sign = Math.Sign(reference.z - (double)z_initial_edit.Value);
-            z_overshoot_flag = false;
-
-            phi_effect = phi_PID.get_effect((double)x_initial_edit.Value, reference.x);
-            theta_effect = theta_PID.get_effect((double)y_initial_edit.Value, reference.y);
-            psi_effect = psi_PID.get_effect((double)z_initial_edit.Value, reference.z);
+            i_sim = 0;
 
             mass_frame_edit.Enabled = false;
             mass_engine_edit.Enabled = false;
@@ -140,6 +122,7 @@ namespace quadcopter_research
             arm_length_edit.Enabled = false;
 
             dt_box.Enabled = false;
+            end_time_edit.Enabled = false;
 
             start_button.Enabled = false;
             pause_button.Enabled = true;
@@ -178,17 +161,17 @@ namespace quadcopter_research
             z_ziegler_button.Enabled = false;
             z_anfis_check_box.Enabled = false;
 
+            simulation();
+
             main_stopwatch.Start();
             main_timer.Start();
         }
 
-        private void stop_button_Click(object sender, EventArgs e)
+        private void stop_procedure()
         {
             main_stopwatch.Reset();
             main_timer.Stop();
-            main_time_label.Text = main_stopwatch.ElapsedMilliseconds.ToString();
-
-            qm.reset();
+            main_time_label.Text = label_style_format;
 
             mass_frame_edit.Enabled = true;
             mass_engine_edit.Enabled = true;
@@ -196,6 +179,7 @@ namespace quadcopter_research
             arm_length_edit.Enabled = true;
 
             dt_box.Enabled = true;
+            end_time_edit.Enabled = true;
 
             start_button.Enabled = true;
             pause_button.Enabled = false;
@@ -266,12 +250,22 @@ namespace quadcopter_research
             z_chart.ChartAreas[0].AxisX.Maximum = chart_time_amount;
         }
 
-        private void pause_button_Click(object sender, EventArgs e)
+        private void stop_button_Click(object sender, EventArgs e)
+        {
+            stop_procedure();
+        }
+
+        private void pause_procedure()
         {
             main_stopwatch.Stop();
             main_timer.Stop();
             pause_button.Enabled = false;
             continue_button.Enabled = true;
+        }
+
+        private void pause_button_Click(object sender, EventArgs e)
+        {
+            pause_procedure();
         }
 
         private void continue_button_Click(object sender, EventArgs e)
@@ -282,57 +276,124 @@ namespace quadcopter_research
             main_timer.Start();
         }
 
+        private void simulation()
+        {
+            dt = main_timer.Interval / timer_interval_divide;
+            n_sim = (int)Math.Floor((double)end_time_edit.Value / dt);
+
+            x_current_array = new double[n_sim];
+            x_period_array = new double[n_sim];
+            x_overshoot_array = new double[n_sim];
+
+            y_current_array = new double[n_sim];
+            y_period_array = new double[n_sim];
+            y_overshoot_array = new double[n_sim];
+
+            z_current_array = new double[n_sim];
+            z_period_array = new double[n_sim];
+            z_overshoot_array = new double[n_sim];
+
+            elapsed_time = 0.0;
+
+            reference = new vector3((double)x_reference_edit.Value, (double)y_reference_edit.Value, (double)z_reference_edit.Value);
+            angles = new vector3((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
+
+            qm.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt);
+            qm.set_angles((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
+
+            phi_PID.init(dt, (double)x_max_effect_edit.Value, (double)x_max_integral_edit.Value, (double)x_P_edit.Value, (double)x_I_edit.Value, (double)x_D_edit.Value);
+            theta_PID.init(dt, (double)y_max_effect_edit.Value, (double)y_max_integral_edit.Value, (double)y_P_edit.Value, (double)y_I_edit.Value, (double)y_D_edit.Value);
+            psi_PID.init(dt, (double)z_max_effect_edit.Value, (double)z_max_integral_edit.Value, (double)z_P_edit.Value, (double)z_I_edit.Value, (double)z_D_edit.Value);
+
+            x_period_error = (double)x_period_error_edit.Value;
+            x_period = 0.0;
+            x_overshoot = 0.0;
+            x_overshoot_error_sign = Math.Sign(reference.x - (double)x_initial_edit.Value);
+            x_overshoot_flag = false;
+
+            y_period_error = (double)y_period_error_edit.Value;
+            y_period = 0.0;
+            y_overshoot = 0.0;
+            y_overshoot_error_sign = Math.Sign(reference.y - (double)y_initial_edit.Value);
+            y_overshoot_flag = false;
+
+            z_period_error = (double)z_period_error_edit.Value;
+            z_period = 0.0;
+            z_overshoot = 0.0;
+            z_overshoot_error_sign = Math.Sign(reference.z - (double)z_initial_edit.Value);
+            z_overshoot_flag = false;
+
+            for (int i = 0; i < n_sim; i++)
+            {
+                phi_effect = phi_PID.get_effect(angles.x, reference.x);
+                theta_effect = theta_PID.get_effect(angles.y, reference.y);
+                psi_effect = psi_PID.get_effect(angles.z, reference.z);
+
+                qm.update(phi_effect, theta_effect, psi_effect);
+
+                angles = qm.get_angles();
+
+                if (Math.Abs(reference.x - angles.x) > x_period_error)
+                    x_period = elapsed_time;
+                if (Math.Sign(reference.x - angles.x) != x_overshoot_error_sign && x_overshoot_flag == false)
+                    x_overshoot = Math.Max(x_overshoot, Math.Abs(reference.x - angles.x));
+                if (x_overshoot > 0 && Math.Sign(reference.x - angles.x) == x_overshoot_error_sign)
+                    x_overshoot_flag = true;
+
+                if (Math.Abs(reference.y - angles.y) > y_period_error)
+                    y_period = elapsed_time;
+                if (Math.Sign(reference.y - angles.y) != y_overshoot_error_sign && y_overshoot_flag == false)
+                    y_overshoot = Math.Max(y_overshoot, Math.Abs(reference.y - angles.y));
+                if (y_overshoot > 0 && Math.Sign(reference.y - angles.y) == y_overshoot_error_sign)
+                    y_overshoot_flag = true;
+
+                if (Math.Abs(reference.z - angles.z) > z_period_error)
+                    z_period = elapsed_time;
+                if (Math.Sign(reference.z - angles.z) != z_overshoot_error_sign && z_overshoot_flag == false)
+                    z_overshoot = Math.Max(z_overshoot, Math.Abs(reference.z - angles.z));
+                if (z_overshoot > 0 && Math.Sign(reference.z - angles.z) == z_overshoot_error_sign)
+                    z_overshoot_flag = true;
+
+                elapsed_time += dt;
+
+                x_current_array[i] = angles.x;
+                x_period_array[i] = x_period;
+                x_overshoot_array[i] = x_overshoot;
+
+                y_current_array[i] = angles.y;
+                y_period_array[i] = y_period;
+                y_overshoot_array[i] = y_overshoot;
+
+                z_current_array[i] = angles.z;
+                z_period_array[i] = z_period;
+                z_overshoot_array[i] = z_overshoot;
+            }
+
+            elapsed_time = 0.0;
+        }
+
         private void main_timer_Tick(object sender, EventArgs e)
         {
-            phi_effect = phi_PID.get_effect(angles.x, reference.x);
-            theta_effect = theta_PID.get_effect(angles.y, reference.y);
-            psi_effect = psi_PID.get_effect(angles.z, reference.z);
-
-            qm.update(phi_effect, theta_effect, psi_effect);
-
-            angles = qm.get_angles();
-            elapsed_time = main_stopwatch.Elapsed.TotalSeconds;
-
+            elapsed_time += dt;
             main_time_label.Text = elapsed_time.ToString(label_style_format);
 
-            if (Math.Abs(reference.x - angles.x) > x_period_error)
-                x_period = elapsed_time;
-            if (Math.Sign(reference.x - angles.x) != x_overshoot_error_sign && x_overshoot_flag == false)
-                x_overshoot = Math.Max(x_overshoot, Math.Abs(reference.x - angles.x));
-            if (x_overshoot > 0 && Math.Sign(reference.x - angles.x) == x_overshoot_error_sign)
-                x_overshoot_flag = true;
-
-            if (Math.Abs(reference.y - angles.y) > y_period_error)
-                y_period = elapsed_time;
-            if (Math.Sign(reference.y - angles.y) != y_overshoot_error_sign && y_overshoot_flag == false)
-                y_overshoot = Math.Max(y_overshoot, Math.Abs(reference.y - angles.y));
-            if (y_overshoot > 0 && Math.Sign(reference.y - angles.y) == y_overshoot_error_sign)
-                y_overshoot_flag = true;
-
-            if (Math.Abs(reference.z - angles.z) > z_period_error)
-                z_period = elapsed_time;
-            if (Math.Sign(reference.z - angles.z) != z_overshoot_error_sign && z_overshoot_flag == false)
-                z_overshoot = Math.Max(z_overshoot, Math.Abs(reference.z - angles.z));
-            if (z_overshoot > 0 && Math.Sign(reference.z - angles.z) == z_overshoot_error_sign)
-                z_overshoot_flag = true;
-
-            x_period_label.Text = x_period.ToString(label_style_format);
-            x_current_label.Text = angles.x.ToString(label_style_format);
-            x_overshoot_label.Text = x_overshoot.ToString(label_style_format);
+            x_period_label.Text = x_period_array[i_sim].ToString(label_style_format);
+            x_current_label.Text = x_current_array[i_sim].ToString(label_style_format);
+            x_overshoot_label.Text = x_overshoot_array[i_sim].ToString(label_style_format);
             x_chart.Series[0].Points.AddXY(Math.Round(elapsed_time, 3), reference.x);
-            x_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), angles.x);
+            x_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), x_current_array[i_sim]);
 
-            y_period_label.Text = y_period.ToString(label_style_format);
-            y_current_label.Text = angles.y.ToString(label_style_format);
-            y_overshoot_label.Text = y_overshoot.ToString(label_style_format);
-            y_chart.Series[0].Points.AddXY(Math.Round(elapsed_time, 3), reference.y);
-            y_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), angles.y);
+            y_period_label.Text = y_period_array[i_sim].ToString(label_style_format);
+            y_current_label.Text = y_current_array[i_sim].ToString(label_style_format);
+            y_overshoot_label.Text = y_overshoot_array[i_sim].ToString(label_style_format);
+            y_chart.Series[0].Points.AddXY(Math.Round(elapsed_time, 3), reference.x);
+            y_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), y_current_array[i_sim]);
 
-            z_period_label.Text = z_period.ToString(label_style_format);
-            z_current_label.Text = angles.z.ToString(label_style_format);
-            z_overshoot_label.Text = z_overshoot.ToString(label_style_format);
-            z_chart.Series[0].Points.AddXY(Math.Round(elapsed_time, 3), reference.z);
-            z_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), angles.z);
+            z_period_label.Text = z_period_array[i_sim].ToString(label_style_format);
+            z_current_label.Text = z_current_array[i_sim].ToString(label_style_format);
+            z_overshoot_label.Text = z_overshoot_array[i_sim].ToString(label_style_format);
+            z_chart.Series[0].Points.AddXY(Math.Round(elapsed_time, 3), reference.x);
+            z_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), z_current_array[i_sim]);
 
             if (elapsed_time > chart_time_amount)
             {
@@ -348,6 +409,13 @@ namespace quadcopter_research
                 z_chart.Series[1].Points.RemoveAt(0);
                 z_chart.ChartAreas[0].AxisX.Minimum = elapsed_time - chart_time_amount;
                 z_chart.ChartAreas[0].AxisX.Maximum = elapsed_time;
+            }
+
+            i_sim += 1;
+            if (i_sim >= n_sim)
+            {
+                pause_procedure();
+                continue_button.Enabled = false;
             }
         }
 

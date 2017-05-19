@@ -39,6 +39,7 @@ namespace quadcopter_research
             pid = new PID();
             qm = new quadcopter_model();
             periods = new double[periods_amount];
+
             p_coef = p_coef_in;
             i_coef = i_coef_in;
             d_coef = d_coef_in;
@@ -66,8 +67,10 @@ namespace quadcopter_research
             double phi_effect = 0.0;
             vector3 angles = qm.get_angles();
             double prev_error = reference_x - angles.x;
+
             if (pid.P == 0.0)
                 return new vector3();
+
             while (current_periods_amount < periods_amount)
             {
                 phi_effect = pid.get_effect(angles.x, reference_x);
@@ -82,10 +85,12 @@ namespace quadcopter_research
                 }
                 prev_error = reference_x - angles.x;
             }
+
             periods[0] = periods.Sum() / periods.Count();
             period = periods.Sum() / periods.Count();
 
             apply_coef();
+
             return new vector3(P, I, D);
         }
 
@@ -96,8 +101,10 @@ namespace quadcopter_research
             double theta_effect = 0.0;
             vector3 angles = qm.get_angles();
             double prev_error = reference_y - angles.y;
+
             if (pid.P == 0.0)
                 return new vector3();
+
             while (current_periods_amount < periods_amount)
             {
                 theta_effect = pid.get_effect(angles.y, reference_y);
@@ -112,10 +119,12 @@ namespace quadcopter_research
                 }
                 prev_error = reference_y - angles.y;
             }
+
             periods[0] = periods.Sum() / periods.Count();
             period = periods.Sum() / periods.Count();
 
             apply_coef();
+
             return new vector3(P, I, D);
         }
 
@@ -126,8 +135,10 @@ namespace quadcopter_research
             double psi_effect = 0.0;
             vector3 angles = qm.get_angles();
             double prev_error = reference_z - angles.z;
+
             if (pid.P == 0.0)
                 return new vector3();
+
             while (current_periods_amount < periods_amount)
             {
                 psi_effect = pid.get_effect(angles.z, reference_z);
@@ -142,10 +153,12 @@ namespace quadcopter_research
                 }
                 prev_error = reference_z - angles.z;
             }
+
             periods[0] = periods.Sum() / periods.Count();
             period = periods.Sum() / periods.Count();
 
             apply_coef();
+
             return new vector3(P, I, D);
         }
     }

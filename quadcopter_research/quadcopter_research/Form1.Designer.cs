@@ -140,6 +140,8 @@
             this.mass_engine_label = new System.Windows.Forms.Label();
             this.arm_length_edit = new System.Windows.Forms.NumericUpDown();
             this.arm_length_label = new System.Windows.Forms.Label();
+            this.end_time_edit = new System.Windows.Forms.NumericUpDown();
+            this.end_time_label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.x_reference_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.y_reference_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.z_reference_edit)).BeginInit();
@@ -175,11 +177,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.radius_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mass_engine_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arm_length_edit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.end_time_edit)).BeginInit();
             this.SuspendLayout();
             // 
             // start_button
             // 
-            this.start_button.Location = new System.Drawing.Point(141, 460);
+            this.start_button.Location = new System.Drawing.Point(141, 499);
             this.start_button.Name = "start_button";
             this.start_button.Size = new System.Drawing.Size(120, 30);
             this.start_button.TabIndex = 0;
@@ -190,7 +193,7 @@
             // stop_button
             // 
             this.stop_button.Enabled = false;
-            this.stop_button.Location = new System.Drawing.Point(141, 496);
+            this.stop_button.Location = new System.Drawing.Point(141, 535);
             this.stop_button.Name = "stop_button";
             this.stop_button.Size = new System.Drawing.Size(120, 30);
             this.stop_button.TabIndex = 1;
@@ -201,7 +204,7 @@
             // continue_button
             // 
             this.continue_button.Enabled = false;
-            this.continue_button.Location = new System.Drawing.Point(267, 460);
+            this.continue_button.Location = new System.Drawing.Point(267, 499);
             this.continue_button.Name = "continue_button";
             this.continue_button.Size = new System.Drawing.Size(120, 30);
             this.continue_button.TabIndex = 2;
@@ -212,7 +215,7 @@
             // pause_button
             // 
             this.pause_button.Enabled = false;
-            this.pause_button.Location = new System.Drawing.Point(267, 496);
+            this.pause_button.Location = new System.Drawing.Point(267, 535);
             this.pause_button.Name = "pause_button";
             this.pause_button.Size = new System.Drawing.Size(120, 30);
             this.pause_button.TabIndex = 3;
@@ -222,13 +225,13 @@
             // 
             // main_timer
             // 
-            this.main_timer.Interval = 1;
+            this.main_timer.Interval = 50;
             this.main_timer.Tick += new System.EventHandler(this.main_timer_Tick);
             // 
             // main_time_label_text
             // 
             this.main_time_label_text.AutoSize = true;
-            this.main_time_label_text.Location = new System.Drawing.Point(163, 435);
+            this.main_time_label_text.Location = new System.Drawing.Point(163, 474);
             this.main_time_label_text.Name = "main_time_label_text";
             this.main_time_label_text.Size = new System.Drawing.Size(105, 13);
             this.main_time_label_text.TabIndex = 4;
@@ -237,7 +240,7 @@
             // main_time_label
             // 
             this.main_time_label.AutoSize = true;
-            this.main_time_label.Location = new System.Drawing.Point(326, 435);
+            this.main_time_label.Location = new System.Drawing.Point(326, 474);
             this.main_time_label.Name = "main_time_label";
             this.main_time_label.Size = new System.Drawing.Size(13, 13);
             this.main_time_label.TabIndex = 5;
@@ -497,9 +500,9 @@
             // 
             this.x_ziegler_button.Location = new System.Drawing.Point(18, 85);
             this.x_ziegler_button.Name = "x_ziegler_button";
-            this.x_ziegler_button.Size = new System.Drawing.Size(395, 23);
+            this.x_ziegler_button.Size = new System.Drawing.Size(375, 23);
             this.x_ziegler_button.TabIndex = 40;
-            this.x_ziegler_button.Text = "Рассчитать коэффициенты ПИД-регулятора методом Зиглера-Никольса";
+            this.x_ziegler_button.Text = "Рассчитать коэффициенты И и Д методом Зиглера-Никольса";
             this.x_ziegler_button.UseVisualStyleBackColor = true;
             this.x_ziegler_button.Click += new System.EventHandler(this.x_ziegler_button_Click);
             // 
@@ -536,11 +539,6 @@
             // 
             this.x_max_effect_edit.DecimalPlaces = 2;
             this.x_max_effect_edit.Location = new System.Drawing.Point(333, 6);
-            this.x_max_effect_edit.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
             this.x_max_effect_edit.MaximumSize = new System.Drawing.Size(60, 0);
             this.x_max_effect_edit.MinimumSize = new System.Drawing.Size(60, 0);
             this.x_max_effect_edit.Name = "x_max_effect_edit";
@@ -598,7 +596,7 @@
             // x_period_label
             // 
             this.x_period_label.AutoSize = true;
-            this.x_period_label.Location = new System.Drawing.Point(636, 6);
+            this.x_period_label.Location = new System.Drawing.Point(636, 8);
             this.x_period_label.Name = "x_period_label";
             this.x_period_label.Size = new System.Drawing.Size(13, 13);
             this.x_period_label.TabIndex = 33;
@@ -804,9 +802,9 @@
             // 
             this.y_ziegler_button.Location = new System.Drawing.Point(18, 85);
             this.y_ziegler_button.Name = "y_ziegler_button";
-            this.y_ziegler_button.Size = new System.Drawing.Size(395, 23);
+            this.y_ziegler_button.Size = new System.Drawing.Size(375, 23);
             this.y_ziegler_button.TabIndex = 60;
-            this.y_ziegler_button.Text = "Рассчитать коэффициенты ПИД-регулятора методом Зиглера-Никольса";
+            this.y_ziegler_button.Text = "Рассчитать коэффициенты И и Д методом Зиглера-Никольса";
             this.y_ziegler_button.UseVisualStyleBackColor = true;
             this.y_ziegler_button.Click += new System.EventHandler(this.y_ziegler_button_Click);
             // 
@@ -843,11 +841,6 @@
             // 
             this.y_max_effect_edit.DecimalPlaces = 2;
             this.y_max_effect_edit.Location = new System.Drawing.Point(333, 6);
-            this.y_max_effect_edit.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
             this.y_max_effect_edit.MaximumSize = new System.Drawing.Size(60, 0);
             this.y_max_effect_edit.MinimumSize = new System.Drawing.Size(60, 0);
             this.y_max_effect_edit.Name = "y_max_effect_edit";
@@ -905,7 +898,7 @@
             // y_period_label
             // 
             this.y_period_label.AutoSize = true;
-            this.y_period_label.Location = new System.Drawing.Point(636, 6);
+            this.y_period_label.Location = new System.Drawing.Point(648, 8);
             this.y_period_label.Name = "y_period_label";
             this.y_period_label.Size = new System.Drawing.Size(13, 13);
             this.y_period_label.TabIndex = 53;
@@ -923,7 +916,7 @@
             // y_overshoot_label
             // 
             this.y_overshoot_label.AutoSize = true;
-            this.y_overshoot_label.Location = new System.Drawing.Point(636, 61);
+            this.y_overshoot_label.Location = new System.Drawing.Point(648, 61);
             this.y_overshoot_label.Name = "y_overshoot_label";
             this.y_overshoot_label.Size = new System.Drawing.Size(13, 13);
             this.y_overshoot_label.TabIndex = 51;
@@ -941,7 +934,7 @@
             // y_current_label
             // 
             this.y_current_label.AutoSize = true;
-            this.y_current_label.Location = new System.Drawing.Point(636, 34);
+            this.y_current_label.Location = new System.Drawing.Point(648, 34);
             this.y_current_label.Name = "y_current_label";
             this.y_current_label.Size = new System.Drawing.Size(13, 13);
             this.y_current_label.TabIndex = 49;
@@ -952,9 +945,9 @@
             this.y_current_label_text.AutoSize = true;
             this.y_current_label_text.Location = new System.Drawing.Point(416, 34);
             this.y_current_label_text.Name = "y_current_label_text";
-            this.y_current_label_text.Size = new System.Drawing.Size(214, 13);
+            this.y_current_label_text.Size = new System.Drawing.Size(226, 13);
             this.y_current_label_text.TabIndex = 48;
-            this.y_current_label_text.Text = "Текущее значение угла крена (градусы):";
+            this.y_current_label_text.Text = "Текущее значение угла тангажа (градусы):";
             // 
             // y_D_edit
             // 
@@ -1110,9 +1103,9 @@
             // 
             this.z_ziegler_button.Location = new System.Drawing.Point(18, 85);
             this.z_ziegler_button.Name = "z_ziegler_button";
-            this.z_ziegler_button.Size = new System.Drawing.Size(395, 23);
+            this.z_ziegler_button.Size = new System.Drawing.Size(375, 23);
             this.z_ziegler_button.TabIndex = 80;
-            this.z_ziegler_button.Text = "Рассчитать коэффициенты ПИД-регулятора методом Зиглера-Никольса";
+            this.z_ziegler_button.Text = "Рассчитать коэффициенты И и Д методом Зиглера-Никольса";
             this.z_ziegler_button.UseVisualStyleBackColor = true;
             this.z_ziegler_button.Click += new System.EventHandler(this.z_ziegler_button_Click);
             // 
@@ -1149,11 +1142,6 @@
             // 
             this.z_max_effect_edit.DecimalPlaces = 2;
             this.z_max_effect_edit.Location = new System.Drawing.Point(333, 6);
-            this.z_max_effect_edit.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
             this.z_max_effect_edit.MaximumSize = new System.Drawing.Size(60, 0);
             this.z_max_effect_edit.MinimumSize = new System.Drawing.Size(60, 0);
             this.z_max_effect_edit.Name = "z_max_effect_edit";
@@ -1211,7 +1199,7 @@
             // z_period_label
             // 
             this.z_period_label.AutoSize = true;
-            this.z_period_label.Location = new System.Drawing.Point(636, 6);
+            this.z_period_label.Location = new System.Drawing.Point(656, 8);
             this.z_period_label.Name = "z_period_label";
             this.z_period_label.Size = new System.Drawing.Size(13, 13);
             this.z_period_label.TabIndex = 73;
@@ -1229,7 +1217,7 @@
             // z_overshoot_label
             // 
             this.z_overshoot_label.AutoSize = true;
-            this.z_overshoot_label.Location = new System.Drawing.Point(636, 61);
+            this.z_overshoot_label.Location = new System.Drawing.Point(656, 61);
             this.z_overshoot_label.Name = "z_overshoot_label";
             this.z_overshoot_label.Size = new System.Drawing.Size(13, 13);
             this.z_overshoot_label.TabIndex = 71;
@@ -1247,7 +1235,7 @@
             // z_current_label
             // 
             this.z_current_label.AutoSize = true;
-            this.z_current_label.Location = new System.Drawing.Point(636, 34);
+            this.z_current_label.Location = new System.Drawing.Point(656, 34);
             this.z_current_label.Name = "z_current_label";
             this.z_current_label.Size = new System.Drawing.Size(13, 13);
             this.z_current_label.TabIndex = 69;
@@ -1258,9 +1246,9 @@
             this.z_current_label_text.AutoSize = true;
             this.z_current_label_text.Location = new System.Drawing.Point(416, 34);
             this.z_current_label_text.Name = "z_current_label_text";
-            this.z_current_label_text.Size = new System.Drawing.Size(214, 13);
+            this.z_current_label_text.Size = new System.Drawing.Size(234, 13);
             this.z_current_label_text.TabIndex = 68;
-            this.z_current_label_text.Text = "Текущее значение угла крена (градусы):";
+            this.z_current_label_text.Text = "Текущее значение угла рысканья (градусы):";
             // 
             // z_D_edit
             // 
@@ -1374,7 +1362,7 @@
             // dt_label
             // 
             this.dt_label.AutoSize = true;
-            this.dt_label.Location = new System.Drawing.Point(163, 404);
+            this.dt_label.Location = new System.Drawing.Point(163, 443);
             this.dt_label.Name = "dt_label";
             this.dt_label.Size = new System.Drawing.Size(160, 13);
             this.dt_label.TabIndex = 22;
@@ -1391,7 +1379,7 @@
             "80",
             "90",
             "100"});
-            this.dt_box.Location = new System.Drawing.Point(329, 401);
+            this.dt_box.Location = new System.Drawing.Point(329, 440);
             this.dt_box.Name = "dt_box";
             this.dt_box.Size = new System.Drawing.Size(60, 21);
             this.dt_box.TabIndex = 23;
@@ -1541,11 +1529,47 @@
             this.arm_length_label.TabIndex = 31;
             this.arm_length_label.Text = "Расстояние от двигателей до центральной платформы (м):";
             // 
+            // end_time_edit
+            // 
+            this.end_time_edit.DecimalPlaces = 2;
+            this.end_time_edit.Location = new System.Drawing.Point(329, 414);
+            this.end_time_edit.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.end_time_edit.MaximumSize = new System.Drawing.Size(60, 0);
+            this.end_time_edit.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.end_time_edit.MinimumSize = new System.Drawing.Size(60, 0);
+            this.end_time_edit.Name = "end_time_edit";
+            this.end_time_edit.Size = new System.Drawing.Size(60, 20);
+            this.end_time_edit.TabIndex = 34;
+            this.end_time_edit.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
+            // end_time_label
+            // 
+            this.end_time_label.AutoSize = true;
+            this.end_time_label.Location = new System.Drawing.Point(163, 416);
+            this.end_time_label.Name = "end_time_label";
+            this.end_time_label.Size = new System.Drawing.Size(108, 13);
+            this.end_time_label.TabIndex = 33;
+            this.end_time_label.Text = "Конечное время (с):";
+            // 
             // main_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1118, 729);
+            this.Controls.Add(this.end_time_edit);
+            this.Controls.Add(this.end_time_label);
             this.Controls.Add(this.arm_length_edit);
             this.Controls.Add(this.arm_length_label);
             this.Controls.Add(this.mass_engine_edit);
@@ -1618,6 +1642,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radius_edit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mass_engine_edit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arm_length_edit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.end_time_edit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1724,6 +1749,8 @@
         private System.Windows.Forms.Label z_I_label;
         private System.Windows.Forms.NumericUpDown z_P_edit;
         private System.Windows.Forms.Label z_P_label;
+        private System.Windows.Forms.NumericUpDown end_time_edit;
+        private System.Windows.Forms.Label end_time_label;
     }
 }
 

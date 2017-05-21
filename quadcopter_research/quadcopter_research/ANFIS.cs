@@ -8,13 +8,16 @@ namespace quadcopter_research
 {
     class ANFIS
     {
+        private const int rules_count_const = 16;
+        private const double mu_const = 0.002;
+
         private Rule[] rules;
 
         private double η;
 
         private Random rand;
 
-        public ANFIS(int rulesCount, double η, Random rand)
+        public ANFIS(Random rand, int rulesCount = rules_count_const, double η = mu_const)
         {
 
             this.rand = rand;
@@ -43,7 +46,7 @@ namespace quadcopter_research
 
         }
 
-        private double compute(double x, double y)
+        public double compute(double x, double y)
         {
 
             double[] w = new double[rules.Count()];

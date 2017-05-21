@@ -8,21 +8,21 @@ namespace quadcopter_research
 {
     class PID
     {
-        private const double error_epsilon = 0.1;
+        protected const double error_epsilon = 0.1;
 
-        public double P { get; private set; }
-        private double I;
-        private double D;
+        public double P { get; protected set; }
+        protected double I;
+        protected double D;
 
-        private double force;
-        private double err;
-        private double prevErr;
-        private double sumErr;
-        private double dt;
-        private double max;
-        private double i_max;
+        protected double force;
+        protected double err;
+        protected double prevErr;
+        protected double sumErr;
+        protected double dt;
+        protected double max;
+        protected double i_max;
 
-        public PID(double dt_in = 0.001, double max_in = 10, double i_max_in = -10, double P_in = 1.0, double I_in = 0.0, double D_in = 0.0)
+        public PID(double dt_in = 0.001, double max_in = 0.0, double i_max_in = 0.0, double P_in = 1.0, double I_in = 0.0, double D_in = 0.0)
         {
             init(dt_in, max_in, i_max_in, P_in, I_in, D_in);
         }
@@ -39,7 +39,7 @@ namespace quadcopter_research
             i_max = i_max_in;
         }
 
-        public double get_effect(double current, double target)
+        public virtual double get_effect(double current, double target)
         {
             err = target - current;
             if (Math.Abs(err) < error_epsilon)

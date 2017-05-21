@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ANFIS.cs" />
+    <Compile Include="ANFISPID.cs" />
     <Compile Include="Conclusion.cs" />
     <Compile Include="Dataset.cs" />
     <Compile Include="Form1.cs">

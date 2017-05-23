@@ -14,11 +14,11 @@ namespace quadcopter_research
 
         public double r;
 
-        public double π;
+        public double p_d;
 
-        public double ω;
+        public double q_d;
 
-        public double ρ;
+        public double r_d;
 
         public Conclusion(Random rand)
         {

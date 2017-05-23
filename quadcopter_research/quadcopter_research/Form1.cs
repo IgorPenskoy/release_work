@@ -434,14 +434,14 @@ namespace quadcopter_research
                 if (Math.Abs(reference.x - angles_fis.x) > x_period_error)
                     x_period_fis = elapsed_time;
                 if (Math.Sign(reference.x - angles_fis.x) != x_overshoot_error_sign_fis && x_overshoot_flag_fis == false)
-                    x_overshoot_fis = Math.Max(x_overshoot_fis , Math.Abs(reference.x - angles.x));
+                    x_overshoot_fis = Math.Max(x_overshoot_fis , Math.Abs(reference.x - angles_fis.x));
                 if (x_overshoot_fis > 0 && Math.Sign(reference.x - angles_fis.x) == x_overshoot_error_sign_fis)
                     x_overshoot_flag_fis = true;
 
                 if (Math.Abs(reference.y - angles_fis.y) > y_period_error)
                     y_period_fis = elapsed_time;
                 if (Math.Sign(reference.y - angles_fis.y) != y_overshoot_error_sign_fis && y_overshoot_flag_fis == false)
-                    y_overshoot_fis = Math.Max(y_overshoot_fis , Math.Abs(reference.y - angles.y));
+                    y_overshoot_fis = Math.Max(y_overshoot_fis , Math.Abs(reference.y - angles_fis.y));
                 if (y_overshoot_fis > 0 && Math.Sign(reference.y - angles_fis.y) == y_overshoot_error_sign_fis)
                     y_overshoot_flag_fis = true;
 
@@ -588,6 +588,11 @@ namespace quadcopter_research
                 return -edge;
 
             return to_clamp;
+        }
+
+        private void x_learn_button_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

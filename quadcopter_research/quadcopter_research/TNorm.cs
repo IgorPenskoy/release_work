@@ -8,11 +8,11 @@ namespace quadcopter_research
 {
     class TNorm
     {
-        public double computeNorm(double μA, double μB)
+        public double computeNorm(double mu_A, double mu_B)
         {
 
-            if (μA > 0 || μB > 0)
-                return (μA * μB) / (μA + μB - μA * μB);
+            if (mu_A > 0 || mu_B > 0)
+                return (mu_A * mu_B) / (mu_A + mu_B - mu_A * mu_B);
 
             return 0;
         }

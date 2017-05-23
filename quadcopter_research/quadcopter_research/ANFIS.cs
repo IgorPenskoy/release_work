@@ -13,16 +13,16 @@ namespace quadcopter_research
 
         private Rule[] rules;
 
-        private double η;
+        private double mu;
 
         private Random rand;
 
-        public ANFIS(Random rand, int rulesCount = rules_count_const, double η = mu_const)
+        public ANFIS(Random rand, int rulesCount = rules_count_const, double mu = mu_const)
         {
 
             this.rand = rand;
 
-            this.η = η;
+            this.mu = mu;
 
             createRules(rulesCount);
 
@@ -41,9 +41,7 @@ namespace quadcopter_research
                         new MembershipFunction(rand),
                         new TNorm(),
                         new Conclusion(rand));
-
             }
-
         }
 
         public double compute(double x, double y)
@@ -94,8 +92,8 @@ namespace quadcopter_research
                 {
 
                     double weight = rules[i].weight(x, y);
-                    double μA = rules[i].mfA.compute(x);
-                    double μB = rules[i].mfB.compute(y);
+                    double mu_A = rules[i].mfA.compute(x);
+                    double mu_B = rules[i].mfB.compute(y);
 
                     double o = value;
 
@@ -104,35 +102,35 @@ namespace quadcopter_research
                     double a2 = rules[i].mfB.a;
                     double b2 = rules[i].mfB.b;
 
-                    double σ = Σ(i, x, y);
+                    double sigma = sigma_sum(i, x, y);
 
-                    rules[i].mfA.α +=
-                            η * (o - z) *
-                            σ / Math.Pow(sumw, 2) *
-                            (μB * μB) / Math.Pow(μA + μB - μA * μB, 2) *
-                            b1 * μA * (1 - μA);
+                    rules[i].mfA.a_d +=
+                            mu * (o - z) *
+                            sigma / Math.Pow(sumw, 2) *
+                            (mu_B * mu_B) / Math.Pow(mu_A + mu_B - mu_A * mu_B, 2) *
+                            b1 * mu_A * (1 - mu_A);
 
-                    rules[i].mfA.β +=
-                            η * (o - z) *
-                            σ / Math.Pow(sumw, 2) *
-                            (μB * μB) / Math.Pow(μA + μB - μA * μB, 2) *
-                            (-(x - a1)) * μA * (1 - μA);
+                    rules[i].mfA.b_d +=
+                            mu * (o - z) *
+                            sigma / Math.Pow(sumw, 2) *
+                            (mu_B * mu_B) / Math.Pow(mu_A + mu_B - mu_A * mu_B, 2) *
+                            (-(x - a1)) * mu_A * (1 - mu_A);
 
-                    rules[i].mfB.α +=
-                            η * (o - z) *
-                            σ / Math.Pow(sumw, 2) *
-                            (μA * μA) / Math.Pow(μA + μB - μA * μB, 2) *
-                            b2 * μB * (1 - μB);
+                    rules[i].mfB.a_d +=
+                            mu * (o - z) *
+                            sigma / Math.Pow(sumw, 2) *
+                            (mu_A * mu_A) / Math.Pow(mu_A + mu_B - mu_A * mu_B, 2) *
+                            b2 * mu_B * (1 - mu_B);
 
-                    rules[i].mfB.β +=
-                            η * (o - z) *
-                            σ / Math.Pow(sumw, 2) *
-                            (μA * μA) / Math.Pow(μA + μB - μA * μB, 2) *
-                            (-(y - a2)) * μB * (1 - μB);
+                    rules[i].mfB.b_d +=
+                            mu * (o - z) *
+                            sigma / Math.Pow(sumw, 2) *
+                            (mu_A * mu_A) / Math.Pow(mu_A + mu_B - mu_A * mu_B, 2) *
+                            (-(y - a2)) * mu_B * (1 - mu_B);
 
-                    rules[i].conclusion.π += η * (o - z) * weight / sumw * x;
-                    rules[i].conclusion.ω += η * (o - z) * weight / sumw * y;
-                    rules[i].conclusion.ρ += η * (o - z) * weight / sumw;
+                    rules[i].conclusion.p_d += mu * (o - z) * weight / sumw * x;
+                    rules[i].conclusion.q_d += mu * (o - z) * weight / sumw * y;
+                    rules[i].conclusion.r_d += mu * (o - z) * weight / sumw;
 
                 }
 
@@ -143,7 +141,6 @@ namespace quadcopter_research
             updateParameters();
 
             return error;
-
         }
 
         private void updateParameters()
@@ -151,15 +148,15 @@ namespace quadcopter_research
 
             for (int i = 0; i < rules.Count(); i++)
             {
-                rules[i].mfA.a = rules[i].mfA.a + rules[i].mfA.α;
-                rules[i].mfA.b = rules[i].mfA.b + rules[i].mfA.β;
+                rules[i].mfA.a = rules[i].mfA.a + rules[i].mfA.a_d;
+                rules[i].mfA.b = rules[i].mfA.b + rules[i].mfA.b_d;
 
-                rules[i].mfB.a = rules[i].mfB.a + rules[i].mfB.α;
-                rules[i].mfB.b = rules[i].mfB.b + rules[i].mfB.β;
+                rules[i].mfB.a = rules[i].mfB.a + rules[i].mfB.a_d;
+                rules[i].mfB.b = rules[i].mfB.b + rules[i].mfB.b_d;
 
-                rules[i].conclusion.p = rules[i].conclusion.p + rules[i].conclusion.π;
-                rules[i].conclusion.q = rules[i].conclusion.q + rules[i].conclusion.ω;
-                rules[i].conclusion.r = rules[i].conclusion.r + rules[i].conclusion.ρ;
+                rules[i].conclusion.p = rules[i].conclusion.p + rules[i].conclusion.p_d;
+                rules[i].conclusion.q = rules[i].conclusion.q + rules[i].conclusion.q_d;
+                rules[i].conclusion.r = rules[i].conclusion.r + rules[i].conclusion.r_d;
             }
 
         }
@@ -169,15 +166,15 @@ namespace quadcopter_research
 
             for (int i = 0; i < rules.Count(); i++)
             {
-                rules[i].conclusion.π = 0;
-                rules[i].conclusion.ρ = 0;
-                rules[i].conclusion.ω = 0;
+                rules[i].conclusion.p_d = 0;
+                rules[i].conclusion.r_d = 0;
+                rules[i].conclusion.q_d = 0;
 
-                rules[i].mfA.α = 0;
-                rules[i].mfA.β = 0;
+                rules[i].mfA.a_d = 0;
+                rules[i].mfA.b_d = 0;
 
-                rules[i].mfB.α = 0;
-                rules[i].mfB.β = 0;
+                rules[i].mfB.a_d = 0;
+                rules[i].mfB.b_d = 0;
             }
 
         }
@@ -195,7 +192,7 @@ namespace quadcopter_research
             return sumW;
         }
 
-        private double Σ(int i, double x, double y)
+        private double sigma_sum(int i, double x, double y)
         {
             double sum = 0;
 
@@ -269,17 +266,16 @@ namespace quadcopter_research
 
             for (int i = 0; i < rules.Count(); i++)
             {
-                file.WriteLine(rules[i].mfA.a.ToString() + " " +
-                        rules[i].mfA.b.ToString() + " " +
-                        rules[i].mfB.a.ToString() + " " +
-                        rules[i].mfB.b.ToString() + " " +
-                        rules[i].conclusion.p.ToString() + " " +
-                        rules[i].conclusion.q.ToString() + " " +
-                        rules[i].conclusion.r.ToString());
+                file.WriteLine(rules[i].mfA.a + " " +
+                        rules[i].mfA.b + " " +
+                        rules[i].mfB.a + " " +
+                        rules[i].mfB.b + " " +
+                        rules[i].conclusion.p + " " +
+                        rules[i].conclusion.q + " " +
+                        rules[i].conclusion.r);
             }
 
             file.Close();
-
         }
 
         public void writeRelativeError2File(List<Pair> learningDataset)
@@ -300,7 +296,6 @@ namespace quadcopter_research
             }
 
             file.Close();
-
         }
 
         public void writeEpochError2File(List<Pair> learningDataset, int epoch)
@@ -319,15 +314,14 @@ namespace quadcopter_research
             }
 
             file.Close();
-
         }
 
-        public void writeEpochErrorForEta2File(double η, List<Pair> learningDataset, int epoch)
+        public void writeEpochErrorForEta2File(double mu, List<Pair> learningDataset, int epoch)
         {
 
-            double oldη = this.η;
+            double old_mu = this.mu;
 
-            this.η = η;
+            this.mu = mu;
             double iterError = 0;
 
             System.IO.StreamWriter file = new System.IO.StreamWriter("XepochEtaError.txt");
@@ -344,7 +338,7 @@ namespace quadcopter_research
 
             file.Close();
 
-            this.η = oldη;
+            this.mu = old_mu;
 
         }
 

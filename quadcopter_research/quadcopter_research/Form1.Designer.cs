@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea32 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend32 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series94 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series95 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series96 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea33 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend33 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series97 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series98 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series99 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea31 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend31 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series91 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series92 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series93 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series37 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series38 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series39 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series40 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series41 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series42 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend15 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series43 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series44 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series45 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.start_button = new System.Windows.Forms.Button();
             this.stop_button = new System.Windows.Forms.Button();
             this.continue_button = new System.Windows.Forms.Button();
@@ -95,6 +95,12 @@
             this.x_P_label = new System.Windows.Forms.Label();
             this.x_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.y_tab = new System.Windows.Forms.TabPage();
+            this.y_period_fis_label = new System.Windows.Forms.Label();
+            this.y_period_fis_label_text = new System.Windows.Forms.Label();
+            this.y_overshoot_fis_label = new System.Windows.Forms.Label();
+            this.y_overshoot_fis_label_text = new System.Windows.Forms.Label();
+            this.y_current_fis_label = new System.Windows.Forms.Label();
+            this.y_current_fis_label_text = new System.Windows.Forms.Label();
             this.y_learn_button = new System.Windows.Forms.Button();
             this.y_ziegler_button = new System.Windows.Forms.Button();
             this.y_max_integral_edit = new System.Windows.Forms.NumericUpDown();
@@ -117,6 +123,12 @@
             this.y_P_label = new System.Windows.Forms.Label();
             this.y_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.z_tab = new System.Windows.Forms.TabPage();
+            this.z_period_fis_label = new System.Windows.Forms.Label();
+            this.z_period_fis_label_text = new System.Windows.Forms.Label();
+            this.z_overshoot_fis_label = new System.Windows.Forms.Label();
+            this.z_overshoot_fis_label_text = new System.Windows.Forms.Label();
+            this.z_current_fis_label = new System.Windows.Forms.Label();
+            this.z_current_fis_label_text = new System.Windows.Forms.Label();
             this.z_learn_button = new System.Windows.Forms.Button();
             this.z_ziegler_button = new System.Windows.Forms.Button();
             this.z_max_integral_edit = new System.Windows.Forms.NumericUpDown();
@@ -151,18 +163,6 @@
             this.arm_length_label = new System.Windows.Forms.Label();
             this.end_time_edit = new System.Windows.Forms.NumericUpDown();
             this.end_time_label = new System.Windows.Forms.Label();
-            this.y_period_fis_label = new System.Windows.Forms.Label();
-            this.y_period_fis_label_text = new System.Windows.Forms.Label();
-            this.y_overshoot_fis_label = new System.Windows.Forms.Label();
-            this.y_overshoot_fis_label_text = new System.Windows.Forms.Label();
-            this.y_current_fis_label = new System.Windows.Forms.Label();
-            this.y_current_fis_label_text = new System.Windows.Forms.Label();
-            this.z_period_fis_label = new System.Windows.Forms.Label();
-            this.z_period_fis_label_text = new System.Windows.Forms.Label();
-            this.z_overshoot_fis_label = new System.Windows.Forms.Label();
-            this.z_overshoot_fis_label_text = new System.Windows.Forms.Label();
-            this.z_current_fis_label = new System.Windows.Forms.Label();
-            this.z_current_fis_label_text = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.x_reference_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.y_reference_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.z_reference_edit)).BeginInit();
@@ -203,7 +203,7 @@
             // 
             // start_button
             // 
-            this.start_button.Location = new System.Drawing.Point(141, 499);
+            this.start_button.Location = new System.Drawing.Point(81, 492);
             this.start_button.Name = "start_button";
             this.start_button.Size = new System.Drawing.Size(120, 30);
             this.start_button.TabIndex = 0;
@@ -214,7 +214,7 @@
             // stop_button
             // 
             this.stop_button.Enabled = false;
-            this.stop_button.Location = new System.Drawing.Point(141, 535);
+            this.stop_button.Location = new System.Drawing.Point(81, 528);
             this.stop_button.Name = "stop_button";
             this.stop_button.Size = new System.Drawing.Size(120, 30);
             this.stop_button.TabIndex = 1;
@@ -225,7 +225,7 @@
             // continue_button
             // 
             this.continue_button.Enabled = false;
-            this.continue_button.Location = new System.Drawing.Point(267, 499);
+            this.continue_button.Location = new System.Drawing.Point(207, 492);
             this.continue_button.Name = "continue_button";
             this.continue_button.Size = new System.Drawing.Size(120, 30);
             this.continue_button.TabIndex = 2;
@@ -236,7 +236,7 @@
             // pause_button
             // 
             this.pause_button.Enabled = false;
-            this.pause_button.Location = new System.Drawing.Point(267, 535);
+            this.pause_button.Location = new System.Drawing.Point(207, 528);
             this.pause_button.Name = "pause_button";
             this.pause_button.Size = new System.Drawing.Size(120, 30);
             this.pause_button.TabIndex = 3;
@@ -252,7 +252,7 @@
             // main_time_label_text
             // 
             this.main_time_label_text.AutoSize = true;
-            this.main_time_label_text.Location = new System.Drawing.Point(163, 474);
+            this.main_time_label_text.Location = new System.Drawing.Point(101, 466);
             this.main_time_label_text.Name = "main_time_label_text";
             this.main_time_label_text.Size = new System.Drawing.Size(105, 13);
             this.main_time_label_text.TabIndex = 4;
@@ -261,7 +261,7 @@
             // main_time_label
             // 
             this.main_time_label.AutoSize = true;
-            this.main_time_label.Location = new System.Drawing.Point(326, 474);
+            this.main_time_label.Location = new System.Drawing.Point(264, 466);
             this.main_time_label.Name = "main_time_label";
             this.main_time_label.Size = new System.Drawing.Size(13, 13);
             this.main_time_label.TabIndex = 5;
@@ -288,7 +288,7 @@
             // z_reference_label
             // 
             this.z_reference_label.AutoSize = true;
-            this.z_reference_label.Location = new System.Drawing.Point(161, 240);
+            this.z_reference_label.Location = new System.Drawing.Point(99, 242);
             this.z_reference_label.Name = "z_reference_label";
             this.z_reference_label.Size = new System.Drawing.Size(162, 13);
             this.z_reference_label.TabIndex = 8;
@@ -297,7 +297,7 @@
             // y_reference_label
             // 
             this.y_reference_label.AutoSize = true;
-            this.y_reference_label.Location = new System.Drawing.Point(161, 218);
+            this.y_reference_label.Location = new System.Drawing.Point(99, 220);
             this.y_reference_label.Name = "y_reference_label";
             this.y_reference_label.Size = new System.Drawing.Size(154, 13);
             this.y_reference_label.TabIndex = 9;
@@ -306,7 +306,7 @@
             // x_reference_label
             // 
             this.x_reference_label.AutoSize = true;
-            this.x_reference_label.Location = new System.Drawing.Point(161, 195);
+            this.x_reference_label.Location = new System.Drawing.Point(99, 197);
             this.x_reference_label.Name = "x_reference_label";
             this.x_reference_label.Size = new System.Drawing.Size(142, 13);
             this.x_reference_label.TabIndex = 10;
@@ -315,7 +315,7 @@
             // x_initial_label
             // 
             this.x_initial_label.AutoSize = true;
-            this.x_initial_label.Location = new System.Drawing.Point(168, 307);
+            this.x_initial_label.Location = new System.Drawing.Point(106, 299);
             this.x_initial_label.Name = "x_initial_label";
             this.x_initial_label.Size = new System.Drawing.Size(135, 13);
             this.x_initial_label.TabIndex = 13;
@@ -324,7 +324,7 @@
             // y_initial_label
             // 
             this.y_initial_label.AutoSize = true;
-            this.y_initial_label.Location = new System.Drawing.Point(168, 330);
+            this.y_initial_label.Location = new System.Drawing.Point(106, 322);
             this.y_initial_label.Name = "y_initial_label";
             this.y_initial_label.Size = new System.Drawing.Size(147, 13);
             this.y_initial_label.TabIndex = 12;
@@ -333,7 +333,7 @@
             // z_initial_label
             // 
             this.z_initial_label.AutoSize = true;
-            this.z_initial_label.Location = new System.Drawing.Point(168, 352);
+            this.z_initial_label.Location = new System.Drawing.Point(106, 344);
             this.z_initial_label.Name = "z_initial_label";
             this.z_initial_label.Size = new System.Drawing.Size(155, 13);
             this.z_initial_label.TabIndex = 11;
@@ -342,7 +342,7 @@
             // x_reference_edit
             // 
             this.x_reference_edit.DecimalPlaces = 2;
-            this.x_reference_edit.Location = new System.Drawing.Point(329, 193);
+            this.x_reference_edit.Location = new System.Drawing.Point(267, 195);
             this.x_reference_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -362,7 +362,7 @@
             // y_reference_edit
             // 
             this.y_reference_edit.DecimalPlaces = 2;
-            this.y_reference_edit.Location = new System.Drawing.Point(329, 216);
+            this.y_reference_edit.Location = new System.Drawing.Point(267, 218);
             this.y_reference_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -382,7 +382,7 @@
             // z_reference_edit
             // 
             this.z_reference_edit.DecimalPlaces = 2;
-            this.z_reference_edit.Location = new System.Drawing.Point(329, 238);
+            this.z_reference_edit.Location = new System.Drawing.Point(267, 240);
             this.z_reference_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -402,7 +402,7 @@
             // z_initial_edit
             // 
             this.z_initial_edit.DecimalPlaces = 2;
-            this.z_initial_edit.Location = new System.Drawing.Point(329, 350);
+            this.z_initial_edit.Location = new System.Drawing.Point(267, 342);
             this.z_initial_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -422,7 +422,7 @@
             // y_initial_edit
             // 
             this.y_initial_edit.DecimalPlaces = 2;
-            this.y_initial_edit.Location = new System.Drawing.Point(329, 328);
+            this.y_initial_edit.Location = new System.Drawing.Point(267, 320);
             this.y_initial_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -442,7 +442,7 @@
             // x_initial_edit
             // 
             this.x_initial_edit.DecimalPlaces = 2;
-            this.x_initial_edit.Location = new System.Drawing.Point(329, 305);
+            this.x_initial_edit.Location = new System.Drawing.Point(267, 297);
             this.x_initial_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -469,10 +469,10 @@
             this.control_process_tabs.Controls.Add(this.x_tab);
             this.control_process_tabs.Controls.Add(this.y_tab);
             this.control_process_tabs.Controls.Add(this.z_tab);
-            this.control_process_tabs.Location = new System.Drawing.Point(395, 12);
+            this.control_process_tabs.Location = new System.Drawing.Point(333, 12);
             this.control_process_tabs.Name = "control_process_tabs";
             this.control_process_tabs.SelectedIndex = 0;
-            this.control_process_tabs.Size = new System.Drawing.Size(956, 715);
+            this.control_process_tabs.Size = new System.Drawing.Size(1013, 715);
             this.control_process_tabs.TabIndex = 21;
             // 
             // x_tab
@@ -508,7 +508,7 @@
             this.x_tab.Location = new System.Drawing.Point(4, 22);
             this.x_tab.Name = "x_tab";
             this.x_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.x_tab.Size = new System.Drawing.Size(948, 689);
+            this.x_tab.Size = new System.Drawing.Size(1005, 689);
             this.x_tab.TabIndex = 0;
             this.x_tab.Text = "Угол крена (X)";
             // 
@@ -574,6 +574,7 @@
             this.x_learn_button.TabIndex = 82;
             this.x_learn_button.Text = "Обучить нейро-нечеткую сеть";
             this.x_learn_button.UseVisualStyleBackColor = true;
+            this.x_learn_button.Click += new System.EventHandler(this.x_learn_button_Click);
             // 
             // x_ziegler_button
             // 
@@ -810,33 +811,33 @@
             // 
             // x_chart
             // 
-            chartArea32.Name = "ChartArea1";
-            this.x_chart.ChartAreas.Add(chartArea32);
-            legend32.Alignment = System.Drawing.StringAlignment.Center;
-            legend32.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend32.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend32.Name = "Legend1";
-            this.x_chart.Legends.Add(legend32);
+            chartArea13.Name = "ChartArea1";
+            this.x_chart.ChartAreas.Add(chartArea13);
+            legend13.Alignment = System.Drawing.StringAlignment.Center;
+            legend13.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend13.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend13.Name = "Legend1";
+            this.x_chart.Legends.Add(legend13);
             this.x_chart.Location = new System.Drawing.Point(3, 114);
             this.x_chart.Name = "x_chart";
-            series94.BorderWidth = 3;
-            series94.ChartArea = "ChartArea1";
-            series94.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series94.Legend = "Legend1";
-            series94.Name = "Требуемое значение угла крена";
-            series95.BorderWidth = 3;
-            series95.ChartArea = "ChartArea1";
-            series95.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series95.Legend = "Legend1";
-            series95.Name = "Текущее значение угла крена";
-            series96.BorderWidth = 3;
-            series96.ChartArea = "ChartArea1";
-            series96.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series96.Legend = "Legend1";
-            series96.Name = "Текущее значение угла крена (ННС)";
-            this.x_chart.Series.Add(series94);
-            this.x_chart.Series.Add(series95);
-            this.x_chart.Series.Add(series96);
+            series37.BorderWidth = 3;
+            series37.ChartArea = "ChartArea1";
+            series37.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series37.Legend = "Legend1";
+            series37.Name = "Требуемое значение угла крена";
+            series38.BorderWidth = 3;
+            series38.ChartArea = "ChartArea1";
+            series38.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series38.Legend = "Legend1";
+            series38.Name = "Текущее значение угла крена";
+            series39.BorderWidth = 3;
+            series39.ChartArea = "ChartArea1";
+            series39.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series39.Legend = "Legend1";
+            series39.Name = "Текущее значение угла крена (ННС)";
+            this.x_chart.Series.Add(series37);
+            this.x_chart.Series.Add(series38);
+            this.x_chart.Series.Add(series39);
             this.x_chart.Size = new System.Drawing.Size(940, 570);
             this.x_chart.TabIndex = 21;
             this.x_chart.Text = "Угол вокруг оси X";
@@ -877,6 +878,60 @@
             this.y_tab.Size = new System.Drawing.Size(948, 689);
             this.y_tab.TabIndex = 1;
             this.y_tab.Text = "Угол тангажа (Y)";
+            // 
+            // y_period_fis_label
+            // 
+            this.y_period_fis_label.AutoSize = true;
+            this.y_period_fis_label.Location = new System.Drawing.Point(899, 8);
+            this.y_period_fis_label.Name = "y_period_fis_label";
+            this.y_period_fis_label.Size = new System.Drawing.Size(13, 13);
+            this.y_period_fis_label.TabIndex = 94;
+            this.y_period_fis_label.Text = "0";
+            // 
+            // y_period_fis_label_text
+            // 
+            this.y_period_fis_label_text.AutoSize = true;
+            this.y_period_fis_label_text.Location = new System.Drawing.Point(635, 8);
+            this.y_period_fis_label_text.Name = "y_period_fis_label_text";
+            this.y_period_fis_label_text.Size = new System.Drawing.Size(168, 13);
+            this.y_period_fis_label_text.TabIndex = 93;
+            this.y_period_fis_label_text.Text = "Период установления (ННС) (с):";
+            // 
+            // y_overshoot_fis_label
+            // 
+            this.y_overshoot_fis_label.AutoSize = true;
+            this.y_overshoot_fis_label.Location = new System.Drawing.Point(899, 61);
+            this.y_overshoot_fis_label.Name = "y_overshoot_fis_label";
+            this.y_overshoot_fis_label.Size = new System.Drawing.Size(13, 13);
+            this.y_overshoot_fis_label.TabIndex = 92;
+            this.y_overshoot_fis_label.Text = "0";
+            // 
+            // y_overshoot_fis_label_text
+            // 
+            this.y_overshoot_fis_label_text.AutoSize = true;
+            this.y_overshoot_fis_label_text.Location = new System.Drawing.Point(635, 61);
+            this.y_overshoot_fis_label_text.Name = "y_overshoot_fis_label_text";
+            this.y_overshoot_fis_label_text.Size = new System.Drawing.Size(195, 13);
+            this.y_overshoot_fis_label_text.TabIndex = 91;
+            this.y_overshoot_fis_label_text.Text = "Перерегулирование (ННС) (градусы):";
+            // 
+            // y_current_fis_label
+            // 
+            this.y_current_fis_label.AutoSize = true;
+            this.y_current_fis_label.Location = new System.Drawing.Point(899, 34);
+            this.y_current_fis_label.Name = "y_current_fis_label";
+            this.y_current_fis_label.Size = new System.Drawing.Size(13, 13);
+            this.y_current_fis_label.TabIndex = 90;
+            this.y_current_fis_label.Text = "0";
+            // 
+            // y_current_fis_label_text
+            // 
+            this.y_current_fis_label_text.AutoSize = true;
+            this.y_current_fis_label_text.Location = new System.Drawing.Point(635, 34);
+            this.y_current_fis_label_text.Name = "y_current_fis_label_text";
+            this.y_current_fis_label_text.Size = new System.Drawing.Size(258, 13);
+            this.y_current_fis_label_text.TabIndex = 89;
+            this.y_current_fis_label_text.Text = "Текущее значение угла тангажа (ННС) (градусы):";
             // 
             // y_learn_button
             // 
@@ -1122,33 +1177,33 @@
             // 
             // y_chart
             // 
-            chartArea33.Name = "ChartArea1";
-            this.y_chart.ChartAreas.Add(chartArea33);
-            legend33.Alignment = System.Drawing.StringAlignment.Center;
-            legend33.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend33.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend33.Name = "Legend1";
-            this.y_chart.Legends.Add(legend33);
+            chartArea14.Name = "ChartArea1";
+            this.y_chart.ChartAreas.Add(chartArea14);
+            legend14.Alignment = System.Drawing.StringAlignment.Center;
+            legend14.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend14.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend14.Name = "Legend1";
+            this.y_chart.Legends.Add(legend14);
             this.y_chart.Location = new System.Drawing.Point(3, 114);
             this.y_chart.Name = "y_chart";
-            series97.BorderWidth = 3;
-            series97.ChartArea = "ChartArea1";
-            series97.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series97.Legend = "Legend1";
-            series97.Name = "Требуемое значение угла тангажа";
-            series98.BorderWidth = 3;
-            series98.ChartArea = "ChartArea1";
-            series98.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series98.Legend = "Legend1";
-            series98.Name = "Текущее значение угла тангажа";
-            series99.BorderWidth = 3;
-            series99.ChartArea = "ChartArea1";
-            series99.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series99.Legend = "Legend1";
-            series99.Name = "Текущее значение угла тангажа (ННС)";
-            this.y_chart.Series.Add(series97);
-            this.y_chart.Series.Add(series98);
-            this.y_chart.Series.Add(series99);
+            series40.BorderWidth = 3;
+            series40.ChartArea = "ChartArea1";
+            series40.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series40.Legend = "Legend1";
+            series40.Name = "Требуемое значение угла тангажа";
+            series41.BorderWidth = 3;
+            series41.ChartArea = "ChartArea1";
+            series41.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series41.Legend = "Legend1";
+            series41.Name = "Текущее значение угла тангажа";
+            series42.BorderWidth = 3;
+            series42.ChartArea = "ChartArea1";
+            series42.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series42.Legend = "Legend1";
+            series42.Name = "Текущее значение угла тангажа (ННС)";
+            this.y_chart.Series.Add(series40);
+            this.y_chart.Series.Add(series41);
+            this.y_chart.Series.Add(series42);
             this.y_chart.Size = new System.Drawing.Size(940, 570);
             this.y_chart.TabIndex = 22;
             this.y_chart.Text = "Угол вокруг оси X";
@@ -1188,6 +1243,60 @@
             this.z_tab.Size = new System.Drawing.Size(948, 689);
             this.z_tab.TabIndex = 2;
             this.z_tab.Text = "Угол рысканья (Z)";
+            // 
+            // z_period_fis_label
+            // 
+            this.z_period_fis_label.AutoSize = true;
+            this.z_period_fis_label.Location = new System.Drawing.Point(914, 8);
+            this.z_period_fis_label.Name = "z_period_fis_label";
+            this.z_period_fis_label.Size = new System.Drawing.Size(13, 13);
+            this.z_period_fis_label.TabIndex = 100;
+            this.z_period_fis_label.Text = "0";
+            // 
+            // z_period_fis_label_text
+            // 
+            this.z_period_fis_label_text.AutoSize = true;
+            this.z_period_fis_label_text.Location = new System.Drawing.Point(642, 8);
+            this.z_period_fis_label_text.Name = "z_period_fis_label_text";
+            this.z_period_fis_label_text.Size = new System.Drawing.Size(168, 13);
+            this.z_period_fis_label_text.TabIndex = 99;
+            this.z_period_fis_label_text.Text = "Период установления (ННС) (с):";
+            // 
+            // z_overshoot_fis_label
+            // 
+            this.z_overshoot_fis_label.AutoSize = true;
+            this.z_overshoot_fis_label.Location = new System.Drawing.Point(914, 59);
+            this.z_overshoot_fis_label.Name = "z_overshoot_fis_label";
+            this.z_overshoot_fis_label.Size = new System.Drawing.Size(13, 13);
+            this.z_overshoot_fis_label.TabIndex = 98;
+            this.z_overshoot_fis_label.Text = "0";
+            // 
+            // z_overshoot_fis_label_text
+            // 
+            this.z_overshoot_fis_label_text.AutoSize = true;
+            this.z_overshoot_fis_label_text.Location = new System.Drawing.Point(642, 61);
+            this.z_overshoot_fis_label_text.Name = "z_overshoot_fis_label_text";
+            this.z_overshoot_fis_label_text.Size = new System.Drawing.Size(195, 13);
+            this.z_overshoot_fis_label_text.TabIndex = 97;
+            this.z_overshoot_fis_label_text.Text = "Перерегулирование (ННС) (градусы):";
+            // 
+            // z_current_fis_label
+            // 
+            this.z_current_fis_label.AutoSize = true;
+            this.z_current_fis_label.Location = new System.Drawing.Point(914, 34);
+            this.z_current_fis_label.Name = "z_current_fis_label";
+            this.z_current_fis_label.Size = new System.Drawing.Size(13, 13);
+            this.z_current_fis_label.TabIndex = 96;
+            this.z_current_fis_label.Text = "0";
+            // 
+            // z_current_fis_label_text
+            // 
+            this.z_current_fis_label_text.AutoSize = true;
+            this.z_current_fis_label_text.Location = new System.Drawing.Point(642, 34);
+            this.z_current_fis_label_text.Name = "z_current_fis_label_text";
+            this.z_current_fis_label_text.Size = new System.Drawing.Size(266, 13);
+            this.z_current_fis_label_text.TabIndex = 95;
+            this.z_current_fis_label_text.Text = "Текущее значение угла рысканья (ННС) (градусы):";
             // 
             // z_learn_button
             // 
@@ -1433,33 +1542,33 @@
             // 
             // z_chart
             // 
-            chartArea31.Name = "ChartArea1";
-            this.z_chart.ChartAreas.Add(chartArea31);
-            legend31.Alignment = System.Drawing.StringAlignment.Center;
-            legend31.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend31.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend31.Name = "Legend1";
-            this.z_chart.Legends.Add(legend31);
+            chartArea15.Name = "ChartArea1";
+            this.z_chart.ChartAreas.Add(chartArea15);
+            legend15.Alignment = System.Drawing.StringAlignment.Center;
+            legend15.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend15.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend15.Name = "Legend1";
+            this.z_chart.Legends.Add(legend15);
             this.z_chart.Location = new System.Drawing.Point(3, 114);
             this.z_chart.Name = "z_chart";
-            series91.BorderWidth = 3;
-            series91.ChartArea = "ChartArea1";
-            series91.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series91.Legend = "Legend1";
-            series91.Name = "Требуемое значение угла рысканья";
-            series92.BorderWidth = 3;
-            series92.ChartArea = "ChartArea1";
-            series92.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series92.Legend = "Legend1";
-            series92.Name = "Текущее значение угла рысканья";
-            series93.BorderWidth = 3;
-            series93.ChartArea = "ChartArea1";
-            series93.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series93.Legend = "Legend1";
-            series93.Name = "Текущее значение угла рысканья (ННС)";
-            this.z_chart.Series.Add(series91);
-            this.z_chart.Series.Add(series92);
-            this.z_chart.Series.Add(series93);
+            series43.BorderWidth = 3;
+            series43.ChartArea = "ChartArea1";
+            series43.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series43.Legend = "Legend1";
+            series43.Name = "Требуемое значение угла рысканья";
+            series44.BorderWidth = 3;
+            series44.ChartArea = "ChartArea1";
+            series44.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series44.Legend = "Legend1";
+            series44.Name = "Текущее значение угла рысканья";
+            series45.BorderWidth = 3;
+            series45.ChartArea = "ChartArea1";
+            series45.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series45.Legend = "Legend1";
+            series45.Name = "Текущее значение угла рысканья (ННС)";
+            this.z_chart.Series.Add(series43);
+            this.z_chart.Series.Add(series44);
+            this.z_chart.Series.Add(series45);
             this.z_chart.Size = new System.Drawing.Size(940, 570);
             this.z_chart.TabIndex = 22;
             this.z_chart.Text = "Угол вокруг оси X";
@@ -1467,7 +1576,7 @@
             // dt_label
             // 
             this.dt_label.AutoSize = true;
-            this.dt_label.Location = new System.Drawing.Point(163, 443);
+            this.dt_label.Location = new System.Drawing.Point(101, 435);
             this.dt_label.Name = "dt_label";
             this.dt_label.Size = new System.Drawing.Size(160, 13);
             this.dt_label.TabIndex = 22;
@@ -1484,7 +1593,7 @@
             "80",
             "90",
             "100"});
-            this.dt_box.Location = new System.Drawing.Point(329, 440);
+            this.dt_box.Location = new System.Drawing.Point(267, 432);
             this.dt_box.Name = "dt_box";
             this.dt_box.Size = new System.Drawing.Size(60, 21);
             this.dt_box.TabIndex = 23;
@@ -1501,7 +1610,7 @@
             // mass_frame_edit
             // 
             this.mass_frame_edit.DecimalPlaces = 2;
-            this.mass_frame_edit.Location = new System.Drawing.Point(329, 40);
+            this.mass_frame_edit.Location = new System.Drawing.Point(267, 40);
             this.mass_frame_edit.Maximum = new decimal(new int[] {
             5,
             0,
@@ -1535,7 +1644,7 @@
             // radius_edit
             // 
             this.radius_edit.DecimalPlaces = 2;
-            this.radius_edit.Location = new System.Drawing.Point(329, 117);
+            this.radius_edit.Location = new System.Drawing.Point(267, 117);
             this.radius_edit.Maximum = new decimal(new int[] {
             5,
             0,
@@ -1569,7 +1678,7 @@
             // mass_engine_edit
             // 
             this.mass_engine_edit.DecimalPlaces = 2;
-            this.mass_engine_edit.Location = new System.Drawing.Point(329, 66);
+            this.mass_engine_edit.Location = new System.Drawing.Point(267, 66);
             this.mass_engine_edit.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1603,7 +1712,7 @@
             // arm_length_edit
             // 
             this.arm_length_edit.DecimalPlaces = 2;
-            this.arm_length_edit.Location = new System.Drawing.Point(329, 91);
+            this.arm_length_edit.Location = new System.Drawing.Point(267, 91);
             this.arm_length_edit.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1630,14 +1739,14 @@
             this.arm_length_label.AutoSize = true;
             this.arm_length_label.Location = new System.Drawing.Point(16, 93);
             this.arm_length_label.Name = "arm_length_label";
-            this.arm_length_label.Size = new System.Drawing.Size(307, 13);
+            this.arm_length_label.Size = new System.Drawing.Size(239, 13);
             this.arm_length_label.TabIndex = 31;
-            this.arm_length_label.Text = "Расстояние от двигателей до центральной платформы (м):";
+            this.arm_length_label.Text = "Расстояние от двигателей до платформы (м):";
             // 
             // end_time_edit
             // 
             this.end_time_edit.DecimalPlaces = 2;
-            this.end_time_edit.Location = new System.Drawing.Point(329, 414);
+            this.end_time_edit.Location = new System.Drawing.Point(267, 406);
             this.end_time_edit.Maximum = new decimal(new int[] {
             300,
             0,
@@ -1662,119 +1771,11 @@
             // end_time_label
             // 
             this.end_time_label.AutoSize = true;
-            this.end_time_label.Location = new System.Drawing.Point(163, 416);
+            this.end_time_label.Location = new System.Drawing.Point(101, 408);
             this.end_time_label.Name = "end_time_label";
             this.end_time_label.Size = new System.Drawing.Size(108, 13);
             this.end_time_label.TabIndex = 33;
             this.end_time_label.Text = "Конечное время (с):";
-            // 
-            // y_period_fis_label
-            // 
-            this.y_period_fis_label.AutoSize = true;
-            this.y_period_fis_label.Location = new System.Drawing.Point(899, 8);
-            this.y_period_fis_label.Name = "y_period_fis_label";
-            this.y_period_fis_label.Size = new System.Drawing.Size(13, 13);
-            this.y_period_fis_label.TabIndex = 94;
-            this.y_period_fis_label.Text = "0";
-            // 
-            // y_period_fis_label_text
-            // 
-            this.y_period_fis_label_text.AutoSize = true;
-            this.y_period_fis_label_text.Location = new System.Drawing.Point(635, 8);
-            this.y_period_fis_label_text.Name = "y_period_fis_label_text";
-            this.y_period_fis_label_text.Size = new System.Drawing.Size(168, 13);
-            this.y_period_fis_label_text.TabIndex = 93;
-            this.y_period_fis_label_text.Text = "Период установления (ННС) (с):";
-            // 
-            // y_overshoot_fis_label
-            // 
-            this.y_overshoot_fis_label.AutoSize = true;
-            this.y_overshoot_fis_label.Location = new System.Drawing.Point(899, 61);
-            this.y_overshoot_fis_label.Name = "y_overshoot_fis_label";
-            this.y_overshoot_fis_label.Size = new System.Drawing.Size(13, 13);
-            this.y_overshoot_fis_label.TabIndex = 92;
-            this.y_overshoot_fis_label.Text = "0";
-            // 
-            // y_overshoot_fis_label_text
-            // 
-            this.y_overshoot_fis_label_text.AutoSize = true;
-            this.y_overshoot_fis_label_text.Location = new System.Drawing.Point(635, 61);
-            this.y_overshoot_fis_label_text.Name = "y_overshoot_fis_label_text";
-            this.y_overshoot_fis_label_text.Size = new System.Drawing.Size(195, 13);
-            this.y_overshoot_fis_label_text.TabIndex = 91;
-            this.y_overshoot_fis_label_text.Text = "Перерегулирование (ННС) (градусы):";
-            // 
-            // y_current_fis_label
-            // 
-            this.y_current_fis_label.AutoSize = true;
-            this.y_current_fis_label.Location = new System.Drawing.Point(899, 34);
-            this.y_current_fis_label.Name = "y_current_fis_label";
-            this.y_current_fis_label.Size = new System.Drawing.Size(13, 13);
-            this.y_current_fis_label.TabIndex = 90;
-            this.y_current_fis_label.Text = "0";
-            // 
-            // y_current_fis_label_text
-            // 
-            this.y_current_fis_label_text.AutoSize = true;
-            this.y_current_fis_label_text.Location = new System.Drawing.Point(635, 34);
-            this.y_current_fis_label_text.Name = "y_current_fis_label_text";
-            this.y_current_fis_label_text.Size = new System.Drawing.Size(258, 13);
-            this.y_current_fis_label_text.TabIndex = 89;
-            this.y_current_fis_label_text.Text = "Текущее значение угла тангажа (ННС) (градусы):";
-            // 
-            // z_period_fis_label
-            // 
-            this.z_period_fis_label.AutoSize = true;
-            this.z_period_fis_label.Location = new System.Drawing.Point(914, 8);
-            this.z_period_fis_label.Name = "z_period_fis_label";
-            this.z_period_fis_label.Size = new System.Drawing.Size(13, 13);
-            this.z_period_fis_label.TabIndex = 100;
-            this.z_period_fis_label.Text = "0";
-            // 
-            // z_period_fis_label_text
-            // 
-            this.z_period_fis_label_text.AutoSize = true;
-            this.z_period_fis_label_text.Location = new System.Drawing.Point(642, 8);
-            this.z_period_fis_label_text.Name = "z_period_fis_label_text";
-            this.z_period_fis_label_text.Size = new System.Drawing.Size(168, 13);
-            this.z_period_fis_label_text.TabIndex = 99;
-            this.z_period_fis_label_text.Text = "Период установления (ННС) (с):";
-            // 
-            // z_overshoot_fis_label
-            // 
-            this.z_overshoot_fis_label.AutoSize = true;
-            this.z_overshoot_fis_label.Location = new System.Drawing.Point(914, 59);
-            this.z_overshoot_fis_label.Name = "z_overshoot_fis_label";
-            this.z_overshoot_fis_label.Size = new System.Drawing.Size(13, 13);
-            this.z_overshoot_fis_label.TabIndex = 98;
-            this.z_overshoot_fis_label.Text = "0";
-            // 
-            // z_overshoot_fis_label_text
-            // 
-            this.z_overshoot_fis_label_text.AutoSize = true;
-            this.z_overshoot_fis_label_text.Location = new System.Drawing.Point(642, 61);
-            this.z_overshoot_fis_label_text.Name = "z_overshoot_fis_label_text";
-            this.z_overshoot_fis_label_text.Size = new System.Drawing.Size(195, 13);
-            this.z_overshoot_fis_label_text.TabIndex = 97;
-            this.z_overshoot_fis_label_text.Text = "Перерегулирование (ННС) (градусы):";
-            // 
-            // z_current_fis_label
-            // 
-            this.z_current_fis_label.AutoSize = true;
-            this.z_current_fis_label.Location = new System.Drawing.Point(914, 34);
-            this.z_current_fis_label.Name = "z_current_fis_label";
-            this.z_current_fis_label.Size = new System.Drawing.Size(13, 13);
-            this.z_current_fis_label.TabIndex = 96;
-            this.z_current_fis_label.Text = "0";
-            // 
-            // z_current_fis_label_text
-            // 
-            this.z_current_fis_label_text.AutoSize = true;
-            this.z_current_fis_label_text.Location = new System.Drawing.Point(642, 34);
-            this.z_current_fis_label_text.Name = "z_current_fis_label_text";
-            this.z_current_fis_label_text.Size = new System.Drawing.Size(266, 13);
-            this.z_current_fis_label_text.TabIndex = 95;
-            this.z_current_fis_label_text.Text = "Текущее значение угла рысканья (ННС) (градусы):";
             // 
             // main_form
             // 

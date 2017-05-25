@@ -149,9 +149,9 @@ namespace quadcopter_research
 
         private void update_angles()
         {
-            phi = phi + dt * w_x;
-            theta = theta + dt * w_y;
-            psi = psi + dt * w_z;
+            phi += dt * w_x;
+            theta += dt * w_y;
+            psi += dt * w_z;
         }
 
         private void update_angular_speed()
@@ -164,10 +164,10 @@ namespace quadcopter_research
         private void update_forces(double phi_effect, double theta_effect, double psi_effect)
         {
             u1 = u2 = u3 = u4 = equilibrium_thrust;
-            u1 += -theta_effect / 2 - psi_effect / 2;
-            u2 += -phi_effect / 2 + psi_effect / 2;
-            u3 += theta_effect / 2 - psi_effect / 2;
-            u4 += phi_effect / 2 + psi_effect / 2;
+            u1 += -theta_effect - psi_effect;
+            u2 += -phi_effect + psi_effect;
+            u3 += theta_effect - psi_effect;
+            u4 += phi_effect + psi_effect;
         }
 
         public vector3 get_angles()

@@ -236,6 +236,7 @@ namespace quadcopter_research
             x_I_edit.Enabled = true;
             x_D_edit.Enabled = true;
             x_ziegler_button.Enabled = true;
+            x_learn_button.Enabled = true;
             x_chart.Series[0].Points.Clear();
             x_chart.Series[1].Points.Clear();
             x_chart.Series[2].Points.Clear();
@@ -257,6 +258,7 @@ namespace quadcopter_research
             y_I_edit.Enabled = true;
             y_D_edit.Enabled = true;
             y_ziegler_button.Enabled = true;
+            y_learn_button.Enabled = true;
             y_chart.Series[0].Points.Clear();
             y_chart.Series[1].Points.Clear();
             y_chart.Series[2].Points.Clear();
@@ -278,6 +280,7 @@ namespace quadcopter_research
             z_I_edit.Enabled = true;
             z_D_edit.Enabled = true;
             z_ziegler_button.Enabled = true;
+            z_learn_button.Enabled = true;
             z_chart.Series[0].Points.Clear();
             z_chart.Series[1].Points.Clear();
             z_chart.Series[2].Points.Clear();

@@ -30,20 +30,6 @@ namespace quadcopter_research
 
         public double compute(double x)
         {
-            /*if (a > b)
-            {
-                double tmp = a;
-                a = b;
-                b = tmp;
-            }
-            if (x < a)
-                return 0;
-            else if ((a <= x) && (x <= b))
-                return (x - a) / (b - a);
-            else if ((b <= x) && (x <= 2 * b - a))
-                return (b - x) / (b - a);
-            else
-                return 0;*/
             return 1.0 / (1 + Math.Exp(b * (x - a)));
         }
     }

@@ -128,7 +128,7 @@ namespace quadcopter_research
             equilibrium_thrust = mass * g / (4 * k);
             u1 = u2 = u3 = u4 = equilibrium_thrust;
 
-            random_effect = random_effect_in;
+            random_effect = angle_to_radian(random_effect_in);
         }
 
         public void set_angles(double phi_in, double theta_in, double psi_in)
@@ -165,11 +165,19 @@ namespace quadcopter_research
         private void update_angles()
         {
             Random rand = new Random();
-            phi += dt * w_x + angle_to_radian(rand.NextDouble() * random_effect) - angle_to_radian(random_effect);
-            theta += dt * w_y + angle_to_radian(rand.NextDouble() * random_effect) - angle_to_radian(random_effect);
-            psi += dt * w_z + angle_to_radian(rand.NextDouble() * random_effect) - angle_to_radian(random_effect);
-    }
-
+            if (rand.NextDouble() > 0.7)
+            {
+                phi += dt * w_x + rand.NextDouble() * 2 * random_effect - random_effect;
+                theta += dt * w_y + rand.NextDouble() * 2 * random_effect - random_effect;
+                psi += dt * w_z + rand.NextDouble() * 2 * random_effect - random_effect;
+            }
+            else
+            {
+                phi += dt * w_x;
+                theta += dt * w_y;
+                psi += dt * w_z;
+            }
+        }
         private void update_angular_speed()
         {
             w_x += dt * (arm_length * k * (u4 - u2) / Jxx);

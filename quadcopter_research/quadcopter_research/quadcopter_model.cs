@@ -71,6 +71,8 @@ namespace quadcopter_research
 
         private double random_effect;
 
+        Random rand;
+
         public double radian_to_angle(double radian)
         {
             return radian * 180.0 / Math.PI;
@@ -88,6 +90,7 @@ namespace quadcopter_research
                                 double dt_in = dt_const,
                                 double random_effect_in = 0.0)
         {
+            rand = new Random();
             init(mass_frame_in, mass_engine_in, radius_in, arm_length_in, dt_in, random_effect_in);
         }
 
@@ -164,8 +167,7 @@ namespace quadcopter_research
 
         private void update_angles()
         {
-            Random rand = new Random();
-            if (rand.NextDouble() > 0.7)
+            if (rand.NextDouble() > 0.9)
             {
                 phi += dt * w_x + rand.NextDouble() * 2 * random_effect - random_effect;
                 theta += dt * w_y + rand.NextDouble() * 2 * random_effect - random_effect;

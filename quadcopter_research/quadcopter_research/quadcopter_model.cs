@@ -30,6 +30,15 @@ namespace quadcopter_research
         private const double mass_engine_const = 0.1;
         private const double radius_const = 0.2;
         private const double arm_length_const = 0.25;
+        private const double s_x = 0.01;
+        private const double s_y = 0.01;
+        private const double s_z = 0.03;
+        private const double c_d = 0.4;
+        private const double air_p = 1.2;
+
+        private const double air_x = c_d * air_p * s_x / 2.0;
+        private const double air_y = c_d * air_p * s_y / 2.0;
+        private const double air_z = c_d * air_p * s_z / 2.0;
 
         private double dt;
         private double mass_frame;
@@ -142,9 +151,9 @@ namespace quadcopter_research
         private void update_speed()
         {
             double F_div_mass = k * (u1 + u2 + u3 + u4) / mass;
-            v_x += dt * (Math.Cos(psi) * Math.Sin(theta) * Math.Cos(phi) + Math.Sin(psi) * Math.Sin(phi)) * F_div_mass;
-            v_y += dt * ((Math.Sin(psi) * Math.Sin(theta) * Math.Cos(phi) - Math.Cos(psi) * Math.Sin(phi)) * F_div_mass);
-            v_z += dt * (Math.Cos(phi) * Math.Cos(theta) * F_div_mass - g);
+            v_x += dt * (Math.Cos(psi) * Math.Sin(theta) * Math.Cos(phi) + Math.Sin(psi) * Math.Sin(phi)) * F_div_mass - Math.Sign(v_x) * v_x * v_x * air_x;
+            v_y += dt * ((Math.Sin(psi) * Math.Sin(theta) * Math.Cos(phi) - Math.Cos(psi) * Math.Sin(phi)) * F_div_mass - Math.Sign(v_y) * v_y * v_y * air_y);
+            v_z += dt * (Math.Cos(phi) * Math.Cos(theta) * F_div_mass - g - Math.Sign(v_z) * v_z * v_z * air_z);
         }
 
         private void update_angles()

@@ -159,6 +159,8 @@ namespace quadcopter_research
             radius_edit.Enabled = false;
             arm_length_edit.Enabled = false;
 
+            random_effect_check.Enabled = false;
+
             dt_box.Enabled = false;
             end_time_edit.Enabled = false;
 
@@ -175,6 +177,7 @@ namespace quadcopter_research
             x_max_integral_edit.Enabled = false;
             x_period_error_edit.Enabled = false;
             x_ziegler_button.Enabled = false;
+            x_learn_button.Enabled = false;
 
             y_reference_edit.Enabled = false;
             y_initial_edit.Enabled = false;
@@ -185,6 +188,7 @@ namespace quadcopter_research
             y_max_integral_edit.Enabled = false;
             y_period_error_edit.Enabled = false;
             y_ziegler_button.Enabled = false;
+            y_learn_button.Enabled = false;
 
             z_reference_edit.Enabled = false;
             z_initial_edit.Enabled = false;
@@ -195,6 +199,7 @@ namespace quadcopter_research
             z_max_integral_edit.Enabled = false;
             z_period_error_edit.Enabled = false;
             z_ziegler_button.Enabled = false;
+            z_learn_button.Enabled = false;
 
             simulation();
 
@@ -212,6 +217,8 @@ namespace quadcopter_research
             mass_engine_edit.Enabled = true;
             radius_edit.Enabled = true;
             arm_length_edit.Enabled = true;
+
+            random_effect_check.Enabled = true;
 
             dt_box.Enabled = true;
             end_time_edit.Enabled = true;
@@ -348,10 +355,17 @@ namespace quadcopter_research
             reference = new vector3((double)x_reference_edit.Value, (double)y_reference_edit.Value, (double)z_reference_edit.Value);
             angles = new vector3((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
             angles_fis = new vector3((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
-
-            qm.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt);
+            if (random_effect_check.Checked)
+            {
+                qm.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt, true);
+                qm_fis.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt, true);
+            }
+            else
+            {
+                qm.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt, false);
+                qm_fis.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt, false);
+            }
             qm.set_angles((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
-            qm_fis.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt);
             qm_fis.set_angles((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
 
             phi_PID.init(dt, (double)x_max_effect_edit.Value, (double)x_max_integral_edit.Value, (double)x_P_edit.Value, (double)x_I_edit.Value, (double)x_D_edit.Value);

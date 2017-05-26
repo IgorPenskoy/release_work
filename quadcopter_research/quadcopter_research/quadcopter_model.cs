@@ -69,7 +69,7 @@ namespace quadcopter_research
         private double w_z;
         private double equilibrium_thrust;
 
-        private bool random_effect;
+        private double random_effect;
 
         public double radian_to_angle(double radian)
         {
@@ -86,7 +86,7 @@ namespace quadcopter_research
                                 double radius_in = radius_const,
                                 double arm_length_in = arm_length_const,
                                 double dt_in = dt_const,
-                                bool random_effect_in = false)
+                                double random_effect_in = 0.0)
         {
             init(mass_frame_in, mass_engine_in, radius_in, arm_length_in, dt_in, random_effect_in);
         }
@@ -96,7 +96,7 @@ namespace quadcopter_research
                                 double radius_in = radius_const,
                                 double arm_length_in = arm_length_const,
                                 double dt_in = dt_const,
-                                bool random_effect_in = false)
+                                double random_effect_in = 0.0)
         {
             if (mass_frame_in <= 0)
                 mass_frame = mass_frame_const;
@@ -164,26 +164,17 @@ namespace quadcopter_research
 
         private void update_angles()
         {
-            if (random_effect)
-            {
-                Random rand = new Random();
-                phi += dt * w_x + angle_to_radian(rand.NextDouble()) - angle_to_radian(1.0);
-                theta += dt * w_y + angle_to_radian(rand.NextDouble()) - angle_to_radian(1.0);
-                psi += dt * w_z + angle_to_radian(rand.NextDouble()) - angle_to_radian(1.0);
-            }
-            else
-            {
-                phi += dt * w_x;
-                theta += dt * w_y;
-                psi += dt * w_z;
-            }
-        }
+            Random rand = new Random();
+            phi += dt * w_x + angle_to_radian(rand.NextDouble() * random_effect) - angle_to_radian(random_effect);
+            theta += dt * w_y + angle_to_radian(rand.NextDouble() * random_effect) - angle_to_radian(random_effect);
+            psi += dt * w_z + angle_to_radian(rand.NextDouble() * random_effect) - angle_to_radian(random_effect);
+    }
 
         private void update_angular_speed()
         {
             w_x += dt * (arm_length * k * (u4 - u2) / Jxx);
             w_y += dt * (arm_length * k * (u3 - u1) / Jyy);
-            w_z += dt * (b * (-u1 + u2 - u3 + u4) / Jzz);
+            w_z += dt * (b * (- u1 + u2 - u3 + u4) / Jzz);
         }
 
         private void update_forces(double phi_effect, double theta_effect, double psi_effect)

@@ -357,13 +357,13 @@ namespace quadcopter_research
             angles_fis = new vector3((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
             if (random_effect_check.Checked)
             {
-                qm.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt, true);
-                qm_fis.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt, true);
+                qm.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt, (double)random_effect_edit.Value);
+                qm_fis.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt, (double)random_effect_edit.Value);
             }
             else
             {
-                qm.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt, false);
-                qm_fis.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt, false);
+                qm.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt, 0.0);
+                qm_fis.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt, 0.0);
             }
             qm.set_angles((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
             qm_fis.set_angles((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
@@ -610,6 +610,14 @@ namespace quadcopter_research
         private void x_learn_button_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void random_effect_check_CheckedChanged(object sender, EventArgs e)
+        {
+            if (random_effect_edit.Enabled)
+                random_effect_edit.Enabled = false;
+            else
+                random_effect_edit.Enabled = true;
         }
     }
 }

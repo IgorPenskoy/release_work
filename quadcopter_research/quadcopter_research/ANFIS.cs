@@ -8,7 +8,35 @@ namespace quadcopter_research
 {
     class ANFIS
     {
-        private const int rules_count_const = 16;
+        private const double NB_a = -1;
+        private const double NB_b = -1;
+        private const double NB_c = -0.6;
+
+        private const double NM_a = -1;
+        private const double NM_b = -0.6;
+        private const double NM_c = 0;
+
+        private const double NS_a = -1;
+        private const double NS_b = -0.4;
+        private const double NS_c = 0;
+
+        private const double ZO_a = -0.4;
+        private const double ZO_b = 0;
+        private const double ZO_c = 0.4;
+
+        private const double PS_a = 0;
+        private const double PS_b = 0.4;
+        private const double PS_c = 1;
+
+        private const double PM_a = 0;
+        private const double PM_b = 0.6;
+        private const double PM_c = 1;
+
+        private const double PB_a = 0.6;
+        private const double PB_b = 1;
+        private const double PB_c = 1;
+
+        private const double gain = 180;
         private const double mu_const = 0.002;
 
         private Rule[] rules;
@@ -17,31 +45,28 @@ namespace quadcopter_research
 
         private Random rand;
 
-        public ANFIS(Random rand, int rulesCount = rules_count_const, double mu = mu_const)
+        public ANFIS(Random rand, double mu = mu_const)
         {
 
             this.rand = rand;
 
             this.mu = mu;
 
-            createRules(rulesCount);
+            createRules();
 
         }
 
-        private void createRules(int rulesCount)
+        private void createRules()
         {
+            double[,] mf_array = { { NB_a, NB_b, NB_c }, { NM_a, NM_b, NM_c }, { NS_a, NS_b, NS_c }, { ZO_a, ZO_b, ZO_c }, { PS_a, PS_b, PS_c }, { PM_a, PM_b, PM_c }, { PB_a, PB_b, PB_c } };
 
-            this.rules = new Rule[rulesCount];
-
-            for (int i = 0; i < rules.Count(); i++)
-            {
-
-                rules[i] = new Rule(
-                        new MembershipFunction(rand),
-                        new MembershipFunction(rand),
-                        new TNorm(),
-                        new Conclusion(rand));
-            }
+            for (int i = 0; i < mf_array.Length / 3; i++)
+                for (int j = 0; j < 3; j++)
+                    mf_array[i, j] *= gain;
+            rules = new Rule[mf_array.Length / 3 * mf_array.Length / 3];
+            for (int i = 0; i < mf_array.Length / 3; i++)
+                for (int j = 0; j < mf_array.Length / 3; j++)
+                    rules[i * mf_array.Length / 3 + j] = new Rule(new MembershipFunction(mf_array[i, 0], mf_array[i, 1], mf_array[i, 2]), new MembershipFunction(mf_array[j, 0], mf_array[j, 1], mf_array[j, 2]), new TNorm(), new Conclusion(rand));
         }
 
         public double compute(double x, double y)
@@ -97,45 +122,50 @@ namespace quadcopter_research
 
                     double o = value;
 
-                    double a1 = rules[i].mfA.a;
-                    double b1 = rules[i].mfA.b;
-                    double a2 = rules[i].mfB.a;
-                    double b2 = rules[i].mfB.b;
-
                     double sigma = sigma_sum(i, x, y);
 
                     rules[i].mfA.a_d +=
                             mu * (o - z) *
                             sigma / Math.Pow(sumw, 2) *
-                            (mu_B * mu_B) / Math.Pow(mu_A + mu_B - mu_A * mu_B, 2) *
-                            b1 * mu_A * (1 - mu_A);
+                            mu_B *
+                            rules[i].mfA.deriv_a(x);
 
                     rules[i].mfA.b_d +=
                             mu * (o - z) *
                             sigma / Math.Pow(sumw, 2) *
-                            (mu_B * mu_B) / Math.Pow(mu_A + mu_B - mu_A * mu_B, 2) *
-                            (-(x - a1)) * mu_A * (1 - mu_A);
+                            mu_B *
+                            rules[i].mfA.deriv_b(x);
+
+                    rules[i].mfA.c_d +=
+                            mu * (o - z) *
+                            sigma / Math.Pow(sumw, 2) *
+                            mu_B *
+                            rules[i].mfA.deriv_c(x);
 
                     rules[i].mfB.a_d +=
                             mu * (o - z) *
                             sigma / Math.Pow(sumw, 2) *
-                            (mu_A * mu_A) / Math.Pow(mu_A + mu_B - mu_A * mu_B, 2) *
-                            b2 * mu_B * (1 - mu_B);
+                            mu_A *
+                            rules[i].mfB.deriv_a(y);
 
                     rules[i].mfB.b_d +=
                             mu * (o - z) *
                             sigma / Math.Pow(sumw, 2) *
-                            (mu_A * mu_A) / Math.Pow(mu_A + mu_B - mu_A * mu_B, 2) *
-                            (-(y - a2)) * mu_B * (1 - mu_B);
+                            mu_A *
+                            rules[i].mfB.deriv_b(y);
+
+                    rules[i].mfB.c_d +=
+                            mu * (o - z) *
+                            sigma / Math.Pow(sumw, 2) *
+                            mu_A *
+                            rules[i].mfB.deriv_c(y);
 
                     rules[i].conclusion.p_d += mu * (o - z) * weight / sumw * x;
                     rules[i].conclusion.q_d += mu * (o - z) * weight / sumw * y;
                     rules[i].conclusion.r_d += mu * (o - z) * weight / sumw;
-
                 }
 
                 error += 0.5 * (compute(x, y) - value) * (compute(x, y) - value);
-
             }
 
             updateParameters();
@@ -145,20 +175,20 @@ namespace quadcopter_research
 
         private void updateParameters()
         {
-
             for (int i = 0; i < rules.Count(); i++)
             {
                 rules[i].mfA.a = rules[i].mfA.a + rules[i].mfA.a_d;
                 rules[i].mfA.b = rules[i].mfA.b + rules[i].mfA.b_d;
+                rules[i].mfA.c = rules[i].mfA.c + rules[i].mfA.c_d;
 
                 rules[i].mfB.a = rules[i].mfB.a + rules[i].mfB.a_d;
                 rules[i].mfB.b = rules[i].mfB.b + rules[i].mfB.b_d;
+                rules[i].mfB.c = rules[i].mfB.c + rules[i].mfB.c_d;
 
                 rules[i].conclusion.p = rules[i].conclusion.p + rules[i].conclusion.p_d;
                 rules[i].conclusion.q = rules[i].conclusion.q + rules[i].conclusion.q_d;
                 rules[i].conclusion.r = rules[i].conclusion.r + rules[i].conclusion.r_d;
             }
-
         }
 
         private void initialize()
@@ -172,9 +202,11 @@ namespace quadcopter_research
 
                 rules[i].mfA.a_d = 0;
                 rules[i].mfA.b_d = 0;
+                rules[i].mfA.c_d = 0;
 
                 rules[i].mfB.a_d = 0;
                 rules[i].mfB.b_d = 0;
+                rules[i].mfB.c_d = 0;
             }
 
         }
@@ -268,8 +300,10 @@ namespace quadcopter_research
             {
                 file.WriteLine(rules[i].mfA.a + " " +
                         rules[i].mfA.b + " " +
+                        rules[i].mfA.c + " " +
                         rules[i].mfB.a + " " +
                         rules[i].mfB.b + " " +
+                        rules[i].mfB.c + " " +
                         rules[i].conclusion.p + " " +
                         rules[i].conclusion.q + " " +
                         rules[i].conclusion.r);
@@ -340,39 +374,6 @@ namespace quadcopter_research
 
             this.mu = old_mu;
 
-        }
-
-        public void learnNetworkRules(List<Pair> learningDataset, int startRuleNum, int endRuleNum, int epochPerRule)
-        {
-
-            double smallestError = 0;
-            int bestRuleCount = 0;
-
-            for (int r = startRuleNum; r <= endRuleNum; r++)
-            {
-
-                createRules(r);
-                double iterError = 0;
-
-                Console.WriteLine("==========");
-
-                for (int e = 0; e < epochPerRule; e++)
-                {
-
-                    iterError = learnNetwork(learningDataset);
-
-                    Console.WriteLine("Rules: " + r + " Epoch: " + e + " Error: " + iterError);
-
-                }
-
-                if (r == startRuleNum || iterError < smallestError)
-                {
-                    bestRuleCount = r;
-                    smallestError = iterError;
-                }
-
-            }
-            Console.WriteLine("Best Rule Count: " + bestRuleCount + " Error: " + smallestError);
         }
     }
 }

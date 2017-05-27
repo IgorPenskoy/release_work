@@ -29,6 +29,20 @@ namespace quadcopter_research
             d_err = 0.0;
         }
 
+        public void init_params(double dt_in, double max_in, double i_max_in)
+        {
+            dt = dt_in;
+            max = max_in;
+            i_max = i_max_in;
+        }
+
+        public void init_fis(ANFIS fis_P_in, ANFIS fis_I_in, ANFIS fis_D_in)
+        {
+            fis_P = fis_P_in;
+            fis_I = fis_I_in;
+            fis_D = fis_D_in;
+        }
+
         public override double get_effect(double current, double target)
         {
             err = target - current;
@@ -38,13 +52,13 @@ namespace quadcopter_research
             if (Math.Abs(sumErr) > i_max)
                 sumErr = i_max * Math.Sign(sumErr);
 
-            d_err = (err - prevErr) / dt;
+            d_err = (err - prevErr);
 
             P = fis_P.compute(err, d_err);
             I = fis_I.compute(err, d_err);
             D = fis_D.compute(err, d_err);
 
-            force = P * err + I * sumErr * dt + D * d_err;
+            force = P * err + I * sumErr * dt + D * d_err / dt;
             prevErr = err;
             if (Math.Abs(force) > max)
                 force = max * Math.Sign(force);

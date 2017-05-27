@@ -13,11 +13,11 @@ namespace quadcopter_research
 {
     public partial class main_form : Form
     {
-        private const double max_angle_degree = 180.0;
+        private const double max_angle_degree = 45.0;
         private const double chart_time_amount = 10.0;
         private const double timer_interval_divide = 1000.0;
         private const double axis_x_interval = 1.0;
-        private const double axis_y_interval = 10.0;
+        private const double axis_y_interval = 5.0;
         private const string chart_label_style_format = "#.";
         private const string label_style_format = "0.00";
 
@@ -129,6 +129,20 @@ namespace quadcopter_research
 
             zn = new ZieglerNichols();
 
+            x_reference_edit.Minimum = (decimal)-max_angle_degree;
+            x_reference_edit.Maximum = (decimal)max_angle_degree;
+            y_reference_edit.Minimum = (decimal)-max_angle_degree;
+            y_reference_edit.Maximum = (decimal)max_angle_degree;
+            z_reference_edit.Minimum = (decimal)-max_angle_degree;
+            z_reference_edit.Maximum = (decimal)max_angle_degree;
+
+            x_initial_edit.Minimum = (decimal)-max_angle_degree;
+            x_initial_edit.Maximum = (decimal)max_angle_degree;
+            y_initial_edit.Minimum = (decimal)-max_angle_degree;
+            y_initial_edit.Maximum = (decimal)max_angle_degree;
+            z_initial_edit.Minimum = (decimal)-max_angle_degree;
+            z_initial_edit.Maximum = (decimal)max_angle_degree;
+
             dt_box.SelectedIndex = 0;
             x_chart.ChartAreas[0].AxisY.Minimum = -max_angle_degree;
             x_chart.ChartAreas[0].AxisY.Maximum = max_angle_degree;
@@ -177,7 +191,6 @@ namespace quadcopter_research
             x_max_integral_edit.Enabled = false;
             x_period_error_edit.Enabled = false;
             x_ziegler_button.Enabled = false;
-            x_learn_button.Enabled = false;
 
             y_reference_edit.Enabled = false;
             y_initial_edit.Enabled = false;
@@ -188,7 +201,6 @@ namespace quadcopter_research
             y_max_integral_edit.Enabled = false;
             y_period_error_edit.Enabled = false;
             y_ziegler_button.Enabled = false;
-            y_learn_button.Enabled = false;
 
             z_reference_edit.Enabled = false;
             z_initial_edit.Enabled = false;
@@ -199,7 +211,8 @@ namespace quadcopter_research
             z_max_integral_edit.Enabled = false;
             z_period_error_edit.Enabled = false;
             z_ziegler_button.Enabled = false;
-            z_learn_button.Enabled = false;
+
+            learn_button.Enabled = false;
 
             simulation();
 
@@ -243,7 +256,6 @@ namespace quadcopter_research
             x_I_edit.Enabled = true;
             x_D_edit.Enabled = true;
             x_ziegler_button.Enabled = true;
-            x_learn_button.Enabled = true;
             x_chart.Series[0].Points.Clear();
             x_chart.Series[1].Points.Clear();
             x_chart.Series[2].Points.Clear();
@@ -265,7 +277,6 @@ namespace quadcopter_research
             y_I_edit.Enabled = true;
             y_D_edit.Enabled = true;
             y_ziegler_button.Enabled = true;
-            y_learn_button.Enabled = true;
             y_chart.Series[0].Points.Clear();
             y_chart.Series[1].Points.Clear();
             y_chart.Series[2].Points.Clear();
@@ -287,12 +298,13 @@ namespace quadcopter_research
             z_I_edit.Enabled = true;
             z_D_edit.Enabled = true;
             z_ziegler_button.Enabled = true;
-            z_learn_button.Enabled = true;
             z_chart.Series[0].Points.Clear();
             z_chart.Series[1].Points.Clear();
             z_chart.Series[2].Points.Clear();
             z_chart.ChartAreas[0].AxisX.Minimum = 0;
             z_chart.ChartAreas[0].AxisX.Maximum = chart_time_amount;
+
+            learn_button.Enabled = true;
         }
 
         private void stop_button_Click(object sender, EventArgs e)
@@ -511,8 +523,8 @@ namespace quadcopter_research
             x_current_fis_label.Text = x_current_array_fis[i_sim].ToString(label_style_format);
             x_overshoot_fis_label.Text = x_overshoot_array_fis[i_sim].ToString(label_style_format);
             x_chart.Series[0].Points.AddXY(Math.Round(elapsed_time, 3), reference.x);
-            x_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), clamp(x_current_array[i_sim], 190.0));
-            x_chart.Series[2].Points.AddXY(Math.Round(elapsed_time, 3), clamp(x_current_array_fis[i_sim], 190.0));
+            x_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), clamp(x_current_array[i_sim], max_angle_degree + 10));
+            x_chart.Series[2].Points.AddXY(Math.Round(elapsed_time, 3), clamp(x_current_array_fis[i_sim], max_angle_degree + 10));
 
             y_period_label.Text = y_period_array[i_sim].ToString(label_style_format);
             y_current_label.Text = y_current_array[i_sim].ToString(label_style_format);
@@ -521,8 +533,8 @@ namespace quadcopter_research
             y_current_fis_label.Text = y_current_array_fis[i_sim].ToString(label_style_format);
             y_overshoot_fis_label.Text = y_overshoot_array_fis[i_sim].ToString(label_style_format);
             y_chart.Series[0].Points.AddXY(Math.Round(elapsed_time, 3), reference.x);
-            y_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), clamp(y_current_array[i_sim], 190.0));
-            y_chart.Series[2].Points.AddXY(Math.Round(elapsed_time, 3), clamp(y_current_array_fis[i_sim], 190.0));
+            y_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), clamp(y_current_array[i_sim], max_angle_degree + 10));
+            y_chart.Series[2].Points.AddXY(Math.Round(elapsed_time, 3), clamp(y_current_array_fis[i_sim], max_angle_degree + 10));
 
             z_period_label.Text = z_period_array[i_sim].ToString(label_style_format);
             z_current_label.Text = z_current_array[i_sim].ToString(label_style_format);
@@ -531,8 +543,8 @@ namespace quadcopter_research
             z_current_fis_label.Text = z_current_array_fis[i_sim].ToString(label_style_format);
             z_overshoot_fis_label.Text = z_overshoot_array_fis[i_sim].ToString(label_style_format);
             z_chart.Series[0].Points.AddXY(Math.Round(elapsed_time, 3), reference.x);
-            z_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), clamp(z_current_array[i_sim], 190.0));
-            z_chart.Series[2].Points.AddXY(Math.Round(elapsed_time, 3), clamp(z_current_array_fis[i_sim], 190.0));
+            z_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), clamp(z_current_array[i_sim], max_angle_degree + 10));
+            z_chart.Series[2].Points.AddXY(Math.Round(elapsed_time, 3), clamp(z_current_array_fis[i_sim], max_angle_degree + 10));
 
             if (elapsed_time > chart_time_amount)
             {
@@ -618,6 +630,11 @@ namespace quadcopter_research
                 random_effect_edit.Enabled = false;
             else
                 random_effect_edit.Enabled = true;
+        }
+
+        private void main_form_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

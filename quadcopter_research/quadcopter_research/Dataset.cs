@@ -29,9 +29,9 @@ namespace quadcopter_research
 
             trainingSet = new List<Pair>();
 
-            for (int i = min; i <= max; i++)
+            for (int i = min; i <= max; i += 10)
             {
-                for (int j = min; j <= max; j++)
+                for (int j = min; j <= max; j += 10)
                 {
                     trainingSet.Add(new Pair(i, j, function.compute(i, j)));
                 }

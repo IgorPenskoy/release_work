@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series28 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series29 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series30 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series31 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series32 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series33 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series34 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series35 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series36 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series25 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series26 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series27 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.start_button = new System.Windows.Forms.Button();
             this.stop_button = new System.Windows.Forms.Button();
             this.continue_button = new System.Windows.Forms.Button();
@@ -73,7 +73,6 @@
             this.x_overshoot_fis_label_text = new System.Windows.Forms.Label();
             this.x_current_fis_label = new System.Windows.Forms.Label();
             this.x_current_fis_label_text = new System.Windows.Forms.Label();
-            this.x_learn_button = new System.Windows.Forms.Button();
             this.x_ziegler_button = new System.Windows.Forms.Button();
             this.x_max_integral_edit = new System.Windows.Forms.NumericUpDown();
             this.x_max_integral_label = new System.Windows.Forms.Label();
@@ -101,7 +100,6 @@
             this.y_overshoot_fis_label_text = new System.Windows.Forms.Label();
             this.y_current_fis_label = new System.Windows.Forms.Label();
             this.y_current_fis_label_text = new System.Windows.Forms.Label();
-            this.y_learn_button = new System.Windows.Forms.Button();
             this.y_ziegler_button = new System.Windows.Forms.Button();
             this.y_max_integral_edit = new System.Windows.Forms.NumericUpDown();
             this.y_max_integral_label = new System.Windows.Forms.Label();
@@ -129,7 +127,6 @@
             this.z_overshoot_fis_label_text = new System.Windows.Forms.Label();
             this.z_current_fis_label = new System.Windows.Forms.Label();
             this.z_current_fis_label_text = new System.Windows.Forms.Label();
-            this.z_learn_button = new System.Windows.Forms.Button();
             this.z_ziegler_button = new System.Windows.Forms.Button();
             this.z_max_integral_edit = new System.Windows.Forms.NumericUpDown();
             this.z_max_integral_label = new System.Windows.Forms.Label();
@@ -165,6 +162,7 @@
             this.end_time_label = new System.Windows.Forms.Label();
             this.random_effect_check = new System.Windows.Forms.CheckBox();
             this.random_effect_edit = new System.Windows.Forms.NumericUpDown();
+            this.learn_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.x_reference_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.y_reference_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.z_reference_edit)).BeginInit();
@@ -487,7 +485,6 @@
             this.x_tab.Controls.Add(this.x_overshoot_fis_label_text);
             this.x_tab.Controls.Add(this.x_current_fis_label);
             this.x_tab.Controls.Add(this.x_current_fis_label_text);
-            this.x_tab.Controls.Add(this.x_learn_button);
             this.x_tab.Controls.Add(this.x_ziegler_button);
             this.x_tab.Controls.Add(this.x_max_integral_edit);
             this.x_tab.Controls.Add(this.x_max_integral_label);
@@ -568,16 +565,6 @@
             this.x_current_fis_label_text.Size = new System.Drawing.Size(246, 13);
             this.x_current_fis_label_text.TabIndex = 83;
             this.x_current_fis_label_text.Text = "Текущее значение угла крена (ННС) (градусы):";
-            // 
-            // x_learn_button
-            // 
-            this.x_learn_button.Location = new System.Drawing.Point(372, 85);
-            this.x_learn_button.Name = "x_learn_button";
-            this.x_learn_button.Size = new System.Drawing.Size(570, 23);
-            this.x_learn_button.TabIndex = 82;
-            this.x_learn_button.Text = "Обучить нейро-нечеткую сеть";
-            this.x_learn_button.UseVisualStyleBackColor = true;
-            this.x_learn_button.Click += new System.EventHandler(this.x_learn_button_Click);
             // 
             // x_ziegler_button
             // 
@@ -814,33 +801,33 @@
             // 
             // x_chart
             // 
-            chartArea10.Name = "ChartArea1";
-            this.x_chart.ChartAreas.Add(chartArea10);
-            legend10.Alignment = System.Drawing.StringAlignment.Center;
-            legend10.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend10.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend10.Name = "Legend1";
-            this.x_chart.Legends.Add(legend10);
+            chartArea7.Name = "ChartArea1";
+            this.x_chart.ChartAreas.Add(chartArea7);
+            legend7.Alignment = System.Drawing.StringAlignment.Center;
+            legend7.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend7.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend7.Name = "Legend1";
+            this.x_chart.Legends.Add(legend7);
             this.x_chart.Location = new System.Drawing.Point(3, 114);
             this.x_chart.Name = "x_chart";
-            series28.BorderWidth = 3;
-            series28.ChartArea = "ChartArea1";
-            series28.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series28.Legend = "Legend1";
-            series28.Name = "Требуемое значение угла крена";
-            series29.BorderWidth = 3;
-            series29.ChartArea = "ChartArea1";
-            series29.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series29.Legend = "Legend1";
-            series29.Name = "Текущее значение угла крена";
-            series30.BorderWidth = 3;
-            series30.ChartArea = "ChartArea1";
-            series30.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series30.Legend = "Legend1";
-            series30.Name = "Текущее значение угла крена (ННС)";
-            this.x_chart.Series.Add(series28);
-            this.x_chart.Series.Add(series29);
-            this.x_chart.Series.Add(series30);
+            series19.BorderWidth = 3;
+            series19.ChartArea = "ChartArea1";
+            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series19.Legend = "Legend1";
+            series19.Name = "Требуемое значение угла крена";
+            series20.BorderWidth = 3;
+            series20.ChartArea = "ChartArea1";
+            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series20.Legend = "Legend1";
+            series20.Name = "Текущее значение угла крена";
+            series21.BorderWidth = 3;
+            series21.ChartArea = "ChartArea1";
+            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series21.Legend = "Legend1";
+            series21.Name = "Текущее значение угла крена (ННС)";
+            this.x_chart.Series.Add(series19);
+            this.x_chart.Series.Add(series20);
+            this.x_chart.Series.Add(series21);
             this.x_chart.Size = new System.Drawing.Size(940, 570);
             this.x_chart.TabIndex = 21;
             this.x_chart.Text = "Угол вокруг оси X";
@@ -854,7 +841,6 @@
             this.y_tab.Controls.Add(this.y_overshoot_fis_label_text);
             this.y_tab.Controls.Add(this.y_current_fis_label);
             this.y_tab.Controls.Add(this.y_current_fis_label_text);
-            this.y_tab.Controls.Add(this.y_learn_button);
             this.y_tab.Controls.Add(this.y_ziegler_button);
             this.y_tab.Controls.Add(this.y_max_integral_edit);
             this.y_tab.Controls.Add(this.y_max_integral_label);
@@ -935,15 +921,6 @@
             this.y_current_fis_label_text.Size = new System.Drawing.Size(258, 13);
             this.y_current_fis_label_text.TabIndex = 89;
             this.y_current_fis_label_text.Text = "Текущее значение угла тангажа (ННС) (градусы):";
-            // 
-            // y_learn_button
-            // 
-            this.y_learn_button.Location = new System.Drawing.Point(372, 85);
-            this.y_learn_button.Name = "y_learn_button";
-            this.y_learn_button.Size = new System.Drawing.Size(570, 23);
-            this.y_learn_button.TabIndex = 82;
-            this.y_learn_button.Text = "Обучить нейро-нечеткую сеть";
-            this.y_learn_button.UseVisualStyleBackColor = true;
             // 
             // y_ziegler_button
             // 
@@ -1180,33 +1157,33 @@
             // 
             // y_chart
             // 
-            chartArea11.Name = "ChartArea1";
-            this.y_chart.ChartAreas.Add(chartArea11);
-            legend11.Alignment = System.Drawing.StringAlignment.Center;
-            legend11.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend11.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend11.Name = "Legend1";
-            this.y_chart.Legends.Add(legend11);
+            chartArea8.Name = "ChartArea1";
+            this.y_chart.ChartAreas.Add(chartArea8);
+            legend8.Alignment = System.Drawing.StringAlignment.Center;
+            legend8.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend8.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend8.Name = "Legend1";
+            this.y_chart.Legends.Add(legend8);
             this.y_chart.Location = new System.Drawing.Point(3, 114);
             this.y_chart.Name = "y_chart";
-            series31.BorderWidth = 3;
-            series31.ChartArea = "ChartArea1";
-            series31.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series31.Legend = "Legend1";
-            series31.Name = "Требуемое значение угла тангажа";
-            series32.BorderWidth = 3;
-            series32.ChartArea = "ChartArea1";
-            series32.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series32.Legend = "Legend1";
-            series32.Name = "Текущее значение угла тангажа";
-            series33.BorderWidth = 3;
-            series33.ChartArea = "ChartArea1";
-            series33.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series33.Legend = "Legend1";
-            series33.Name = "Текущее значение угла тангажа (ННС)";
-            this.y_chart.Series.Add(series31);
-            this.y_chart.Series.Add(series32);
-            this.y_chart.Series.Add(series33);
+            series22.BorderWidth = 3;
+            series22.ChartArea = "ChartArea1";
+            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series22.Legend = "Legend1";
+            series22.Name = "Требуемое значение угла тангажа";
+            series23.BorderWidth = 3;
+            series23.ChartArea = "ChartArea1";
+            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series23.Legend = "Legend1";
+            series23.Name = "Текущее значение угла тангажа";
+            series24.BorderWidth = 3;
+            series24.ChartArea = "ChartArea1";
+            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series24.Legend = "Legend1";
+            series24.Name = "Текущее значение угла тангажа (ННС)";
+            this.y_chart.Series.Add(series22);
+            this.y_chart.Series.Add(series23);
+            this.y_chart.Series.Add(series24);
             this.y_chart.Size = new System.Drawing.Size(940, 570);
             this.y_chart.TabIndex = 22;
             this.y_chart.Text = "Угол вокруг оси X";
@@ -1220,7 +1197,6 @@
             this.z_tab.Controls.Add(this.z_overshoot_fis_label_text);
             this.z_tab.Controls.Add(this.z_current_fis_label);
             this.z_tab.Controls.Add(this.z_current_fis_label_text);
-            this.z_tab.Controls.Add(this.z_learn_button);
             this.z_tab.Controls.Add(this.z_ziegler_button);
             this.z_tab.Controls.Add(this.z_max_integral_edit);
             this.z_tab.Controls.Add(this.z_max_integral_label);
@@ -1300,15 +1276,6 @@
             this.z_current_fis_label_text.Size = new System.Drawing.Size(266, 13);
             this.z_current_fis_label_text.TabIndex = 95;
             this.z_current_fis_label_text.Text = "Текущее значение угла рысканья (ННС) (градусы):";
-            // 
-            // z_learn_button
-            // 
-            this.z_learn_button.Location = new System.Drawing.Point(372, 85);
-            this.z_learn_button.Name = "z_learn_button";
-            this.z_learn_button.Size = new System.Drawing.Size(570, 23);
-            this.z_learn_button.TabIndex = 81;
-            this.z_learn_button.Text = "Обучить нейро-нечеткую сеть";
-            this.z_learn_button.UseVisualStyleBackColor = true;
             // 
             // z_ziegler_button
             // 
@@ -1545,33 +1512,33 @@
             // 
             // z_chart
             // 
-            chartArea12.Name = "ChartArea1";
-            this.z_chart.ChartAreas.Add(chartArea12);
-            legend12.Alignment = System.Drawing.StringAlignment.Center;
-            legend12.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend12.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend12.Name = "Legend1";
-            this.z_chart.Legends.Add(legend12);
+            chartArea9.Name = "ChartArea1";
+            this.z_chart.ChartAreas.Add(chartArea9);
+            legend9.Alignment = System.Drawing.StringAlignment.Center;
+            legend9.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend9.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend9.Name = "Legend1";
+            this.z_chart.Legends.Add(legend9);
             this.z_chart.Location = new System.Drawing.Point(3, 114);
             this.z_chart.Name = "z_chart";
-            series34.BorderWidth = 3;
-            series34.ChartArea = "ChartArea1";
-            series34.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series34.Legend = "Legend1";
-            series34.Name = "Требуемое значение угла рысканья";
-            series35.BorderWidth = 3;
-            series35.ChartArea = "ChartArea1";
-            series35.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series35.Legend = "Legend1";
-            series35.Name = "Текущее значение угла рысканья";
-            series36.BorderWidth = 3;
-            series36.ChartArea = "ChartArea1";
-            series36.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series36.Legend = "Legend1";
-            series36.Name = "Текущее значение угла рысканья (ННС)";
-            this.z_chart.Series.Add(series34);
-            this.z_chart.Series.Add(series35);
-            this.z_chart.Series.Add(series36);
+            series25.BorderWidth = 3;
+            series25.ChartArea = "ChartArea1";
+            series25.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series25.Legend = "Legend1";
+            series25.Name = "Требуемое значение угла рысканья";
+            series26.BorderWidth = 3;
+            series26.ChartArea = "ChartArea1";
+            series26.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series26.Legend = "Legend1";
+            series26.Name = "Текущее значение угла рысканья";
+            series27.BorderWidth = 3;
+            series27.ChartArea = "ChartArea1";
+            series27.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series27.Legend = "Legend1";
+            series27.Name = "Текущее значение угла рысканья (ННС)";
+            this.z_chart.Series.Add(series25);
+            this.z_chart.Series.Add(series26);
+            this.z_chart.Series.Add(series27);
             this.z_chart.Size = new System.Drawing.Size(940, 570);
             this.z_chart.TabIndex = 22;
             this.z_chart.Text = "Угол вокруг оси X";
@@ -1814,11 +1781,21 @@
             0,
             0});
             // 
+            // learn_button
+            // 
+            this.learn_button.Location = new System.Drawing.Point(81, 629);
+            this.learn_button.Name = "learn_button";
+            this.learn_button.Size = new System.Drawing.Size(246, 30);
+            this.learn_button.TabIndex = 89;
+            this.learn_button.Text = "Обучить нейро-нечеткую сеть";
+            this.learn_button.UseVisualStyleBackColor = true;
+            // 
             // main_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.Controls.Add(this.learn_button);
             this.Controls.Add(this.random_effect_edit);
             this.Controls.Add(this.random_effect_check);
             this.Controls.Add(this.end_time_edit);
@@ -1856,6 +1833,7 @@
             this.Controls.Add(this.stop_button);
             this.Controls.Add(this.start_button);
             this.Name = "main_form";
+            this.Load += new System.EventHandler(this.main_form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.x_reference_edit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.y_reference_edit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.z_reference_edit)).EndInit();
@@ -2001,9 +1979,6 @@
         private System.Windows.Forms.Label z_P_label;
         private System.Windows.Forms.NumericUpDown end_time_edit;
         private System.Windows.Forms.Label end_time_label;
-        private System.Windows.Forms.Button z_learn_button;
-        private System.Windows.Forms.Button y_learn_button;
-        private System.Windows.Forms.Button x_learn_button;
         private System.Windows.Forms.Label x_period_fis_label;
         private System.Windows.Forms.Label x_period_fis_label_text;
         private System.Windows.Forms.Label x_overshoot_fis_label;
@@ -2024,6 +1999,7 @@
         private System.Windows.Forms.Label z_current_fis_label_text;
         private System.Windows.Forms.CheckBox random_effect_check;
         private System.Windows.Forms.NumericUpDown random_effect_edit;
+        private System.Windows.Forms.Button learn_button;
     }
 }
 

@@ -62,14 +62,14 @@ namespace quadcopter_research
 
         public vector3 get_phi_PID()
         {
+            if (pid.P == 0.0)
+                return new vector3();
+
             int current_periods_amount = 0;
             double current_period = 0.0;
             double phi_effect = 0.0;
             vector3 angles = qm.get_angles();
             double prev_error = reference_x - angles.x;
-
-            if (pid.P == 0.0)
-                return new vector3();
 
             while (current_periods_amount < periods_amount)
             {
@@ -88,6 +88,7 @@ namespace quadcopter_research
 
             periods[0] = periods.Sum() / periods.Count();
             period = periods.Sum() / periods.Count();
+            //period = current_period / periods_amount;
 
             apply_coef();
 

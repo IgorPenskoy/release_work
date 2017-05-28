@@ -70,6 +70,7 @@ namespace quadcopter_research
         private double equilibrium_thrust;
 
         private double random_effect;
+        private double thrust;
 
         Random rand;
 
@@ -129,8 +130,7 @@ namespace quadcopter_research
             Jzz = 2 * mass_frame * (Math.Pow(radius, 2)) / 5 + 4 * Math.Pow(arm_length, 2) * mass_engine;
             mass = mass_frame + 4 * mass_engine;
             equilibrium_thrust = mass * g / (4 * k);
-            u1 = u2 = u3 = u4 = equilibrium_thrust;
-
+            thrust = equilibrium_thrust;
             random_effect = angle_to_radian(random_effect_in);
         }
 
@@ -189,7 +189,7 @@ namespace quadcopter_research
 
         private void update_forces(double phi_effect, double theta_effect, double psi_effect)
         {
-            u1 = u2 = u3 = u4 = equilibrium_thrust;
+            u1 = u2 = u3 = u4 = thrust;
             u1 += -theta_effect - psi_effect;
             u2 += -phi_effect + psi_effect;
             u3 += theta_effect - psi_effect;
@@ -203,11 +203,11 @@ namespace quadcopter_research
 
         public void update(double phi_effect, double theta_effect, double psi_effect)
         {
+            update_forces(phi_effect, theta_effect, psi_effect);
             update_speed();
             update_coordinates();
             update_angular_speed();
             update_angles();
-            update_forces(phi_effect, theta_effect, psi_effect);
         }
     }
 }

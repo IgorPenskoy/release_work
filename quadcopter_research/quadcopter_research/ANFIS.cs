@@ -95,8 +95,6 @@ namespace quadcopter_research
 
             double error = 0;
 
-
-
             learningDataset = learningDataset.OrderBy(item => rand.Next()).ToList();
 
             initialize();

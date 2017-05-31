@@ -26,7 +26,7 @@ namespace quadcopter_research
             form_renderer.Show(dockPanel_Main, DockState.DockRight);
 
             main_form form_data = new main_form();
-            form_data.Show(dockPanel_Main, DockState.DockLeft);
+            form_data.Show(dockPanel_Main, DockState.Document);
         }
     }
 }

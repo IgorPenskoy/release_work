@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series25 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series26 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series27 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea19 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend19 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series55 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series56 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series57 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea20 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend20 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series58 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series59 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series60 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea21 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend21 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series61 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series62 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series63 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.start_button = new System.Windows.Forms.Button();
             this.stop_button = new System.Windows.Forms.Button();
             this.continue_button = new System.Windows.Forms.Button();
@@ -51,8 +51,6 @@
             this.main_timer = new System.Windows.Forms.Timer(this.components);
             this.main_time_label_text = new System.Windows.Forms.Label();
             this.main_time_label = new System.Windows.Forms.Label();
-            this.reference_label = new System.Windows.Forms.Label();
-            this.inital_state_label = new System.Windows.Forms.Label();
             this.z_reference_label = new System.Windows.Forms.Label();
             this.y_reference_label = new System.Windows.Forms.Label();
             this.x_reference_label = new System.Windows.Forms.Label();
@@ -147,9 +145,6 @@
             this.z_P_edit = new System.Windows.Forms.NumericUpDown();
             this.z_P_label = new System.Windows.Forms.Label();
             this.z_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.dt_label = new System.Windows.Forms.Label();
-            this.dt_box = new System.Windows.Forms.ComboBox();
-            this.quadcopter_label = new System.Windows.Forms.Label();
             this.mass_frame_edit = new System.Windows.Forms.NumericUpDown();
             this.mass_frame_label = new System.Windows.Forms.Label();
             this.radius_edit = new System.Windows.Forms.NumericUpDown();
@@ -162,7 +157,6 @@
             this.end_time_label = new System.Windows.Forms.Label();
             this.random_effect_check = new System.Windows.Forms.CheckBox();
             this.random_effect_edit = new System.Windows.Forms.NumericUpDown();
-            this.learn_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.x_reference_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.y_reference_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.z_reference_edit)).BeginInit();
@@ -204,7 +198,7 @@
             // 
             // start_button
             // 
-            this.start_button.Location = new System.Drawing.Point(81, 557);
+            this.start_button.Location = new System.Drawing.Point(583, 8);
             this.start_button.Name = "start_button";
             this.start_button.Size = new System.Drawing.Size(120, 30);
             this.start_button.TabIndex = 0;
@@ -215,7 +209,7 @@
             // stop_button
             // 
             this.stop_button.Enabled = false;
-            this.stop_button.Location = new System.Drawing.Point(81, 593);
+            this.stop_button.Location = new System.Drawing.Point(583, 39);
             this.stop_button.Name = "stop_button";
             this.stop_button.Size = new System.Drawing.Size(120, 30);
             this.stop_button.TabIndex = 1;
@@ -226,7 +220,7 @@
             // continue_button
             // 
             this.continue_button.Enabled = false;
-            this.continue_button.Location = new System.Drawing.Point(207, 557);
+            this.continue_button.Location = new System.Drawing.Point(584, 72);
             this.continue_button.Name = "continue_button";
             this.continue_button.Size = new System.Drawing.Size(120, 30);
             this.continue_button.TabIndex = 2;
@@ -237,7 +231,7 @@
             // pause_button
             // 
             this.pause_button.Enabled = false;
-            this.pause_button.Location = new System.Drawing.Point(207, 593);
+            this.pause_button.Location = new System.Drawing.Point(583, 106);
             this.pause_button.Name = "pause_button";
             this.pause_button.Size = new System.Drawing.Size(120, 30);
             this.pause_button.TabIndex = 3;
@@ -253,7 +247,7 @@
             // main_time_label_text
             // 
             this.main_time_label_text.AutoSize = true;
-            this.main_time_label_text.Location = new System.Drawing.Point(101, 531);
+            this.main_time_label_text.Location = new System.Drawing.Point(15, 157);
             this.main_time_label_text.Name = "main_time_label_text";
             this.main_time_label_text.Size = new System.Drawing.Size(105, 13);
             this.main_time_label_text.TabIndex = 4;
@@ -262,34 +256,16 @@
             // main_time_label
             // 
             this.main_time_label.AutoSize = true;
-            this.main_time_label.Location = new System.Drawing.Point(264, 531);
+            this.main_time_label.Location = new System.Drawing.Point(126, 157);
             this.main_time_label.Name = "main_time_label";
             this.main_time_label.Size = new System.Drawing.Size(13, 13);
             this.main_time_label.TabIndex = 5;
             this.main_time_label.Text = "0";
             // 
-            // reference_label
-            // 
-            this.reference_label.AutoSize = true;
-            this.reference_label.Location = new System.Drawing.Point(12, 166);
-            this.reference_label.Name = "reference_label";
-            this.reference_label.Size = new System.Drawing.Size(176, 13);
-            this.reference_label.TabIndex = 6;
-            this.reference_label.Text = "Требуемое положение (градусы):";
-            // 
-            // inital_state_label
-            // 
-            this.inital_state_label.AutoSize = true;
-            this.inital_state_label.Location = new System.Drawing.Point(12, 274);
-            this.inital_state_label.Name = "inital_state_label";
-            this.inital_state_label.Size = new System.Drawing.Size(169, 13);
-            this.inital_state_label.TabIndex = 7;
-            this.inital_state_label.Text = "Исходное положение (градусы):";
-            // 
             // z_reference_label
             // 
             this.z_reference_label.AutoSize = true;
-            this.z_reference_label.Location = new System.Drawing.Point(99, 242);
+            this.z_reference_label.Location = new System.Drawing.Point(328, 56);
             this.z_reference_label.Name = "z_reference_label";
             this.z_reference_label.Size = new System.Drawing.Size(162, 13);
             this.z_reference_label.TabIndex = 8;
@@ -298,7 +274,7 @@
             // y_reference_label
             // 
             this.y_reference_label.AutoSize = true;
-            this.y_reference_label.Location = new System.Drawing.Point(99, 220);
+            this.y_reference_label.Location = new System.Drawing.Point(328, 34);
             this.y_reference_label.Name = "y_reference_label";
             this.y_reference_label.Size = new System.Drawing.Size(154, 13);
             this.y_reference_label.TabIndex = 9;
@@ -307,7 +283,7 @@
             // x_reference_label
             // 
             this.x_reference_label.AutoSize = true;
-            this.x_reference_label.Location = new System.Drawing.Point(99, 197);
+            this.x_reference_label.Location = new System.Drawing.Point(328, 11);
             this.x_reference_label.Name = "x_reference_label";
             this.x_reference_label.Size = new System.Drawing.Size(142, 13);
             this.x_reference_label.TabIndex = 10;
@@ -316,7 +292,7 @@
             // x_initial_label
             // 
             this.x_initial_label.AutoSize = true;
-            this.x_initial_label.Location = new System.Drawing.Point(106, 299);
+            this.x_initial_label.Location = new System.Drawing.Point(335, 82);
             this.x_initial_label.Name = "x_initial_label";
             this.x_initial_label.Size = new System.Drawing.Size(135, 13);
             this.x_initial_label.TabIndex = 13;
@@ -325,7 +301,7 @@
             // y_initial_label
             // 
             this.y_initial_label.AutoSize = true;
-            this.y_initial_label.Location = new System.Drawing.Point(106, 322);
+            this.y_initial_label.Location = new System.Drawing.Point(335, 105);
             this.y_initial_label.Name = "y_initial_label";
             this.y_initial_label.Size = new System.Drawing.Size(147, 13);
             this.y_initial_label.TabIndex = 12;
@@ -334,7 +310,7 @@
             // z_initial_label
             // 
             this.z_initial_label.AutoSize = true;
-            this.z_initial_label.Location = new System.Drawing.Point(106, 344);
+            this.z_initial_label.Location = new System.Drawing.Point(335, 127);
             this.z_initial_label.Name = "z_initial_label";
             this.z_initial_label.Size = new System.Drawing.Size(155, 13);
             this.z_initial_label.TabIndex = 11;
@@ -343,7 +319,7 @@
             // x_reference_edit
             // 
             this.x_reference_edit.DecimalPlaces = 2;
-            this.x_reference_edit.Location = new System.Drawing.Point(267, 195);
+            this.x_reference_edit.Location = new System.Drawing.Point(496, 9);
             this.x_reference_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -363,7 +339,7 @@
             // y_reference_edit
             // 
             this.y_reference_edit.DecimalPlaces = 2;
-            this.y_reference_edit.Location = new System.Drawing.Point(267, 218);
+            this.y_reference_edit.Location = new System.Drawing.Point(496, 32);
             this.y_reference_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -383,7 +359,7 @@
             // z_reference_edit
             // 
             this.z_reference_edit.DecimalPlaces = 2;
-            this.z_reference_edit.Location = new System.Drawing.Point(267, 240);
+            this.z_reference_edit.Location = new System.Drawing.Point(496, 54);
             this.z_reference_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -403,7 +379,7 @@
             // z_initial_edit
             // 
             this.z_initial_edit.DecimalPlaces = 2;
-            this.z_initial_edit.Location = new System.Drawing.Point(267, 342);
+            this.z_initial_edit.Location = new System.Drawing.Point(496, 125);
             this.z_initial_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -423,7 +399,7 @@
             // y_initial_edit
             // 
             this.y_initial_edit.DecimalPlaces = 2;
-            this.y_initial_edit.Location = new System.Drawing.Point(267, 320);
+            this.y_initial_edit.Location = new System.Drawing.Point(496, 103);
             this.y_initial_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -443,7 +419,7 @@
             // x_initial_edit
             // 
             this.x_initial_edit.DecimalPlaces = 2;
-            this.x_initial_edit.Location = new System.Drawing.Point(267, 297);
+            this.x_initial_edit.Location = new System.Drawing.Point(496, 77);
             this.x_initial_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -470,10 +446,10 @@
             this.control_process_tabs.Controls.Add(this.x_tab);
             this.control_process_tabs.Controls.Add(this.y_tab);
             this.control_process_tabs.Controls.Add(this.z_tab);
-            this.control_process_tabs.Location = new System.Drawing.Point(333, 12);
+            this.control_process_tabs.Location = new System.Drawing.Point(3, 186);
             this.control_process_tabs.Name = "control_process_tabs";
             this.control_process_tabs.SelectedIndex = 0;
-            this.control_process_tabs.Size = new System.Drawing.Size(1013, 715);
+            this.control_process_tabs.Size = new System.Drawing.Size(700, 540);
             this.control_process_tabs.TabIndex = 21;
             // 
             // x_tab
@@ -508,14 +484,14 @@
             this.x_tab.Location = new System.Drawing.Point(4, 22);
             this.x_tab.Name = "x_tab";
             this.x_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.x_tab.Size = new System.Drawing.Size(1005, 689);
+            this.x_tab.Size = new System.Drawing.Size(692, 514);
             this.x_tab.TabIndex = 0;
             this.x_tab.Text = "Угол крена (X)";
             // 
             // x_period_fis_label
             // 
             this.x_period_fis_label.AutoSize = true;
-            this.x_period_fis_label.Location = new System.Drawing.Point(873, 8);
+            this.x_period_fis_label.Location = new System.Drawing.Point(618, 55);
             this.x_period_fis_label.Name = "x_period_fis_label";
             this.x_period_fis_label.Size = new System.Drawing.Size(13, 13);
             this.x_period_fis_label.TabIndex = 88;
@@ -524,7 +500,7 @@
             // x_period_fis_label_text
             // 
             this.x_period_fis_label_text.AutoSize = true;
-            this.x_period_fis_label_text.Location = new System.Drawing.Point(621, 8);
+            this.x_period_fis_label_text.Location = new System.Drawing.Point(366, 55);
             this.x_period_fis_label_text.Name = "x_period_fis_label_text";
             this.x_period_fis_label_text.Size = new System.Drawing.Size(168, 13);
             this.x_period_fis_label_text.TabIndex = 87;
@@ -533,7 +509,7 @@
             // x_overshoot_fis_label
             // 
             this.x_overshoot_fis_label.AutoSize = true;
-            this.x_overshoot_fis_label.Location = new System.Drawing.Point(873, 61);
+            this.x_overshoot_fis_label.Location = new System.Drawing.Point(618, 92);
             this.x_overshoot_fis_label.Name = "x_overshoot_fis_label";
             this.x_overshoot_fis_label.Size = new System.Drawing.Size(13, 13);
             this.x_overshoot_fis_label.TabIndex = 86;
@@ -542,7 +518,7 @@
             // x_overshoot_fis_label_text
             // 
             this.x_overshoot_fis_label_text.AutoSize = true;
-            this.x_overshoot_fis_label_text.Location = new System.Drawing.Point(621, 61);
+            this.x_overshoot_fis_label_text.Location = new System.Drawing.Point(366, 92);
             this.x_overshoot_fis_label_text.Name = "x_overshoot_fis_label_text";
             this.x_overshoot_fis_label_text.Size = new System.Drawing.Size(195, 13);
             this.x_overshoot_fis_label_text.TabIndex = 85;
@@ -551,7 +527,7 @@
             // x_current_fis_label
             // 
             this.x_current_fis_label.AutoSize = true;
-            this.x_current_fis_label.Location = new System.Drawing.Point(873, 34);
+            this.x_current_fis_label.Location = new System.Drawing.Point(618, 73);
             this.x_current_fis_label.Name = "x_current_fis_label";
             this.x_current_fis_label.Size = new System.Drawing.Size(13, 13);
             this.x_current_fis_label.TabIndex = 84;
@@ -560,7 +536,7 @@
             // x_current_fis_label_text
             // 
             this.x_current_fis_label_text.AutoSize = true;
-            this.x_current_fis_label_text.Location = new System.Drawing.Point(621, 34);
+            this.x_current_fis_label_text.Location = new System.Drawing.Point(366, 73);
             this.x_current_fis_label_text.Name = "x_current_fis_label_text";
             this.x_current_fis_label_text.Size = new System.Drawing.Size(246, 13);
             this.x_current_fis_label_text.TabIndex = 83;
@@ -568,7 +544,7 @@
             // 
             // x_ziegler_button
             // 
-            this.x_ziegler_button.Location = new System.Drawing.Point(9, 85);
+            this.x_ziegler_button.Location = new System.Drawing.Point(6, 82);
             this.x_ziegler_button.Name = "x_ziegler_button";
             this.x_ziegler_button.Size = new System.Drawing.Size(354, 23);
             this.x_ziegler_button.TabIndex = 40;
@@ -579,7 +555,7 @@
             // x_max_integral_edit
             // 
             this.x_max_integral_edit.DecimalPlaces = 2;
-            this.x_max_integral_edit.Location = new System.Drawing.Point(303, 32);
+            this.x_max_integral_edit.Location = new System.Drawing.Point(300, 29);
             this.x_max_integral_edit.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -599,7 +575,7 @@
             // x_max_integral_label
             // 
             this.x_max_integral_label.AutoSize = true;
-            this.x_max_integral_label.Location = new System.Drawing.Point(95, 34);
+            this.x_max_integral_label.Location = new System.Drawing.Point(92, 31);
             this.x_max_integral_label.Name = "x_max_integral_label";
             this.x_max_integral_label.Size = new System.Drawing.Size(192, 13);
             this.x_max_integral_label.TabIndex = 38;
@@ -608,7 +584,7 @@
             // x_max_effect_edit
             // 
             this.x_max_effect_edit.DecimalPlaces = 2;
-            this.x_max_effect_edit.Location = new System.Drawing.Point(303, 6);
+            this.x_max_effect_edit.Location = new System.Drawing.Point(300, 3);
             this.x_max_effect_edit.MaximumSize = new System.Drawing.Size(60, 0);
             this.x_max_effect_edit.MinimumSize = new System.Drawing.Size(60, 0);
             this.x_max_effect_edit.Name = "x_max_effect_edit";
@@ -623,7 +599,7 @@
             // x_max_effect_label
             // 
             this.x_max_effect_label.AutoSize = true;
-            this.x_max_effect_label.Location = new System.Drawing.Point(95, 8);
+            this.x_max_effect_label.Location = new System.Drawing.Point(92, 5);
             this.x_max_effect_label.Name = "x_max_effect_label";
             this.x_max_effect_label.Size = new System.Drawing.Size(152, 13);
             this.x_max_effect_label.TabIndex = 36;
@@ -632,7 +608,7 @@
             // x_period_error_edit
             // 
             this.x_period_error_edit.DecimalPlaces = 2;
-            this.x_period_error_edit.Location = new System.Drawing.Point(303, 59);
+            this.x_period_error_edit.Location = new System.Drawing.Point(300, 56);
             this.x_period_error_edit.Maximum = new decimal(new int[] {
             1,
             0,
@@ -657,7 +633,7 @@
             // x_period_error_label
             // 
             this.x_period_error_label.AutoSize = true;
-            this.x_period_error_label.Location = new System.Drawing.Point(95, 61);
+            this.x_period_error_label.Location = new System.Drawing.Point(92, 58);
             this.x_period_error_label.Name = "x_period_error_label";
             this.x_period_error_label.Size = new System.Drawing.Size(202, 13);
             this.x_period_error_label.TabIndex = 34;
@@ -666,7 +642,7 @@
             // x_period_label
             // 
             this.x_period_label.AutoSize = true;
-            this.x_period_label.Location = new System.Drawing.Point(589, 8);
+            this.x_period_label.Location = new System.Drawing.Point(618, 3);
             this.x_period_label.Name = "x_period_label";
             this.x_period_label.Size = new System.Drawing.Size(13, 13);
             this.x_period_label.TabIndex = 33;
@@ -675,7 +651,7 @@
             // x_period_label_text
             // 
             this.x_period_label_text.AutoSize = true;
-            this.x_period_label_text.Location = new System.Drawing.Point(369, 8);
+            this.x_period_label_text.Location = new System.Drawing.Point(366, 3);
             this.x_period_label_text.Name = "x_period_label_text";
             this.x_period_label_text.Size = new System.Drawing.Size(136, 13);
             this.x_period_label_text.TabIndex = 32;
@@ -684,7 +660,7 @@
             // x_overshoot_label
             // 
             this.x_overshoot_label.AutoSize = true;
-            this.x_overshoot_label.Location = new System.Drawing.Point(589, 61);
+            this.x_overshoot_label.Location = new System.Drawing.Point(618, 36);
             this.x_overshoot_label.Name = "x_overshoot_label";
             this.x_overshoot_label.Size = new System.Drawing.Size(13, 13);
             this.x_overshoot_label.TabIndex = 31;
@@ -693,7 +669,7 @@
             // x_overshoot_label_text
             // 
             this.x_overshoot_label_text.AutoSize = true;
-            this.x_overshoot_label_text.Location = new System.Drawing.Point(369, 61);
+            this.x_overshoot_label_text.Location = new System.Drawing.Point(366, 38);
             this.x_overshoot_label_text.Name = "x_overshoot_label_text";
             this.x_overshoot_label_text.Size = new System.Drawing.Size(163, 13);
             this.x_overshoot_label_text.TabIndex = 30;
@@ -702,7 +678,7 @@
             // x_current_label
             // 
             this.x_current_label.AutoSize = true;
-            this.x_current_label.Location = new System.Drawing.Point(589, 34);
+            this.x_current_label.Location = new System.Drawing.Point(618, 17);
             this.x_current_label.Name = "x_current_label";
             this.x_current_label.Size = new System.Drawing.Size(13, 13);
             this.x_current_label.TabIndex = 29;
@@ -711,7 +687,7 @@
             // x_current_label_text
             // 
             this.x_current_label_text.AutoSize = true;
-            this.x_current_label_text.Location = new System.Drawing.Point(369, 34);
+            this.x_current_label_text.Location = new System.Drawing.Point(366, 19);
             this.x_current_label_text.Name = "x_current_label_text";
             this.x_current_label_text.Size = new System.Drawing.Size(214, 13);
             this.x_current_label_text.TabIndex = 28;
@@ -720,7 +696,7 @@
             // x_D_edit
             // 
             this.x_D_edit.DecimalPlaces = 2;
-            this.x_D_edit.Location = new System.Drawing.Point(29, 59);
+            this.x_D_edit.Location = new System.Drawing.Point(26, 56);
             this.x_D_edit.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -740,7 +716,7 @@
             // x_D_label
             // 
             this.x_D_label.AutoSize = true;
-            this.x_D_label.Location = new System.Drawing.Point(6, 61);
+            this.x_D_label.Location = new System.Drawing.Point(3, 58);
             this.x_D_label.Name = "x_D_label";
             this.x_D_label.Size = new System.Drawing.Size(19, 13);
             this.x_D_label.TabIndex = 26;
@@ -749,7 +725,7 @@
             // x_I_edit
             // 
             this.x_I_edit.DecimalPlaces = 2;
-            this.x_I_edit.Location = new System.Drawing.Point(29, 32);
+            this.x_I_edit.Location = new System.Drawing.Point(26, 29);
             this.x_I_edit.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -764,7 +740,7 @@
             // x_I_label
             // 
             this.x_I_label.AutoSize = true;
-            this.x_I_label.Location = new System.Drawing.Point(6, 34);
+            this.x_I_label.Location = new System.Drawing.Point(3, 31);
             this.x_I_label.Name = "x_I_label";
             this.x_I_label.Size = new System.Drawing.Size(18, 13);
             this.x_I_label.TabIndex = 24;
@@ -773,7 +749,7 @@
             // x_P_edit
             // 
             this.x_P_edit.DecimalPlaces = 2;
-            this.x_P_edit.Location = new System.Drawing.Point(29, 6);
+            this.x_P_edit.Location = new System.Drawing.Point(26, 3);
             this.x_P_edit.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -793,7 +769,7 @@
             // x_P_label
             // 
             this.x_P_label.AutoSize = true;
-            this.x_P_label.Location = new System.Drawing.Point(6, 8);
+            this.x_P_label.Location = new System.Drawing.Point(3, 5);
             this.x_P_label.Name = "x_P_label";
             this.x_P_label.Size = new System.Drawing.Size(18, 13);
             this.x_P_label.TabIndex = 22;
@@ -801,34 +777,34 @@
             // 
             // x_chart
             // 
-            chartArea7.Name = "ChartArea1";
-            this.x_chart.ChartAreas.Add(chartArea7);
-            legend7.Alignment = System.Drawing.StringAlignment.Center;
-            legend7.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend7.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend7.Name = "Legend1";
-            this.x_chart.Legends.Add(legend7);
-            this.x_chart.Location = new System.Drawing.Point(3, 114);
+            chartArea19.Name = "ChartArea1";
+            this.x_chart.ChartAreas.Add(chartArea19);
+            legend19.Alignment = System.Drawing.StringAlignment.Center;
+            legend19.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend19.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend19.Name = "Legend1";
+            this.x_chart.Legends.Add(legend19);
+            this.x_chart.Location = new System.Drawing.Point(6, 112);
             this.x_chart.Name = "x_chart";
-            series19.BorderWidth = 3;
-            series19.ChartArea = "ChartArea1";
-            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series19.Legend = "Legend1";
-            series19.Name = "Требуемое значение угла крена";
-            series20.BorderWidth = 3;
-            series20.ChartArea = "ChartArea1";
-            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series20.Legend = "Legend1";
-            series20.Name = "Текущее значение угла крена";
-            series21.BorderWidth = 3;
-            series21.ChartArea = "ChartArea1";
-            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series21.Legend = "Legend1";
-            series21.Name = "Текущее значение угла крена (ННС)";
-            this.x_chart.Series.Add(series19);
-            this.x_chart.Series.Add(series20);
-            this.x_chart.Series.Add(series21);
-            this.x_chart.Size = new System.Drawing.Size(940, 570);
+            series55.BorderWidth = 3;
+            series55.ChartArea = "ChartArea1";
+            series55.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series55.Legend = "Legend1";
+            series55.Name = "Требуемое значение угла крена";
+            series56.BorderWidth = 3;
+            series56.ChartArea = "ChartArea1";
+            series56.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series56.Legend = "Legend1";
+            series56.Name = "Текущее значение угла крена";
+            series57.BorderWidth = 3;
+            series57.ChartArea = "ChartArea1";
+            series57.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series57.Legend = "Legend1";
+            series57.Name = "Текущее значение угла крена (ННС)";
+            this.x_chart.Series.Add(series55);
+            this.x_chart.Series.Add(series56);
+            this.x_chart.Series.Add(series57);
+            this.x_chart.Size = new System.Drawing.Size(680, 400);
             this.x_chart.TabIndex = 21;
             this.x_chart.Text = "Угол вокруг оси X";
             // 
@@ -864,7 +840,7 @@
             this.y_tab.Location = new System.Drawing.Point(4, 22);
             this.y_tab.Name = "y_tab";
             this.y_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.y_tab.Size = new System.Drawing.Size(1005, 689);
+            this.y_tab.Size = new System.Drawing.Size(692, 551);
             this.y_tab.TabIndex = 1;
             this.y_tab.Text = "Угол тангажа (Y)";
             // 
@@ -1157,33 +1133,33 @@
             // 
             // y_chart
             // 
-            chartArea8.Name = "ChartArea1";
-            this.y_chart.ChartAreas.Add(chartArea8);
-            legend8.Alignment = System.Drawing.StringAlignment.Center;
-            legend8.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend8.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend8.Name = "Legend1";
-            this.y_chart.Legends.Add(legend8);
+            chartArea20.Name = "ChartArea1";
+            this.y_chart.ChartAreas.Add(chartArea20);
+            legend20.Alignment = System.Drawing.StringAlignment.Center;
+            legend20.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend20.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend20.Name = "Legend1";
+            this.y_chart.Legends.Add(legend20);
             this.y_chart.Location = new System.Drawing.Point(3, 114);
             this.y_chart.Name = "y_chart";
-            series22.BorderWidth = 3;
-            series22.ChartArea = "ChartArea1";
-            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series22.Legend = "Legend1";
-            series22.Name = "Требуемое значение угла тангажа";
-            series23.BorderWidth = 3;
-            series23.ChartArea = "ChartArea1";
-            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series23.Legend = "Legend1";
-            series23.Name = "Текущее значение угла тангажа";
-            series24.BorderWidth = 3;
-            series24.ChartArea = "ChartArea1";
-            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series24.Legend = "Legend1";
-            series24.Name = "Текущее значение угла тангажа (ННС)";
-            this.y_chart.Series.Add(series22);
-            this.y_chart.Series.Add(series23);
-            this.y_chart.Series.Add(series24);
+            series58.BorderWidth = 3;
+            series58.ChartArea = "ChartArea1";
+            series58.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series58.Legend = "Legend1";
+            series58.Name = "Требуемое значение угла тангажа";
+            series59.BorderWidth = 3;
+            series59.ChartArea = "ChartArea1";
+            series59.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series59.Legend = "Legend1";
+            series59.Name = "Текущее значение угла тангажа";
+            series60.BorderWidth = 3;
+            series60.ChartArea = "ChartArea1";
+            series60.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series60.Legend = "Legend1";
+            series60.Name = "Текущее значение угла тангажа (ННС)";
+            this.y_chart.Series.Add(series58);
+            this.y_chart.Series.Add(series59);
+            this.y_chart.Series.Add(series60);
             this.y_chart.Size = new System.Drawing.Size(940, 570);
             this.y_chart.TabIndex = 22;
             this.y_chart.Text = "Угол вокруг оси X";
@@ -1219,7 +1195,7 @@
             this.z_tab.Controls.Add(this.z_chart);
             this.z_tab.Location = new System.Drawing.Point(4, 22);
             this.z_tab.Name = "z_tab";
-            this.z_tab.Size = new System.Drawing.Size(1005, 689);
+            this.z_tab.Size = new System.Drawing.Size(692, 551);
             this.z_tab.TabIndex = 2;
             this.z_tab.Text = "Угол рысканья (Z)";
             // 
@@ -1512,72 +1488,41 @@
             // 
             // z_chart
             // 
-            chartArea9.Name = "ChartArea1";
-            this.z_chart.ChartAreas.Add(chartArea9);
-            legend9.Alignment = System.Drawing.StringAlignment.Center;
-            legend9.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend9.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend9.Name = "Legend1";
-            this.z_chart.Legends.Add(legend9);
+            chartArea21.Name = "ChartArea1";
+            this.z_chart.ChartAreas.Add(chartArea21);
+            legend21.Alignment = System.Drawing.StringAlignment.Center;
+            legend21.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend21.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend21.Name = "Legend1";
+            this.z_chart.Legends.Add(legend21);
             this.z_chart.Location = new System.Drawing.Point(3, 114);
             this.z_chart.Name = "z_chart";
-            series25.BorderWidth = 3;
-            series25.ChartArea = "ChartArea1";
-            series25.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series25.Legend = "Legend1";
-            series25.Name = "Требуемое значение угла рысканья";
-            series26.BorderWidth = 3;
-            series26.ChartArea = "ChartArea1";
-            series26.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series26.Legend = "Legend1";
-            series26.Name = "Текущее значение угла рысканья";
-            series27.BorderWidth = 3;
-            series27.ChartArea = "ChartArea1";
-            series27.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series27.Legend = "Legend1";
-            series27.Name = "Текущее значение угла рысканья (ННС)";
-            this.z_chart.Series.Add(series25);
-            this.z_chart.Series.Add(series26);
-            this.z_chart.Series.Add(series27);
+            series61.BorderWidth = 3;
+            series61.ChartArea = "ChartArea1";
+            series61.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series61.Legend = "Legend1";
+            series61.Name = "Требуемое значение угла рысканья";
+            series62.BorderWidth = 3;
+            series62.ChartArea = "ChartArea1";
+            series62.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series62.Legend = "Legend1";
+            series62.Name = "Текущее значение угла рысканья";
+            series63.BorderWidth = 3;
+            series63.ChartArea = "ChartArea1";
+            series63.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series63.Legend = "Legend1";
+            series63.Name = "Текущее значение угла рысканья (ННС)";
+            this.z_chart.Series.Add(series61);
+            this.z_chart.Series.Add(series62);
+            this.z_chart.Series.Add(series63);
             this.z_chart.Size = new System.Drawing.Size(940, 570);
             this.z_chart.TabIndex = 22;
             this.z_chart.Text = "Угол вокруг оси X";
             // 
-            // dt_label
-            // 
-            this.dt_label.AutoSize = true;
-            this.dt_label.Location = new System.Drawing.Point(101, 500);
-            this.dt_label.Name = "dt_label";
-            this.dt_label.Size = new System.Drawing.Size(160, 13);
-            this.dt_label.TabIndex = 22;
-            this.dt_label.Text = "Дискретизация времени (мс):";
-            // 
-            // dt_box
-            // 
-            this.dt_box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dt_box.FormattingEnabled = true;
-            this.dt_box.Items.AddRange(new object[] {
-            "20",
-            "35",
-            "50"});
-            this.dt_box.Location = new System.Drawing.Point(267, 497);
-            this.dt_box.Name = "dt_box";
-            this.dt_box.Size = new System.Drawing.Size(60, 21);
-            this.dt_box.TabIndex = 23;
-            // 
-            // quadcopter_label
-            // 
-            this.quadcopter_label.AutoSize = true;
-            this.quadcopter_label.Location = new System.Drawing.Point(12, 12);
-            this.quadcopter_label.Name = "quadcopter_label";
-            this.quadcopter_label.Size = new System.Drawing.Size(149, 13);
-            this.quadcopter_label.TabIndex = 24;
-            this.quadcopter_label.Text = "Параметры квадрокоптера:";
-            // 
             // mass_frame_edit
             // 
             this.mass_frame_edit.DecimalPlaces = 2;
-            this.mass_frame_edit.Location = new System.Drawing.Point(267, 40);
+            this.mass_frame_edit.Location = new System.Drawing.Point(263, 7);
             this.mass_frame_edit.Maximum = new decimal(new int[] {
             5,
             0,
@@ -1602,7 +1547,7 @@
             // mass_frame_label
             // 
             this.mass_frame_label.AutoSize = true;
-            this.mass_frame_label.Location = new System.Drawing.Point(16, 42);
+            this.mass_frame_label.Location = new System.Drawing.Point(12, 9);
             this.mass_frame_label.Name = "mass_frame_label";
             this.mass_frame_label.Size = new System.Drawing.Size(193, 13);
             this.mass_frame_label.TabIndex = 25;
@@ -1611,7 +1556,7 @@
             // radius_edit
             // 
             this.radius_edit.DecimalPlaces = 2;
-            this.radius_edit.Location = new System.Drawing.Point(267, 117);
+            this.radius_edit.Location = new System.Drawing.Point(263, 80);
             this.radius_edit.Maximum = new decimal(new int[] {
             5,
             0,
@@ -1636,7 +1581,7 @@
             // radius_label
             // 
             this.radius_label.AutoSize = true;
-            this.radius_label.Location = new System.Drawing.Point(15, 119);
+            this.radius_label.Location = new System.Drawing.Point(11, 82);
             this.radius_label.Name = "radius_label";
             this.radius_label.Size = new System.Drawing.Size(246, 13);
             this.radius_label.TabIndex = 27;
@@ -1645,7 +1590,7 @@
             // mass_engine_edit
             // 
             this.mass_engine_edit.DecimalPlaces = 2;
-            this.mass_engine_edit.Location = new System.Drawing.Point(267, 66);
+            this.mass_engine_edit.Location = new System.Drawing.Point(263, 30);
             this.mass_engine_edit.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1670,7 +1615,7 @@
             // mass_engine_label
             // 
             this.mass_engine_label.AutoSize = true;
-            this.mass_engine_label.Location = new System.Drawing.Point(16, 68);
+            this.mass_engine_label.Location = new System.Drawing.Point(12, 32);
             this.mass_engine_label.Name = "mass_engine_label";
             this.mass_engine_label.Size = new System.Drawing.Size(118, 13);
             this.mass_engine_label.TabIndex = 29;
@@ -1679,7 +1624,7 @@
             // arm_length_edit
             // 
             this.arm_length_edit.DecimalPlaces = 2;
-            this.arm_length_edit.Location = new System.Drawing.Point(267, 91);
+            this.arm_length_edit.Location = new System.Drawing.Point(263, 55);
             this.arm_length_edit.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1704,7 +1649,7 @@
             // arm_length_label
             // 
             this.arm_length_label.AutoSize = true;
-            this.arm_length_label.Location = new System.Drawing.Point(16, 93);
+            this.arm_length_label.Location = new System.Drawing.Point(12, 57);
             this.arm_length_label.Name = "arm_length_label";
             this.arm_length_label.Size = new System.Drawing.Size(239, 13);
             this.arm_length_label.TabIndex = 31;
@@ -1713,7 +1658,7 @@
             // end_time_edit
             // 
             this.end_time_edit.DecimalPlaces = 2;
-            this.end_time_edit.Location = new System.Drawing.Point(267, 471);
+            this.end_time_edit.Location = new System.Drawing.Point(263, 129);
             this.end_time_edit.Maximum = new decimal(new int[] {
             300,
             0,
@@ -1738,7 +1683,7 @@
             // end_time_label
             // 
             this.end_time_label.AutoSize = true;
-            this.end_time_label.Location = new System.Drawing.Point(101, 473);
+            this.end_time_label.Location = new System.Drawing.Point(12, 131);
             this.end_time_label.Name = "end_time_label";
             this.end_time_label.Size = new System.Drawing.Size(108, 13);
             this.end_time_label.TabIndex = 33;
@@ -1747,11 +1692,11 @@
             // random_effect_check
             // 
             this.random_effect_check.AutoSize = true;
-            this.random_effect_check.Location = new System.Drawing.Point(8, 394);
+            this.random_effect_check.Location = new System.Drawing.Point(14, 107);
             this.random_effect_check.Name = "random_effect_check";
-            this.random_effect_check.Size = new System.Drawing.Size(253, 17);
+            this.random_effect_check.Size = new System.Drawing.Size(202, 17);
             this.random_effect_check.TabIndex = 35;
-            this.random_effect_check.Text = "Включить случайные возмущения (градусы):";
+            this.random_effect_check.Text = "Случайные возмущения (градусы):";
             this.random_effect_check.UseVisualStyleBackColor = true;
             this.random_effect_check.CheckedChanged += new System.EventHandler(this.random_effect_check_CheckedChanged);
             // 
@@ -1759,7 +1704,7 @@
             // 
             this.random_effect_edit.DecimalPlaces = 2;
             this.random_effect_edit.Enabled = false;
-            this.random_effect_edit.Location = new System.Drawing.Point(267, 393);
+            this.random_effect_edit.Location = new System.Drawing.Point(263, 106);
             this.random_effect_edit.Maximum = new decimal(new int[] {
             5,
             0,
@@ -1781,21 +1726,11 @@
             0,
             0});
             // 
-            // learn_button
-            // 
-            this.learn_button.Location = new System.Drawing.Point(81, 629);
-            this.learn_button.Name = "learn_button";
-            this.learn_button.Size = new System.Drawing.Size(246, 30);
-            this.learn_button.TabIndex = 89;
-            this.learn_button.Text = "Обучить нейро-нечеткую сеть";
-            this.learn_button.UseVisualStyleBackColor = true;
-            // 
             // main_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1350, 729);
-            this.Controls.Add(this.learn_button);
+            this.ClientSize = new System.Drawing.Size(704, 729);
             this.Controls.Add(this.random_effect_edit);
             this.Controls.Add(this.random_effect_check);
             this.Controls.Add(this.end_time_edit);
@@ -1808,9 +1743,6 @@
             this.Controls.Add(this.radius_label);
             this.Controls.Add(this.mass_frame_edit);
             this.Controls.Add(this.mass_frame_label);
-            this.Controls.Add(this.quadcopter_label);
-            this.Controls.Add(this.dt_box);
-            this.Controls.Add(this.dt_label);
             this.Controls.Add(this.control_process_tabs);
             this.Controls.Add(this.z_initial_edit);
             this.Controls.Add(this.y_initial_edit);
@@ -1824,8 +1756,6 @@
             this.Controls.Add(this.x_reference_label);
             this.Controls.Add(this.y_reference_label);
             this.Controls.Add(this.z_reference_label);
-            this.Controls.Add(this.inital_state_label);
-            this.Controls.Add(this.reference_label);
             this.Controls.Add(this.main_time_label);
             this.Controls.Add(this.main_time_label_text);
             this.Controls.Add(this.pause_button);
@@ -1888,8 +1818,6 @@
         private System.Windows.Forms.Timer main_timer;
         private System.Windows.Forms.Label main_time_label_text;
         private System.Windows.Forms.Label main_time_label;
-        private System.Windows.Forms.Label reference_label;
-        private System.Windows.Forms.Label inital_state_label;
         private System.Windows.Forms.Label z_reference_label;
         private System.Windows.Forms.Label y_reference_label;
         private System.Windows.Forms.Label x_reference_label;
@@ -1927,10 +1855,7 @@
         private System.Windows.Forms.Label x_max_integral_label;
         private System.Windows.Forms.NumericUpDown x_max_effect_edit;
         private System.Windows.Forms.Label x_max_effect_label;
-        private System.Windows.Forms.Label dt_label;
-        private System.Windows.Forms.ComboBox dt_box;
         private System.Windows.Forms.Button x_ziegler_button;
-        private System.Windows.Forms.Label quadcopter_label;
         private System.Windows.Forms.NumericUpDown mass_frame_edit;
         private System.Windows.Forms.Label mass_frame_label;
         private System.Windows.Forms.NumericUpDown radius_edit;
@@ -1999,7 +1924,6 @@
         private System.Windows.Forms.Label z_current_fis_label_text;
         private System.Windows.Forms.CheckBox random_effect_check;
         private System.Windows.Forms.NumericUpDown random_effect_edit;
-        private System.Windows.Forms.Button learn_button;
     }
 }
 

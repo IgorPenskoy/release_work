@@ -9,9 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 
+using WeifenLuo.WinFormsUI.Docking;
+
 namespace quadcopter_research
 {
-    public partial class main_form : Form
+    public partial class main_form : DockContent
     {
         private const double max_angle_degree = 45.0;
         private const double chart_time_amount = 10.0;
@@ -20,6 +22,7 @@ namespace quadcopter_research
         private const double axis_y_interval = 5.0;
         private const string chart_label_style_format = "#.";
         private const string label_style_format = "0.00";
+        private const int dt_const = 50;
 
         private quadcopter_model qm;
         private quadcopter_model qm_fis;
@@ -143,7 +146,6 @@ namespace quadcopter_research
             z_initial_edit.Minimum = (decimal)-max_angle_degree;
             z_initial_edit.Maximum = (decimal)max_angle_degree;
 
-            dt_box.SelectedIndex = 0;
             x_chart.ChartAreas[0].AxisY.Minimum = -max_angle_degree;
             x_chart.ChartAreas[0].AxisY.Maximum = max_angle_degree;
             x_chart.ChartAreas[0].AxisY.Interval = axis_y_interval;
@@ -164,7 +166,7 @@ namespace quadcopter_research
 
         private void start_button_Click(object sender, EventArgs e)
         {
-            main_timer.Interval = int.Parse(dt_box.SelectedItem.ToString());
+            main_timer.Interval = dt_const;
 
             i_sim = 0;
 
@@ -175,7 +177,6 @@ namespace quadcopter_research
 
             random_effect_check.Enabled = false;
 
-            dt_box.Enabled = false;
             end_time_edit.Enabled = false;
 
             start_button.Enabled = false;
@@ -212,8 +213,6 @@ namespace quadcopter_research
             z_period_error_edit.Enabled = false;
             z_ziegler_button.Enabled = false;
 
-            learn_button.Enabled = false;
-
             simulation();
 
             main_stopwatch.Start();
@@ -233,7 +232,6 @@ namespace quadcopter_research
 
             random_effect_check.Enabled = true;
 
-            dt_box.Enabled = true;
             end_time_edit.Enabled = true;
 
             start_button.Enabled = true;
@@ -303,8 +301,6 @@ namespace quadcopter_research
             z_chart.Series[2].Points.Clear();
             z_chart.ChartAreas[0].AxisX.Minimum = 0;
             z_chart.ChartAreas[0].AxisX.Maximum = chart_time_amount;
-
-            learn_button.Enabled = true;
         }
 
         private void stop_button_Click(object sender, EventArgs e)
@@ -575,7 +571,7 @@ namespace quadcopter_research
 
         private void x_ziegler_button_Click(object sender, EventArgs e)
         {
-            double dt = int.Parse(dt_box.SelectedItem.ToString()) / timer_interval_divide;
+            double dt = (double)dt_const / timer_interval_divide;
             PID pid = new PID(dt, (double)x_max_effect_edit.Value, (double)x_max_integral_edit.Value, (double)x_P_edit.Value, 0.0, 0.0);
             quadcopter_model qm = new quadcopter_model((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt);
             zn.init(pid, qm, dt);
@@ -587,7 +583,7 @@ namespace quadcopter_research
 
         private void y_ziegler_button_Click(object sender, EventArgs e)
         {
-            double dt = int.Parse(dt_box.SelectedItem.ToString()) / timer_interval_divide;
+            double dt = (double)dt_const / timer_interval_divide;
             PID pid = new PID(dt, (double)y_max_effect_edit.Value, (double)y_max_integral_edit.Value, (double)y_P_edit.Value, 0.0, 0.0);
             quadcopter_model qm = new quadcopter_model((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt);
             zn.init(pid, qm, dt);
@@ -599,7 +595,7 @@ namespace quadcopter_research
 
         private void z_ziegler_button_Click(object sender, EventArgs e)
         {
-            double dt = int.Parse(dt_box.SelectedItem.ToString()) / timer_interval_divide;
+            double dt = (double)dt_const / timer_interval_divide;
             PID pid = new PID(dt, (double)z_max_effect_edit.Value, (double)z_max_integral_edit.Value, (double)z_P_edit.Value, 0.0, 0.0);
             quadcopter_model qm = new quadcopter_model((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt);
             zn.init(pid, qm, dt);

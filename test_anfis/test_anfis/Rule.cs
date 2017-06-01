@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace quadcopter_research
+namespace test_anfis
 {
     class Rule
     {
@@ -20,22 +20,6 @@ namespace quadcopter_research
             this.mfB = mfB;
             this.norm = norm;
             this.conclusion = conclusion;
-        }
-
-        public Rule(string parameters)
-        {
-            parameters = parameters.Trim();
-
-            string[] pr = parameters.Split(' ');
-
-            mfA = new MembershipFunction(double.Parse(pr[0]), double.Parse(pr[1]), double.Parse(pr[2]));
-            mfB = new MembershipFunction(double.Parse(pr[3]), double.Parse(pr[4]), double.Parse(pr[5]));
-
-            conclusion = new Conclusion(double.Parse(pr[6]), 
-                                        double.Parse(pr[7]), 
-                                        double.Parse(pr[8]));
-
-            norm = new TNorm();
         }
 
         public double conclude(double x, double y)

@@ -8,13 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
+
+using System.Security.Permissions;
+using System.Runtime.InteropServices;
 
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace quadcopter_research
 {
-    public partial class main_form : DockContent
+    [ComVisible(true)]
+    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+    public partial class main_form : Form
     {
+        private string _currentDirectory = string.Empty;
+        private string _pathToUnityAssets = "/Core/Unity/_RENDERER.html";
+
         private const double max_angle_degree = 45.0;
         private const double chart_time_amount = 10.0;
         private const double timer_interval_divide = 1000.0;
@@ -117,6 +126,9 @@ namespace quadcopter_research
         public main_form()
         {
             InitializeComponent();
+
+            _currentDirectory = Directory.GetCurrentDirectory();
+            webBrowser1.Url = new Uri(string.Format("{0}{1}", _currentDirectory, _pathToUnityAssets));
 
             main_stopwatch = new Stopwatch();
             qm = new quadcopter_model();
@@ -380,9 +392,13 @@ namespace quadcopter_research
             theta_PID.init(dt, (double)y_max_effect_edit.Value, (double)y_max_integral_edit.Value, (double)y_P_edit.Value, (double)y_I_edit.Value, (double)y_D_edit.Value);
             psi_PID.init(dt, (double)z_max_effect_edit.Value, (double)z_max_integral_edit.Value, (double)z_P_edit.Value, (double)z_I_edit.Value, (double)z_D_edit.Value);
 
-            phi_PID_fis.init(dt, (double)x_max_effect_edit.Value, (double)x_max_integral_edit.Value, (double)x_P_edit.Value, (double)x_I_edit.Value, (double)x_D_edit.Value);
-            theta_PID_fis.init(dt, (double)y_max_effect_edit.Value, (double)y_max_integral_edit.Value, (double)y_P_edit.Value, (double)y_I_edit.Value, (double)y_D_edit.Value);
-            psi_PID_fis.init(dt, (double)z_max_effect_edit.Value, (double)z_max_integral_edit.Value, (double)z_P_edit.Value, (double)z_I_edit.Value, (double)z_D_edit.Value);
+            ANFIS P_fis = new ANFIS(new Random(), "P.txt");
+            ANFIS I_fis = new ANFIS(new Random(), "I.txt");
+            ANFIS D_fis = new ANFIS(new Random(), "D.txt");
+
+            phi_PID_fis.init(P_fis, I_fis, D_fis, dt, (double)x_max_effect_edit.Value, (double)x_max_integral_edit.Value);
+            theta_PID_fis.init(P_fis, I_fis, D_fis, dt, (double)y_max_effect_edit.Value, (double)y_max_integral_edit.Value);
+            psi_PID_fis.init(P_fis, I_fis, D_fis, dt, (double)z_max_effect_edit.Value, (double)z_max_integral_edit.Value);
 
             x_period_error = (double)x_period_error_edit.Value;
             x_period = 0.0;
@@ -423,9 +439,9 @@ namespace quadcopter_research
                 theta_effect = theta_PID.get_effect(angles.y, reference.y);
                 psi_effect = psi_PID.get_effect(angles.z, reference.z);
 
-                phi_effect_fis = phi_PID_fis.get_effect(angles.x, reference.x);
-                theta_effect_fis = theta_PID_fis.get_effect(angles.y, reference.y);
-                psi_effect_fis = psi_PID_fis.get_effect(angles.z, reference.z);
+                phi_effect_fis = phi_PID_fis.get_effect_fis(angles_fis.x, reference.x);
+                theta_effect_fis = theta_PID_fis.get_effect_fis(angles_fis.y, reference.y);
+                psi_effect_fis = psi_PID_fis.get_effect_fis(angles_fis.z, reference.z);
 
                 qm.update(phi_effect, theta_effect, psi_effect);
                 qm_fis.update(phi_effect_fis, theta_effect_fis, psi_effect_fis);
@@ -631,6 +647,11 @@ namespace quadcopter_research
         private void main_form_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            webBrowser1.ObjectForScripting = this;
         }
     }
 }

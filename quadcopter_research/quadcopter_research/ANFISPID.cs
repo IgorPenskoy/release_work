@@ -6,14 +6,25 @@ using System.Threading.Tasks;
 
 namespace quadcopter_research
 {
-    class ANFISPID : PID
+    class ANFISPID
     {
         private ANFIS fis_P;
         private ANFIS fis_I;
         private ANFIS fis_D;
         private double d_err;
+        private double i_max;
+        private double max;
+        private double dt;
+        private double sumErr;
+        private double prevErr;
+        private double error_epsilon = 0.1;
+        private double force;
 
-        public ANFISPID(double dt_in = 0.001, double max_in = 0.0, double i_max_in = 0.0) : base(dt_in, max_in, i_max_in)
+        private double P;
+        private double I;
+        private double D;
+
+        public ANFISPID(double dt_in = 0.001, double max_in = 0.0, double i_max_in = 0.0)
         {
             init(new ANFIS(new Random()), new ANFIS(new Random()), new ANFIS(new Random()), dt_in, max_in, i_max_in);
         }
@@ -27,6 +38,8 @@ namespace quadcopter_research
             max = max_in;
             i_max = i_max_in;
             d_err = 0.0;
+            sumErr = 0;
+            prevErr = 0;
         }
 
         public void init_params(double dt_in, double max_in, double i_max_in)
@@ -43,9 +56,9 @@ namespace quadcopter_research
             fis_D = fis_D_in;
         }
 
-        public override double get_effect(double current, double target)
+        public double get_effect_fis(double current, double target)
         {
-            err = target - current;
+            double err = target - current;
             if (Math.Abs(err) < error_epsilon)
                 sumErr = 0.0;
             sumErr += err;
@@ -54,9 +67,9 @@ namespace quadcopter_research
 
             d_err = (err - prevErr);
 
-            P = fis_P.compute(err, d_err);
-            I = fis_I.compute(err, d_err);
-            D = fis_D.compute(err, d_err);
+            P = (Math.Abs(err) + Math.Abs(d_err)) / 90 * 50; //fis_P.compute(err, d_err) * 3;
+            I = Math.Abs(err) * Math.Abs(d_err) / (45 * 45) * 5; //fis_I.compute(err, d_err) * 10;
+            D = Math.Abs(d_err - err) / 90 * 20; //fis_D.compute(err, d_err) * 20;
 
             force = P * err + I * sumErr * dt + D * d_err / dt;
             prevErr = err;

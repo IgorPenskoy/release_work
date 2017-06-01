@@ -29,28 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea19 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend19 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series55 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series56 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series57 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea20 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend20 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series58 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series59 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series60 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea21 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend21 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series61 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series62 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series63 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.start_button = new System.Windows.Forms.Button();
-            this.stop_button = new System.Windows.Forms.Button();
-            this.continue_button = new System.Windows.Forms.Button();
-            this.pause_button = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend16 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series46 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series47 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series48 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea17 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend17 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series49 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series50 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series51 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea18 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend18 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series52 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series53 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series54 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.main_timer = new System.Windows.Forms.Timer(this.components);
-            this.main_time_label_text = new System.Windows.Forms.Label();
-            this.main_time_label = new System.Windows.Forms.Label();
             this.z_reference_label = new System.Windows.Forms.Label();
             this.y_reference_label = new System.Windows.Forms.Label();
             this.x_reference_label = new System.Windows.Forms.Label();
@@ -153,10 +147,18 @@
             this.mass_engine_label = new System.Windows.Forms.Label();
             this.arm_length_edit = new System.Windows.Forms.NumericUpDown();
             this.arm_length_label = new System.Windows.Forms.Label();
-            this.end_time_edit = new System.Windows.Forms.NumericUpDown();
-            this.end_time_label = new System.Windows.Forms.Label();
             this.random_effect_check = new System.Windows.Forms.CheckBox();
             this.random_effect_edit = new System.Windows.Forms.NumericUpDown();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.webBrowser2 = new System.Windows.Forms.WebBrowser();
+            this.start_button = new System.Windows.Forms.Button();
+            this.stop_button = new System.Windows.Forms.Button();
+            this.continue_button = new System.Windows.Forms.Button();
+            this.pause_button = new System.Windows.Forms.Button();
+            this.main_time_label_text = new System.Windows.Forms.Label();
+            this.main_time_label = new System.Windows.Forms.Label();
+            this.end_time_label = new System.Windows.Forms.Label();
+            this.end_time_edit = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.x_reference_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.y_reference_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.z_reference_edit)).BeginInit();
@@ -192,80 +194,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.radius_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mass_engine_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arm_length_edit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.end_time_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.random_effect_edit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.end_time_edit)).BeginInit();
             this.SuspendLayout();
-            // 
-            // start_button
-            // 
-            this.start_button.Location = new System.Drawing.Point(583, 8);
-            this.start_button.Name = "start_button";
-            this.start_button.Size = new System.Drawing.Size(120, 30);
-            this.start_button.TabIndex = 0;
-            this.start_button.Text = "Старт";
-            this.start_button.UseVisualStyleBackColor = true;
-            this.start_button.Click += new System.EventHandler(this.start_button_Click);
-            // 
-            // stop_button
-            // 
-            this.stop_button.Enabled = false;
-            this.stop_button.Location = new System.Drawing.Point(583, 39);
-            this.stop_button.Name = "stop_button";
-            this.stop_button.Size = new System.Drawing.Size(120, 30);
-            this.stop_button.TabIndex = 1;
-            this.stop_button.Text = "Стоп";
-            this.stop_button.UseVisualStyleBackColor = true;
-            this.stop_button.Click += new System.EventHandler(this.stop_button_Click);
-            // 
-            // continue_button
-            // 
-            this.continue_button.Enabled = false;
-            this.continue_button.Location = new System.Drawing.Point(584, 72);
-            this.continue_button.Name = "continue_button";
-            this.continue_button.Size = new System.Drawing.Size(120, 30);
-            this.continue_button.TabIndex = 2;
-            this.continue_button.Text = "Продолжить";
-            this.continue_button.UseVisualStyleBackColor = true;
-            this.continue_button.Click += new System.EventHandler(this.continue_button_Click);
-            // 
-            // pause_button
-            // 
-            this.pause_button.Enabled = false;
-            this.pause_button.Location = new System.Drawing.Point(583, 106);
-            this.pause_button.Name = "pause_button";
-            this.pause_button.Size = new System.Drawing.Size(120, 30);
-            this.pause_button.TabIndex = 3;
-            this.pause_button.Text = "Пауза";
-            this.pause_button.UseVisualStyleBackColor = true;
-            this.pause_button.Click += new System.EventHandler(this.pause_button_Click);
             // 
             // main_timer
             // 
             this.main_timer.Interval = 50;
             this.main_timer.Tick += new System.EventHandler(this.main_timer_Tick);
             // 
-            // main_time_label_text
-            // 
-            this.main_time_label_text.AutoSize = true;
-            this.main_time_label_text.Location = new System.Drawing.Point(15, 157);
-            this.main_time_label_text.Name = "main_time_label_text";
-            this.main_time_label_text.Size = new System.Drawing.Size(105, 13);
-            this.main_time_label_text.TabIndex = 4;
-            this.main_time_label_text.Text = "Текущее время (с):";
-            // 
-            // main_time_label
-            // 
-            this.main_time_label.AutoSize = true;
-            this.main_time_label.Location = new System.Drawing.Point(126, 157);
-            this.main_time_label.Name = "main_time_label";
-            this.main_time_label.Size = new System.Drawing.Size(13, 13);
-            this.main_time_label.TabIndex = 5;
-            this.main_time_label.Text = "0";
-            // 
             // z_reference_label
             // 
             this.z_reference_label.AutoSize = true;
-            this.z_reference_label.Location = new System.Drawing.Point(328, 56);
+            this.z_reference_label.Location = new System.Drawing.Point(23, 169);
             this.z_reference_label.Name = "z_reference_label";
             this.z_reference_label.Size = new System.Drawing.Size(162, 13);
             this.z_reference_label.TabIndex = 8;
@@ -274,7 +215,7 @@
             // y_reference_label
             // 
             this.y_reference_label.AutoSize = true;
-            this.y_reference_label.Location = new System.Drawing.Point(328, 34);
+            this.y_reference_label.Location = new System.Drawing.Point(31, 147);
             this.y_reference_label.Name = "y_reference_label";
             this.y_reference_label.Size = new System.Drawing.Size(154, 13);
             this.y_reference_label.TabIndex = 9;
@@ -283,7 +224,7 @@
             // x_reference_label
             // 
             this.x_reference_label.AutoSize = true;
-            this.x_reference_label.Location = new System.Drawing.Point(328, 11);
+            this.x_reference_label.Location = new System.Drawing.Point(43, 124);
             this.x_reference_label.Name = "x_reference_label";
             this.x_reference_label.Size = new System.Drawing.Size(142, 13);
             this.x_reference_label.TabIndex = 10;
@@ -292,7 +233,7 @@
             // x_initial_label
             // 
             this.x_initial_label.AutoSize = true;
-            this.x_initial_label.Location = new System.Drawing.Point(335, 82);
+            this.x_initial_label.Location = new System.Drawing.Point(50, 209);
             this.x_initial_label.Name = "x_initial_label";
             this.x_initial_label.Size = new System.Drawing.Size(135, 13);
             this.x_initial_label.TabIndex = 13;
@@ -301,7 +242,7 @@
             // y_initial_label
             // 
             this.y_initial_label.AutoSize = true;
-            this.y_initial_label.Location = new System.Drawing.Point(335, 105);
+            this.y_initial_label.Location = new System.Drawing.Point(38, 235);
             this.y_initial_label.Name = "y_initial_label";
             this.y_initial_label.Size = new System.Drawing.Size(147, 13);
             this.y_initial_label.TabIndex = 12;
@@ -310,7 +251,7 @@
             // z_initial_label
             // 
             this.z_initial_label.AutoSize = true;
-            this.z_initial_label.Location = new System.Drawing.Point(335, 127);
+            this.z_initial_label.Location = new System.Drawing.Point(30, 257);
             this.z_initial_label.Name = "z_initial_label";
             this.z_initial_label.Size = new System.Drawing.Size(155, 13);
             this.z_initial_label.TabIndex = 11;
@@ -319,7 +260,7 @@
             // x_reference_edit
             // 
             this.x_reference_edit.DecimalPlaces = 2;
-            this.x_reference_edit.Location = new System.Drawing.Point(496, 9);
+            this.x_reference_edit.Location = new System.Drawing.Point(191, 122);
             this.x_reference_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -339,7 +280,7 @@
             // y_reference_edit
             // 
             this.y_reference_edit.DecimalPlaces = 2;
-            this.y_reference_edit.Location = new System.Drawing.Point(496, 32);
+            this.y_reference_edit.Location = new System.Drawing.Point(191, 145);
             this.y_reference_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -359,7 +300,7 @@
             // z_reference_edit
             // 
             this.z_reference_edit.DecimalPlaces = 2;
-            this.z_reference_edit.Location = new System.Drawing.Point(496, 54);
+            this.z_reference_edit.Location = new System.Drawing.Point(191, 167);
             this.z_reference_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -379,7 +320,7 @@
             // z_initial_edit
             // 
             this.z_initial_edit.DecimalPlaces = 2;
-            this.z_initial_edit.Location = new System.Drawing.Point(496, 125);
+            this.z_initial_edit.Location = new System.Drawing.Point(191, 255);
             this.z_initial_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -399,7 +340,7 @@
             // y_initial_edit
             // 
             this.y_initial_edit.DecimalPlaces = 2;
-            this.y_initial_edit.Location = new System.Drawing.Point(496, 103);
+            this.y_initial_edit.Location = new System.Drawing.Point(191, 233);
             this.y_initial_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -419,7 +360,7 @@
             // x_initial_edit
             // 
             this.x_initial_edit.DecimalPlaces = 2;
-            this.x_initial_edit.Location = new System.Drawing.Point(496, 77);
+            this.x_initial_edit.Location = new System.Drawing.Point(191, 207);
             this.x_initial_edit.Maximum = new decimal(new int[] {
             180,
             0,
@@ -446,10 +387,10 @@
             this.control_process_tabs.Controls.Add(this.x_tab);
             this.control_process_tabs.Controls.Add(this.y_tab);
             this.control_process_tabs.Controls.Add(this.z_tab);
-            this.control_process_tabs.Location = new System.Drawing.Point(3, 186);
+            this.control_process_tabs.Location = new System.Drawing.Point(257, 12);
             this.control_process_tabs.Name = "control_process_tabs";
             this.control_process_tabs.SelectedIndex = 0;
-            this.control_process_tabs.Size = new System.Drawing.Size(700, 540);
+            this.control_process_tabs.Size = new System.Drawing.Size(723, 709);
             this.control_process_tabs.TabIndex = 21;
             // 
             // x_tab
@@ -484,7 +425,7 @@
             this.x_tab.Location = new System.Drawing.Point(4, 22);
             this.x_tab.Name = "x_tab";
             this.x_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.x_tab.Size = new System.Drawing.Size(692, 514);
+            this.x_tab.Size = new System.Drawing.Size(715, 683);
             this.x_tab.TabIndex = 0;
             this.x_tab.Text = "Угол крена (X)";
             // 
@@ -777,34 +718,34 @@
             // 
             // x_chart
             // 
-            chartArea19.Name = "ChartArea1";
-            this.x_chart.ChartAreas.Add(chartArea19);
-            legend19.Alignment = System.Drawing.StringAlignment.Center;
-            legend19.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend19.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend19.Name = "Legend1";
-            this.x_chart.Legends.Add(legend19);
+            chartArea16.Name = "ChartArea1";
+            this.x_chart.ChartAreas.Add(chartArea16);
+            legend16.Alignment = System.Drawing.StringAlignment.Center;
+            legend16.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend16.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend16.Name = "Legend1";
+            this.x_chart.Legends.Add(legend16);
             this.x_chart.Location = new System.Drawing.Point(6, 112);
             this.x_chart.Name = "x_chart";
-            series55.BorderWidth = 3;
-            series55.ChartArea = "ChartArea1";
-            series55.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series55.Legend = "Legend1";
-            series55.Name = "Требуемое значение угла крена";
-            series56.BorderWidth = 3;
-            series56.ChartArea = "ChartArea1";
-            series56.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series56.Legend = "Legend1";
-            series56.Name = "Текущее значение угла крена";
-            series57.BorderWidth = 3;
-            series57.ChartArea = "ChartArea1";
-            series57.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series57.Legend = "Legend1";
-            series57.Name = "Текущее значение угла крена (ННС)";
-            this.x_chart.Series.Add(series55);
-            this.x_chart.Series.Add(series56);
-            this.x_chart.Series.Add(series57);
-            this.x_chart.Size = new System.Drawing.Size(680, 400);
+            series46.BorderWidth = 3;
+            series46.ChartArea = "ChartArea1";
+            series46.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series46.Legend = "Legend1";
+            series46.Name = "Требуемое значение угла крена";
+            series47.BorderWidth = 3;
+            series47.ChartArea = "ChartArea1";
+            series47.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series47.Legend = "Legend1";
+            series47.Name = "Текущее значение угла крена";
+            series48.BorderWidth = 3;
+            series48.ChartArea = "ChartArea1";
+            series48.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series48.Legend = "Legend1";
+            series48.Name = "Текущее значение угла крена (ННС)";
+            this.x_chart.Series.Add(series46);
+            this.x_chart.Series.Add(series47);
+            this.x_chart.Series.Add(series48);
+            this.x_chart.Size = new System.Drawing.Size(674, 568);
             this.x_chart.TabIndex = 21;
             this.x_chart.Text = "Угол вокруг оси X";
             // 
@@ -840,14 +781,14 @@
             this.y_tab.Location = new System.Drawing.Point(4, 22);
             this.y_tab.Name = "y_tab";
             this.y_tab.Padding = new System.Windows.Forms.Padding(3);
-            this.y_tab.Size = new System.Drawing.Size(692, 551);
+            this.y_tab.Size = new System.Drawing.Size(715, 683);
             this.y_tab.TabIndex = 1;
             this.y_tab.Text = "Угол тангажа (Y)";
             // 
             // y_period_fis_label
             // 
             this.y_period_fis_label.AutoSize = true;
-            this.y_period_fis_label.Location = new System.Drawing.Point(899, 8);
+            this.y_period_fis_label.Location = new System.Drawing.Point(633, 61);
             this.y_period_fis_label.Name = "y_period_fis_label";
             this.y_period_fis_label.Size = new System.Drawing.Size(13, 13);
             this.y_period_fis_label.TabIndex = 94;
@@ -856,7 +797,7 @@
             // y_period_fis_label_text
             // 
             this.y_period_fis_label_text.AutoSize = true;
-            this.y_period_fis_label_text.Location = new System.Drawing.Point(635, 8);
+            this.y_period_fis_label_text.Location = new System.Drawing.Point(369, 61);
             this.y_period_fis_label_text.Name = "y_period_fis_label_text";
             this.y_period_fis_label_text.Size = new System.Drawing.Size(168, 13);
             this.y_period_fis_label_text.TabIndex = 93;
@@ -865,7 +806,7 @@
             // y_overshoot_fis_label
             // 
             this.y_overshoot_fis_label.AutoSize = true;
-            this.y_overshoot_fis_label.Location = new System.Drawing.Point(899, 61);
+            this.y_overshoot_fis_label.Location = new System.Drawing.Point(633, 87);
             this.y_overshoot_fis_label.Name = "y_overshoot_fis_label";
             this.y_overshoot_fis_label.Size = new System.Drawing.Size(13, 13);
             this.y_overshoot_fis_label.TabIndex = 92;
@@ -874,7 +815,7 @@
             // y_overshoot_fis_label_text
             // 
             this.y_overshoot_fis_label_text.AutoSize = true;
-            this.y_overshoot_fis_label_text.Location = new System.Drawing.Point(635, 61);
+            this.y_overshoot_fis_label_text.Location = new System.Drawing.Point(369, 87);
             this.y_overshoot_fis_label_text.Name = "y_overshoot_fis_label_text";
             this.y_overshoot_fis_label_text.Size = new System.Drawing.Size(195, 13);
             this.y_overshoot_fis_label_text.TabIndex = 91;
@@ -883,7 +824,7 @@
             // y_current_fis_label
             // 
             this.y_current_fis_label.AutoSize = true;
-            this.y_current_fis_label.Location = new System.Drawing.Point(899, 34);
+            this.y_current_fis_label.Location = new System.Drawing.Point(633, 74);
             this.y_current_fis_label.Name = "y_current_fis_label";
             this.y_current_fis_label.Size = new System.Drawing.Size(13, 13);
             this.y_current_fis_label.TabIndex = 90;
@@ -892,7 +833,7 @@
             // y_current_fis_label_text
             // 
             this.y_current_fis_label_text.AutoSize = true;
-            this.y_current_fis_label_text.Location = new System.Drawing.Point(635, 34);
+            this.y_current_fis_label_text.Location = new System.Drawing.Point(369, 74);
             this.y_current_fis_label_text.Name = "y_current_fis_label_text";
             this.y_current_fis_label_text.Size = new System.Drawing.Size(258, 13);
             this.y_current_fis_label_text.TabIndex = 89;
@@ -1016,7 +957,7 @@
             // y_overshoot_label
             // 
             this.y_overshoot_label.AutoSize = true;
-            this.y_overshoot_label.Location = new System.Drawing.Point(601, 61);
+            this.y_overshoot_label.Location = new System.Drawing.Point(601, 35);
             this.y_overshoot_label.Name = "y_overshoot_label";
             this.y_overshoot_label.Size = new System.Drawing.Size(13, 13);
             this.y_overshoot_label.TabIndex = 51;
@@ -1025,7 +966,7 @@
             // y_overshoot_label_text
             // 
             this.y_overshoot_label_text.AutoSize = true;
-            this.y_overshoot_label_text.Location = new System.Drawing.Point(369, 61);
+            this.y_overshoot_label_text.Location = new System.Drawing.Point(369, 35);
             this.y_overshoot_label_text.Name = "y_overshoot_label_text";
             this.y_overshoot_label_text.Size = new System.Drawing.Size(163, 13);
             this.y_overshoot_label_text.TabIndex = 50;
@@ -1034,7 +975,7 @@
             // y_current_label
             // 
             this.y_current_label.AutoSize = true;
-            this.y_current_label.Location = new System.Drawing.Point(601, 34);
+            this.y_current_label.Location = new System.Drawing.Point(601, 21);
             this.y_current_label.Name = "y_current_label";
             this.y_current_label.Size = new System.Drawing.Size(13, 13);
             this.y_current_label.TabIndex = 49;
@@ -1043,7 +984,7 @@
             // y_current_label_text
             // 
             this.y_current_label_text.AutoSize = true;
-            this.y_current_label_text.Location = new System.Drawing.Point(369, 34);
+            this.y_current_label_text.Location = new System.Drawing.Point(369, 21);
             this.y_current_label_text.Name = "y_current_label_text";
             this.y_current_label_text.Size = new System.Drawing.Size(226, 13);
             this.y_current_label_text.TabIndex = 48;
@@ -1133,34 +1074,34 @@
             // 
             // y_chart
             // 
-            chartArea20.Name = "ChartArea1";
-            this.y_chart.ChartAreas.Add(chartArea20);
-            legend20.Alignment = System.Drawing.StringAlignment.Center;
-            legend20.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend20.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend20.Name = "Legend1";
-            this.y_chart.Legends.Add(legend20);
+            chartArea17.Name = "ChartArea1";
+            this.y_chart.ChartAreas.Add(chartArea17);
+            legend17.Alignment = System.Drawing.StringAlignment.Center;
+            legend17.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend17.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend17.Name = "Legend1";
+            this.y_chart.Legends.Add(legend17);
             this.y_chart.Location = new System.Drawing.Point(3, 114);
             this.y_chart.Name = "y_chart";
-            series58.BorderWidth = 3;
-            series58.ChartArea = "ChartArea1";
-            series58.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series58.Legend = "Legend1";
-            series58.Name = "Требуемое значение угла тангажа";
-            series59.BorderWidth = 3;
-            series59.ChartArea = "ChartArea1";
-            series59.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series59.Legend = "Legend1";
-            series59.Name = "Текущее значение угла тангажа";
-            series60.BorderWidth = 3;
-            series60.ChartArea = "ChartArea1";
-            series60.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series60.Legend = "Legend1";
-            series60.Name = "Текущее значение угла тангажа (ННС)";
-            this.y_chart.Series.Add(series58);
-            this.y_chart.Series.Add(series59);
-            this.y_chart.Series.Add(series60);
-            this.y_chart.Size = new System.Drawing.Size(940, 570);
+            series49.BorderWidth = 3;
+            series49.ChartArea = "ChartArea1";
+            series49.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series49.Legend = "Legend1";
+            series49.Name = "Требуемое значение угла тангажа";
+            series50.BorderWidth = 3;
+            series50.ChartArea = "ChartArea1";
+            series50.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series50.Legend = "Legend1";
+            series50.Name = "Текущее значение угла тангажа";
+            series51.BorderWidth = 3;
+            series51.ChartArea = "ChartArea1";
+            series51.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series51.Legend = "Legend1";
+            series51.Name = "Текущее значение угла тангажа (ННС)";
+            this.y_chart.Series.Add(series49);
+            this.y_chart.Series.Add(series50);
+            this.y_chart.Series.Add(series51);
+            this.y_chart.Size = new System.Drawing.Size(677, 566);
             this.y_chart.TabIndex = 22;
             this.y_chart.Text = "Угол вокруг оси X";
             // 
@@ -1195,14 +1136,14 @@
             this.z_tab.Controls.Add(this.z_chart);
             this.z_tab.Location = new System.Drawing.Point(4, 22);
             this.z_tab.Name = "z_tab";
-            this.z_tab.Size = new System.Drawing.Size(692, 551);
+            this.z_tab.Size = new System.Drawing.Size(715, 683);
             this.z_tab.TabIndex = 2;
             this.z_tab.Text = "Угол рысканья (Z)";
             // 
             // z_period_fis_label
             // 
             this.z_period_fis_label.AutoSize = true;
-            this.z_period_fis_label.Location = new System.Drawing.Point(914, 8);
+            this.z_period_fis_label.Location = new System.Drawing.Point(641, 59);
             this.z_period_fis_label.Name = "z_period_fis_label";
             this.z_period_fis_label.Size = new System.Drawing.Size(13, 13);
             this.z_period_fis_label.TabIndex = 100;
@@ -1211,7 +1152,7 @@
             // z_period_fis_label_text
             // 
             this.z_period_fis_label_text.AutoSize = true;
-            this.z_period_fis_label_text.Location = new System.Drawing.Point(642, 8);
+            this.z_period_fis_label_text.Location = new System.Drawing.Point(369, 59);
             this.z_period_fis_label_text.Name = "z_period_fis_label_text";
             this.z_period_fis_label_text.Size = new System.Drawing.Size(168, 13);
             this.z_period_fis_label_text.TabIndex = 99;
@@ -1220,7 +1161,7 @@
             // z_overshoot_fis_label
             // 
             this.z_overshoot_fis_label.AutoSize = true;
-            this.z_overshoot_fis_label.Location = new System.Drawing.Point(914, 59);
+            this.z_overshoot_fis_label.Location = new System.Drawing.Point(641, 85);
             this.z_overshoot_fis_label.Name = "z_overshoot_fis_label";
             this.z_overshoot_fis_label.Size = new System.Drawing.Size(13, 13);
             this.z_overshoot_fis_label.TabIndex = 98;
@@ -1229,7 +1170,7 @@
             // z_overshoot_fis_label_text
             // 
             this.z_overshoot_fis_label_text.AutoSize = true;
-            this.z_overshoot_fis_label_text.Location = new System.Drawing.Point(642, 61);
+            this.z_overshoot_fis_label_text.Location = new System.Drawing.Point(369, 85);
             this.z_overshoot_fis_label_text.Name = "z_overshoot_fis_label_text";
             this.z_overshoot_fis_label_text.Size = new System.Drawing.Size(195, 13);
             this.z_overshoot_fis_label_text.TabIndex = 97;
@@ -1238,7 +1179,7 @@
             // z_current_fis_label
             // 
             this.z_current_fis_label.AutoSize = true;
-            this.z_current_fis_label.Location = new System.Drawing.Point(914, 34);
+            this.z_current_fis_label.Location = new System.Drawing.Point(641, 72);
             this.z_current_fis_label.Name = "z_current_fis_label";
             this.z_current_fis_label.Size = new System.Drawing.Size(13, 13);
             this.z_current_fis_label.TabIndex = 96;
@@ -1247,7 +1188,7 @@
             // z_current_fis_label_text
             // 
             this.z_current_fis_label_text.AutoSize = true;
-            this.z_current_fis_label_text.Location = new System.Drawing.Point(642, 34);
+            this.z_current_fis_label_text.Location = new System.Drawing.Point(369, 72);
             this.z_current_fis_label_text.Name = "z_current_fis_label_text";
             this.z_current_fis_label_text.Size = new System.Drawing.Size(266, 13);
             this.z_current_fis_label_text.TabIndex = 95;
@@ -1371,7 +1312,7 @@
             // z_overshoot_label
             // 
             this.z_overshoot_label.AutoSize = true;
-            this.z_overshoot_label.Location = new System.Drawing.Point(609, 61);
+            this.z_overshoot_label.Location = new System.Drawing.Point(609, 35);
             this.z_overshoot_label.Name = "z_overshoot_label";
             this.z_overshoot_label.Size = new System.Drawing.Size(13, 13);
             this.z_overshoot_label.TabIndex = 71;
@@ -1380,7 +1321,7 @@
             // z_overshoot_label_text
             // 
             this.z_overshoot_label_text.AutoSize = true;
-            this.z_overshoot_label_text.Location = new System.Drawing.Point(369, 61);
+            this.z_overshoot_label_text.Location = new System.Drawing.Point(369, 35);
             this.z_overshoot_label_text.Name = "z_overshoot_label_text";
             this.z_overshoot_label_text.Size = new System.Drawing.Size(163, 13);
             this.z_overshoot_label_text.TabIndex = 70;
@@ -1389,7 +1330,7 @@
             // z_current_label
             // 
             this.z_current_label.AutoSize = true;
-            this.z_current_label.Location = new System.Drawing.Point(609, 34);
+            this.z_current_label.Location = new System.Drawing.Point(609, 21);
             this.z_current_label.Name = "z_current_label";
             this.z_current_label.Size = new System.Drawing.Size(13, 13);
             this.z_current_label.TabIndex = 69;
@@ -1398,7 +1339,7 @@
             // z_current_label_text
             // 
             this.z_current_label_text.AutoSize = true;
-            this.z_current_label_text.Location = new System.Drawing.Point(369, 34);
+            this.z_current_label_text.Location = new System.Drawing.Point(369, 21);
             this.z_current_label_text.Name = "z_current_label_text";
             this.z_current_label_text.Size = new System.Drawing.Size(234, 13);
             this.z_current_label_text.TabIndex = 68;
@@ -1488,41 +1429,41 @@
             // 
             // z_chart
             // 
-            chartArea21.Name = "ChartArea1";
-            this.z_chart.ChartAreas.Add(chartArea21);
-            legend21.Alignment = System.Drawing.StringAlignment.Center;
-            legend21.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend21.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend21.Name = "Legend1";
-            this.z_chart.Legends.Add(legend21);
+            chartArea18.Name = "ChartArea1";
+            this.z_chart.ChartAreas.Add(chartArea18);
+            legend18.Alignment = System.Drawing.StringAlignment.Center;
+            legend18.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend18.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend18.Name = "Legend1";
+            this.z_chart.Legends.Add(legend18);
             this.z_chart.Location = new System.Drawing.Point(3, 114);
             this.z_chart.Name = "z_chart";
-            series61.BorderWidth = 3;
-            series61.ChartArea = "ChartArea1";
-            series61.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series61.Legend = "Legend1";
-            series61.Name = "Требуемое значение угла рысканья";
-            series62.BorderWidth = 3;
-            series62.ChartArea = "ChartArea1";
-            series62.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series62.Legend = "Legend1";
-            series62.Name = "Текущее значение угла рысканья";
-            series63.BorderWidth = 3;
-            series63.ChartArea = "ChartArea1";
-            series63.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series63.Legend = "Legend1";
-            series63.Name = "Текущее значение угла рысканья (ННС)";
-            this.z_chart.Series.Add(series61);
-            this.z_chart.Series.Add(series62);
-            this.z_chart.Series.Add(series63);
-            this.z_chart.Size = new System.Drawing.Size(940, 570);
+            series52.BorderWidth = 3;
+            series52.ChartArea = "ChartArea1";
+            series52.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series52.Legend = "Legend1";
+            series52.Name = "Требуемое значение угла рысканья";
+            series53.BorderWidth = 3;
+            series53.ChartArea = "ChartArea1";
+            series53.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series53.Legend = "Legend1";
+            series53.Name = "Текущее значение угла рысканья";
+            series54.BorderWidth = 3;
+            series54.ChartArea = "ChartArea1";
+            series54.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series54.Legend = "Legend1";
+            series54.Name = "Текущее значение угла рысканья (ННС)";
+            this.z_chart.Series.Add(series52);
+            this.z_chart.Series.Add(series53);
+            this.z_chart.Series.Add(series54);
+            this.z_chart.Size = new System.Drawing.Size(680, 566);
             this.z_chart.TabIndex = 22;
             this.z_chart.Text = "Угол вокруг оси X";
             // 
             // mass_frame_edit
             // 
             this.mass_frame_edit.DecimalPlaces = 2;
-            this.mass_frame_edit.Location = new System.Drawing.Point(263, 7);
+            this.mass_frame_edit.Location = new System.Drawing.Point(191, 12);
             this.mass_frame_edit.Maximum = new decimal(new int[] {
             5,
             0,
@@ -1547,16 +1488,16 @@
             // mass_frame_label
             // 
             this.mass_frame_label.AutoSize = true;
-            this.mass_frame_label.Location = new System.Drawing.Point(12, 9);
+            this.mass_frame_label.Location = new System.Drawing.Point(60, 14);
             this.mass_frame_label.Name = "mass_frame_label";
-            this.mass_frame_label.Size = new System.Drawing.Size(193, 13);
+            this.mass_frame_label.Size = new System.Drawing.Size(125, 13);
             this.mass_frame_label.TabIndex = 25;
-            this.mass_frame_label.Text = "Масса центральной платформы (кг):";
+            this.mass_frame_label.Text = "Масса платформы (кг):";
             // 
             // radius_edit
             // 
             this.radius_edit.DecimalPlaces = 2;
-            this.radius_edit.Location = new System.Drawing.Point(263, 80);
+            this.radius_edit.Location = new System.Drawing.Point(191, 85);
             this.radius_edit.Maximum = new decimal(new int[] {
             5,
             0,
@@ -1581,16 +1522,16 @@
             // radius_label
             // 
             this.radius_label.AutoSize = true;
-            this.radius_label.Location = new System.Drawing.Point(11, 82);
+            this.radius_label.Location = new System.Drawing.Point(60, 87);
             this.radius_label.Name = "radius_label";
-            this.radius_label.Size = new System.Drawing.Size(246, 13);
+            this.radius_label.Size = new System.Drawing.Size(125, 13);
             this.radius_label.TabIndex = 27;
-            this.radius_label.Text = "Окружной радиус центральной платформы (м):";
+            this.radius_label.Text = "Радиус платформы (м):";
             // 
             // mass_engine_edit
             // 
             this.mass_engine_edit.DecimalPlaces = 2;
-            this.mass_engine_edit.Location = new System.Drawing.Point(263, 30);
+            this.mass_engine_edit.Location = new System.Drawing.Point(191, 35);
             this.mass_engine_edit.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1615,7 +1556,7 @@
             // mass_engine_label
             // 
             this.mass_engine_label.AutoSize = true;
-            this.mass_engine_label.Location = new System.Drawing.Point(12, 32);
+            this.mass_engine_label.Location = new System.Drawing.Point(67, 37);
             this.mass_engine_label.Name = "mass_engine_label";
             this.mass_engine_label.Size = new System.Drawing.Size(118, 13);
             this.mass_engine_label.TabIndex = 29;
@@ -1624,7 +1565,7 @@
             // arm_length_edit
             // 
             this.arm_length_edit.DecimalPlaces = 2;
-            this.arm_length_edit.Location = new System.Drawing.Point(263, 55);
+            this.arm_length_edit.Location = new System.Drawing.Point(191, 60);
             this.arm_length_edit.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1649,54 +1590,20 @@
             // arm_length_label
             // 
             this.arm_length_label.AutoSize = true;
-            this.arm_length_label.Location = new System.Drawing.Point(12, 57);
+            this.arm_length_label.Location = new System.Drawing.Point(93, 62);
             this.arm_length_label.Name = "arm_length_label";
-            this.arm_length_label.Size = new System.Drawing.Size(239, 13);
+            this.arm_length_label.Size = new System.Drawing.Size(92, 13);
             this.arm_length_label.TabIndex = 31;
-            this.arm_length_label.Text = "Расстояние от двигателей до платформы (м):";
-            // 
-            // end_time_edit
-            // 
-            this.end_time_edit.DecimalPlaces = 2;
-            this.end_time_edit.Location = new System.Drawing.Point(263, 129);
-            this.end_time_edit.Maximum = new decimal(new int[] {
-            300,
-            0,
-            0,
-            0});
-            this.end_time_edit.MaximumSize = new System.Drawing.Size(60, 0);
-            this.end_time_edit.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.end_time_edit.MinimumSize = new System.Drawing.Size(60, 0);
-            this.end_time_edit.Name = "end_time_edit";
-            this.end_time_edit.Size = new System.Drawing.Size(60, 20);
-            this.end_time_edit.TabIndex = 34;
-            this.end_time_edit.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            // 
-            // end_time_label
-            // 
-            this.end_time_label.AutoSize = true;
-            this.end_time_label.Location = new System.Drawing.Point(12, 131);
-            this.end_time_label.Name = "end_time_label";
-            this.end_time_label.Size = new System.Drawing.Size(108, 13);
-            this.end_time_label.TabIndex = 33;
-            this.end_time_label.Text = "Конечное время (с):";
+            this.arm_length_label.Text = "Длина плеча (м):";
             // 
             // random_effect_check
             // 
             this.random_effect_check.AutoSize = true;
-            this.random_effect_check.Location = new System.Drawing.Point(14, 107);
+            this.random_effect_check.Location = new System.Drawing.Point(12, 301);
             this.random_effect_check.Name = "random_effect_check";
-            this.random_effect_check.Size = new System.Drawing.Size(202, 17);
+            this.random_effect_check.Size = new System.Drawing.Size(173, 17);
             this.random_effect_check.TabIndex = 35;
-            this.random_effect_check.Text = "Случайные возмущения (градусы):";
+            this.random_effect_check.Text = "Случ. возмущения (градусы):";
             this.random_effect_check.UseVisualStyleBackColor = true;
             this.random_effect_check.CheckedChanged += new System.EventHandler(this.random_effect_check_CheckedChanged);
             // 
@@ -1704,7 +1611,7 @@
             // 
             this.random_effect_edit.DecimalPlaces = 2;
             this.random_effect_edit.Enabled = false;
-            this.random_effect_edit.Location = new System.Drawing.Point(263, 106);
+            this.random_effect_edit.Location = new System.Drawing.Point(191, 300);
             this.random_effect_edit.Maximum = new decimal(new int[] {
             5,
             0,
@@ -1726,11 +1633,133 @@
             0,
             0});
             // 
+            // webBrowser1
+            // 
+            this.webBrowser1.AllowWebBrowserDrop = false;
+            this.webBrowser1.IsWebBrowserContextMenuEnabled = false;
+            this.webBrowser1.Location = new System.Drawing.Point(986, 12);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.ScrollBarsEnabled = false;
+            this.webBrowser1.Size = new System.Drawing.Size(350, 350);
+            this.webBrowser1.TabIndex = 37;
+            this.webBrowser1.WebBrowserShortcutsEnabled = false;
+            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
+            // 
+            // webBrowser2
+            // 
+            this.webBrowser2.AllowWebBrowserDrop = false;
+            this.webBrowser2.IsWebBrowserContextMenuEnabled = false;
+            this.webBrowser2.Location = new System.Drawing.Point(986, 367);
+            this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser2.Name = "webBrowser2";
+            this.webBrowser2.ScrollBarsEnabled = false;
+            this.webBrowser2.Size = new System.Drawing.Size(350, 350);
+            this.webBrowser2.TabIndex = 38;
+            this.webBrowser2.WebBrowserShortcutsEnabled = false;
+            // 
+            // start_button
+            // 
+            this.start_button.Location = new System.Drawing.Point(5, 400);
+            this.start_button.Name = "start_button";
+            this.start_button.Size = new System.Drawing.Size(120, 30);
+            this.start_button.TabIndex = 0;
+            this.start_button.Text = "Старт";
+            this.start_button.UseVisualStyleBackColor = true;
+            this.start_button.Click += new System.EventHandler(this.start_button_Click);
+            // 
+            // stop_button
+            // 
+            this.stop_button.Enabled = false;
+            this.stop_button.Location = new System.Drawing.Point(131, 400);
+            this.stop_button.Name = "stop_button";
+            this.stop_button.Size = new System.Drawing.Size(120, 30);
+            this.stop_button.TabIndex = 1;
+            this.stop_button.Text = "Стоп";
+            this.stop_button.UseVisualStyleBackColor = true;
+            this.stop_button.Click += new System.EventHandler(this.stop_button_Click);
+            // 
+            // continue_button
+            // 
+            this.continue_button.Enabled = false;
+            this.continue_button.Location = new System.Drawing.Point(5, 436);
+            this.continue_button.Name = "continue_button";
+            this.continue_button.Size = new System.Drawing.Size(120, 30);
+            this.continue_button.TabIndex = 2;
+            this.continue_button.Text = "Продолжить";
+            this.continue_button.UseVisualStyleBackColor = true;
+            this.continue_button.Click += new System.EventHandler(this.continue_button_Click);
+            // 
+            // pause_button
+            // 
+            this.pause_button.Enabled = false;
+            this.pause_button.Location = new System.Drawing.Point(131, 436);
+            this.pause_button.Name = "pause_button";
+            this.pause_button.Size = new System.Drawing.Size(120, 30);
+            this.pause_button.TabIndex = 3;
+            this.pause_button.Text = "Пауза";
+            this.pause_button.UseVisualStyleBackColor = true;
+            this.pause_button.Click += new System.EventHandler(this.pause_button_Click);
+            // 
+            // main_time_label_text
+            // 
+            this.main_time_label_text.AutoSize = true;
+            this.main_time_label_text.Location = new System.Drawing.Point(80, 365);
+            this.main_time_label_text.Name = "main_time_label_text";
+            this.main_time_label_text.Size = new System.Drawing.Size(105, 13);
+            this.main_time_label_text.TabIndex = 4;
+            this.main_time_label_text.Text = "Текущее время (с):";
+            // 
+            // main_time_label
+            // 
+            this.main_time_label.AutoSize = true;
+            this.main_time_label.Location = new System.Drawing.Point(191, 365);
+            this.main_time_label.Name = "main_time_label";
+            this.main_time_label.Size = new System.Drawing.Size(13, 13);
+            this.main_time_label.TabIndex = 5;
+            this.main_time_label.Text = "0";
+            // 
+            // end_time_label
+            // 
+            this.end_time_label.AutoSize = true;
+            this.end_time_label.Location = new System.Drawing.Point(77, 344);
+            this.end_time_label.Name = "end_time_label";
+            this.end_time_label.Size = new System.Drawing.Size(108, 13);
+            this.end_time_label.TabIndex = 33;
+            this.end_time_label.Text = "Конечное время (с):";
+            // 
+            // end_time_edit
+            // 
+            this.end_time_edit.DecimalPlaces = 2;
+            this.end_time_edit.Location = new System.Drawing.Point(191, 342);
+            this.end_time_edit.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.end_time_edit.MaximumSize = new System.Drawing.Size(60, 0);
+            this.end_time_edit.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.end_time_edit.MinimumSize = new System.Drawing.Size(60, 0);
+            this.end_time_edit.Name = "end_time_edit";
+            this.end_time_edit.Size = new System.Drawing.Size(60, 20);
+            this.end_time_edit.TabIndex = 34;
+            this.end_time_edit.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
             // main_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 729);
+            this.ClientSize = new System.Drawing.Size(1348, 729);
+            this.Controls.Add(this.webBrowser2);
+            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.random_effect_edit);
             this.Controls.Add(this.random_effect_check);
             this.Controls.Add(this.end_time_edit);
@@ -1762,7 +1791,12 @@
             this.Controls.Add(this.continue_button);
             this.Controls.Add(this.stop_button);
             this.Controls.Add(this.start_button);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximumSize = new System.Drawing.Size(1366, 768);
+            this.MinimumSize = new System.Drawing.Size(1364, 726);
             this.Name = "main_form";
+            this.Text = "Нейро-нечеткий ПИД-регулятор в задаче угловой стабилизации мультироторного БПЛА";
             this.Load += new System.EventHandler(this.main_form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.x_reference_edit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.y_reference_edit)).EndInit();
@@ -1802,22 +1836,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.radius_edit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mass_engine_edit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arm_length_edit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.end_time_edit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.random_effect_edit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.end_time_edit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button start_button;
-        private System.Windows.Forms.Button stop_button;
-        private System.Windows.Forms.Button continue_button;
-        private System.Windows.Forms.Button pause_button;
         private System.Windows.Forms.Timer main_timer;
-        private System.Windows.Forms.Label main_time_label_text;
-        private System.Windows.Forms.Label main_time_label;
         private System.Windows.Forms.Label z_reference_label;
         private System.Windows.Forms.Label y_reference_label;
         private System.Windows.Forms.Label x_reference_label;
@@ -1902,8 +1929,6 @@
         private System.Windows.Forms.Label z_I_label;
         private System.Windows.Forms.NumericUpDown z_P_edit;
         private System.Windows.Forms.Label z_P_label;
-        private System.Windows.Forms.NumericUpDown end_time_edit;
-        private System.Windows.Forms.Label end_time_label;
         private System.Windows.Forms.Label x_period_fis_label;
         private System.Windows.Forms.Label x_period_fis_label_text;
         private System.Windows.Forms.Label x_overshoot_fis_label;
@@ -1924,6 +1949,16 @@
         private System.Windows.Forms.Label z_current_fis_label_text;
         private System.Windows.Forms.CheckBox random_effect_check;
         private System.Windows.Forms.NumericUpDown random_effect_edit;
+        private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.WebBrowser webBrowser2;
+        private System.Windows.Forms.Button start_button;
+        private System.Windows.Forms.Button stop_button;
+        private System.Windows.Forms.Button continue_button;
+        private System.Windows.Forms.Button pause_button;
+        private System.Windows.Forms.Label main_time_label_text;
+        private System.Windows.Forms.Label main_time_label;
+        private System.Windows.Forms.Label end_time_label;
+        private System.Windows.Forms.NumericUpDown end_time_edit;
     }
 }
 

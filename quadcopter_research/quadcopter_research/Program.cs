@@ -16,7 +16,7 @@ namespace quadcopter_research
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_Main());
+            Application.Run(new main_form());
         }
     }
 }

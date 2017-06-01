@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace quadcopter_research
+namespace test_anfis
 {
     class Conclusion
     {
@@ -14,24 +14,20 @@ namespace quadcopter_research
 
         public double r;
 
-        public double p_d;
+        //gradient p
+        public double π;
 
-        public double q_d;
+        //gradient q
+        public double ω;
 
-        public double r_d;
+        //gradient r
+        public double ρ;
 
         public Conclusion(Random rand)
         {
             p = rand.NextDouble() - 0.5;
             q = rand.NextDouble() - 0.5;
             r = rand.NextDouble() - 0.5;
-        }
-
-        public Conclusion(double p, double q, double r)
-        {
-            this.p = p;
-            this.q = q;
-            this.r = r;
         }
 
         public double compute(double x, double y)

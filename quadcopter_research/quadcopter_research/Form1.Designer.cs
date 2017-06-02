@@ -149,8 +149,6 @@
             this.arm_length_label = new System.Windows.Forms.Label();
             this.random_effect_check = new System.Windows.Forms.CheckBox();
             this.random_effect_edit = new System.Windows.Forms.NumericUpDown();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.webBrowser2 = new System.Windows.Forms.WebBrowser();
             this.start_button = new System.Windows.Forms.Button();
             this.stop_button = new System.Windows.Forms.Button();
             this.continue_button = new System.Windows.Forms.Button();
@@ -1635,31 +1633,6 @@
             0,
             0});
             // 
-            // webBrowser1
-            // 
-            this.webBrowser1.AllowWebBrowserDrop = false;
-            this.webBrowser1.IsWebBrowserContextMenuEnabled = false;
-            this.webBrowser1.Location = new System.Drawing.Point(986, 12);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.ScrollBarsEnabled = false;
-            this.webBrowser1.Size = new System.Drawing.Size(350, 350);
-            this.webBrowser1.TabIndex = 37;
-            this.webBrowser1.WebBrowserShortcutsEnabled = false;
-            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
-            // 
-            // webBrowser2
-            // 
-            this.webBrowser2.AllowWebBrowserDrop = false;
-            this.webBrowser2.IsWebBrowserContextMenuEnabled = false;
-            this.webBrowser2.Location = new System.Drawing.Point(986, 367);
-            this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser2.Name = "webBrowser2";
-            this.webBrowser2.ScrollBarsEnabled = false;
-            this.webBrowser2.Size = new System.Drawing.Size(350, 350);
-            this.webBrowser2.TabIndex = 38;
-            this.webBrowser2.WebBrowserShortcutsEnabled = false;
-            // 
             // start_button
             // 
             this.start_button.Location = new System.Drawing.Point(5, 400);
@@ -1760,8 +1733,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1348, 729);
-            this.Controls.Add(this.webBrowser2);
-            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.random_effect_edit);
             this.Controls.Add(this.random_effect_check);
             this.Controls.Add(this.end_time_edit);
@@ -1951,8 +1922,6 @@
         private System.Windows.Forms.Label z_current_fis_label_text;
         private System.Windows.Forms.CheckBox random_effect_check;
         private System.Windows.Forms.NumericUpDown random_effect_edit;
-        private System.Windows.Forms.WebBrowser webBrowser1;
-        private System.Windows.Forms.WebBrowser webBrowser2;
         private System.Windows.Forms.Button start_button;
         private System.Windows.Forms.Button stop_button;
         private System.Windows.Forms.Button continue_button;

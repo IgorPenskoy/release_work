@@ -9,20 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
-
+using System.Threading;
 using System.Security.Permissions;
 using System.Runtime.InteropServices;
 
-using WeifenLuo.WinFormsUI.Docking;
-
 namespace quadcopter_research
 {
-    [ComVisible(true)]
-    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
     public partial class main_form : Form
     {
-        private string _currentDirectory = string.Empty;
-        private string _pathToUnityAssets = "/Core/Unity/_RENDERER.html";
+        private static object _sbSync = new Object();
 
         private const double max_angle_degree = 45.0;
         private const double chart_time_amount = 10.0;
@@ -123,12 +118,18 @@ namespace quadcopter_research
         int i_sim;
         int n_sim;
 
+        [DllImport("user32.dll")]
+        static extern IntPtr SetParent(IntPtr hwc, IntPtr hwp);
+
+        [DllImport("user32.dll")]
+        private extern static bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, int uFlags);
+
+        [DllImport("user32.dll")]
+        static extern bool BringWindowToTop(IntPtr hWnd);
+
         public main_form()
         {
             InitializeComponent();
-
-            _currentDirectory = Directory.GetCurrentDirectory();
-            webBrowser1.Url = new Uri(string.Format("{0}{1}", _currentDirectory, _pathToUnityAssets));
 
             main_stopwatch = new Stopwatch();
             qm = new quadcopter_model();
@@ -558,6 +559,15 @@ namespace quadcopter_research
             z_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), clamp(z_current_array[i_sim], max_angle_degree + 10));
             z_chart.Series[2].Points.AddXY(Math.Round(elapsed_time, 3), clamp(z_current_array_fis[i_sim], max_angle_degree + 10));
 
+            var outStream = new FileStream("test.txt", FileMode.Open, FileAccess.Write, FileShare.ReadWrite);
+            var sw = new StreamWriter(outStream);
+
+            sw.WriteLine(x_current_array[i_sim].ToString());
+            sw.WriteLine(y_current_array[i_sim].ToString());
+            sw.WriteLine(z_current_array[i_sim].ToString());
+
+            sw.Close();
+
             if (elapsed_time > chart_time_amount)
             {
                 x_chart.Series[0].Points.RemoveAt(0);
@@ -631,11 +641,6 @@ namespace quadcopter_research
             return to_clamp;
         }
 
-        private void x_learn_button_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void random_effect_check_CheckedChanged(object sender, EventArgs e)
         {
             if (random_effect_edit.Enabled)
@@ -646,12 +651,11 @@ namespace quadcopter_research
 
         private void main_form_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-            webBrowser1.ObjectForScripting = this;
+            Process p = Process.Start("test.exe", "-popupwindow");
+            //Thread.Sleep(500);
+            p.WaitForInputIdle();
+            SetWindowPos(p.MainWindowHandle, this.Handle, 1000, 20, 0, 0, 0);
+            SetParent(p.MainWindowHandle, this.Handle);
         }
     }
 }

@@ -1,49 +1,43 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using System.Threading;
 using System.Net;
 
 public class quadcopterScript : MonoBehaviour {
 
-    // Use this for initialization
-
     private string str;
+    private float phi;
+    private float theta;
+    private float psi;
     
 	void Start () {
-        str = string.Empty;
+        Screen.SetResolution(300, 300, false);
+        Time.fixedDeltaTime = 0.001f;
     }
 
-    public static string Read(string filename)
-    {
-        //Load the text file using Reources.Load
-        TextAsset theTextFile = Resources.Load<TextAsset>(filename);
-
-        //There's a text file named filename, lets get it's contents and return it
-        if (theTextFile != null)
-            return theTextFile.text;
-
-        //There's no file, return an empty string.
-        return string.Empty;
-    }
-
-    // Update is called once per frame
     void FixedUpdate () {
-        /*var uri = new System.Uri("file:///C:/Users/igor/Desktop/release_work/new_copter/test.txt");
-        var converted = uri.AbsoluteUri;
-        str = (new WebClient()).DownloadString(converted);*/
-        WebRequest request = WebRequest.Create(@"C:/Users/igor/Desktop/release_work/new_copter/test.txt");
-        WebResponse response = (WebResponse)request.GetResponse();
-        StreamReader s = new StreamReader(response.GetResponseStream());
+        var inStream = new FileStream("test.txt", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+        var sr = new StreamReader(inStream);
 
-        str = s.ReadLine();
+        string phi_s = sr.ReadLine();
+        string theta_s = sr.ReadLine();
+        string psi_s = sr.ReadLine();
+        sr.Close();
 
-        Quaternion rotation = Quaternion.Euler(45, 0, 0);
+        phi = (float)double.Parse(phi_s.Replace(",", "."));
+        theta = (float)double.Parse(theta_s.Replace(",", "."));
+        psi = (float)double.Parse(psi_s.Replace(",", "."));
+
+        Quaternion rotation = Quaternion.Euler(phi, theta, psi);
         transform.rotation = rotation;
     }
 
     private void OnGUI()
     {
         GUI.contentColor = Color.black;
-        GUI.Label(new Rect(10, 10, 500, 20), "File: " + str);
+        GUI.Label(new Rect(10, 10, 100, 20), phi.ToString("0.00"));
+        GUI.Label(new Rect(10, 30, 100, 40), theta.ToString("0.00"));
+        GUI.Label(new Rect(10, 50, 100, 60), psi.ToString("0.00"));
     }
 }

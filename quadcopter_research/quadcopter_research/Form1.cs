@@ -622,9 +622,9 @@ namespace quadcopter_research
             quadcopter_model qm = new quadcopter_model(0.5, 0.1, 0.25, 0.2, dt);
             zn.init(pid, qm, dt);
             vector3 PID = zn.get_phi_PID();
-            x_P_edit.Value = (decimal)PID.x;
-            x_I_edit.Value = (decimal)PID.y;
-            x_D_edit.Value = (decimal)PID.z;
+            x_P_edit.Value = (decimal)clamp(PID.x, (double)x_P_edit.Maximum);
+            x_I_edit.Value = (decimal)clamp(PID.y, (double)x_I_edit.Maximum);
+            x_D_edit.Value = (decimal)clamp(PID.z, (double)x_D_edit.Maximum);
         }
 
         private void y_ziegler_button_Click(object sender, EventArgs e)
@@ -634,9 +634,9 @@ namespace quadcopter_research
             quadcopter_model qm = new quadcopter_model(0.5, 0.1, 0.25, 0.2, dt);
             zn.init(pid, qm, dt);
             vector3 PID = zn.get_theta_PID();
-            y_P_edit.Value = (decimal)PID.x;
-            y_I_edit.Value = (decimal)PID.y;
-            y_D_edit.Value = (decimal)PID.z;
+            y_P_edit.Value = (decimal)clamp(PID.x, (double)y_P_edit.Maximum);
+            y_I_edit.Value = (decimal)clamp(PID.y, (double)y_I_edit.Maximum);
+            y_D_edit.Value = (decimal)clamp(PID.z, (double)y_D_edit.Maximum);
         }
 
         private void z_ziegler_button_Click(object sender, EventArgs e)
@@ -646,9 +646,9 @@ namespace quadcopter_research
             quadcopter_model qm = new quadcopter_model(0.5, 0.1, 0.25, 0.2, dt);
             zn.init(pid, qm, dt);
             vector3 PID = zn.get_psi_PID();
-            z_P_edit.Value = (decimal)PID.x;
-            z_I_edit.Value = (decimal)PID.y;
-            z_D_edit.Value = (decimal)PID.z;
+            z_P_edit.Value = (decimal)clamp(PID.x, (double)z_P_edit.Maximum);
+            z_I_edit.Value = (decimal)clamp(PID.y, (double)z_I_edit.Maximum);
+            z_D_edit.Value = (decimal)clamp(PID.z, (double)z_D_edit.Maximum);
         }
 
         private double clamp(double to_clamp, double edge)

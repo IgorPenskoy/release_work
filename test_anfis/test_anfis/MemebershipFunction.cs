@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace test_anfis
 {
@@ -14,11 +10,9 @@ namespace test_anfis
 
         public double c;
 
-        //gradient a
-        public double α;
+        public double a_d;
 
-        //gradient b
-        public double β;
+        public double b_d;
 
         public double c_d;
         

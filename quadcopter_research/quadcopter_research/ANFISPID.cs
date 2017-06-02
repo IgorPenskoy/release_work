@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace quadcopter_research
 {
@@ -67,9 +63,9 @@ namespace quadcopter_research
 
             d_err = (err - prevErr);
 
-            P = (Math.Abs(err) + Math.Abs(d_err)) / 90 * 50; //fis_P.compute(err, d_err) * 3;
-            I = Math.Abs(err) * Math.Abs(d_err) / (45 * 45) * 5; //fis_I.compute(err, d_err) * 10;
-            D = Math.Abs(d_err - err) / 90 * 20; //fis_D.compute(err, d_err) * 20;
+            P = fis_P.compute(err, d_err) * 50;
+            I = fis_I.compute(err, d_err) * 1;
+            D = fis_D.compute(err, d_err) * 30;
 
             force = P * err + I * sumErr * dt + D * d_err / dt;
             prevErr = err;

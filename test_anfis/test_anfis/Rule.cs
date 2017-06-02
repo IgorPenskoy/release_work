@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace test_anfis
+﻿namespace test_anfis
 {
     class Rule
     {
@@ -13,8 +7,7 @@ namespace test_anfis
         public TNorm norm;
         public Conclusion conclusion;
 
-        public Rule(MembershipFunction mfA, MembershipFunction mfB, TNorm norm,
-                Conclusion conclusion)
+        public Rule(MembershipFunction mfA, MembershipFunction mfB, TNorm norm, Conclusion conclusion)
         {
             this.mfA = mfA;
             this.mfB = mfB;

@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace test_anfis
 {
@@ -21,13 +17,11 @@ namespace test_anfis
             this.min = min;
             this.max = max;
             this.function = function;
-
             createLearningDataset();
         }
 
         private void createLearningDataset()
         {
-
             trainingSet = new List<Pair>();
 
             for (int i = min; i <= max; i += 5)
@@ -41,7 +35,6 @@ namespace test_anfis
 
         public List<Pair> getValidationSet(Random rand, int setSize)
         {
-
             List<Pair> validationSet = new List<Pair>();
 
             for (int i = 0; i < setSize; i++)

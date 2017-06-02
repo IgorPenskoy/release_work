@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace quadcopter_research
 {
@@ -88,7 +85,6 @@ namespace quadcopter_research
 
             periods[0] = periods.Sum() / periods.Count();
             period = periods.Sum() / periods.Count();
-            //period = current_period / periods_amount;
 
             apply_coef();
 

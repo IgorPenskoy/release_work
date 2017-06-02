@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace test_anfis
+﻿namespace test_anfis
 {
     class TNorm
     {
-        public double computeNorm(double μA, double μB)
+        public double computeNorm(double mu_A, double mu_B)
         {
-            return μA * μB;
+            return mu_A * mu_B;
         }
     }
 }

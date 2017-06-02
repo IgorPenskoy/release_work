@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace test_anfis
 {
@@ -18,7 +14,7 @@ namespace test_anfis
     {
         public override double compute(double x, double y, double range)
         {
-            return Math.Abs(x) + Math.Abs(y) / (range * 2);
+            return (Math.Abs(x) + Math.Abs(y)) / (range * 2);
         }
     }
 
@@ -26,7 +22,7 @@ namespace test_anfis
     {
         public override double compute(double x, double y, double range)
         {
-            return Math.Abs(x) * Math.Abs(y) / Math.Pow(range, 2);
+            return Math.Abs(x * y) / Math.Pow(range, 2);
         }
     }
 
@@ -34,7 +30,7 @@ namespace test_anfis
     {
         public override double compute(double x, double y, double range)
         {
-            return Math.Abs(y - x) / range;
+            return Math.Abs(y - x) / (range * 2);
         }
     }
 }

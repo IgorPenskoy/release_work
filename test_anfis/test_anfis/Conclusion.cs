@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace test_anfis
 {
@@ -14,14 +10,11 @@ namespace test_anfis
 
         public double r;
 
-        //gradient p
-        public double π;
+        public double p_d;
 
-        //gradient q
-        public double ω;
+        public double q_d;
 
-        //gradient r
-        public double ρ;
+        public double r_d;
 
         public Conclusion(Random rand)
         {

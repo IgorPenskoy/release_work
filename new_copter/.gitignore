@@ -1,6 +1,6 @@
 Temp/
 Library/
-test_Data/
+*_Data/
 *.csproj
 *.unityproj
 *.sln

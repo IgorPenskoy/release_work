@@ -12,12 +12,12 @@ public class quadcopterScript : MonoBehaviour {
     private float psi;
     
 	void Start () {
-        Screen.SetResolution(300, 300, false);
+        Screen.SetResolution(350, 350, false);
         Time.fixedDeltaTime = 0.001f;
     }
 
     void FixedUpdate () {
-        var inStream = new FileStream("test.txt", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+        var inStream = new FileStream("copter_fis.txt", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
         var sr = new StreamReader(inStream);
 
         string phi_s = sr.ReadLine();
@@ -36,8 +36,9 @@ public class quadcopterScript : MonoBehaviour {
     private void OnGUI()
     {
         GUI.contentColor = Color.black;
-        GUI.Label(new Rect(10, 10, 100, 20), phi.ToString("0.00"));
-        GUI.Label(new Rect(10, 30, 100, 40), theta.ToString("0.00"));
-        GUI.Label(new Rect(10, 50, 100, 60), psi.ToString("0.00"));
+        GUI.Label(new Rect(10, 10, 200, 20), "Нейро-нечеткая сеть");
+        GUI.Label(new Rect(10, 40, 100, 50), phi.ToString("X: 0.00"));
+        GUI.Label(new Rect(10, 60, 100, 70), theta.ToString("Y: 0.00"));
+        GUI.Label(new Rect(10, 80, 100, 90), psi.ToString("Z: 0.00"));
     }
 }

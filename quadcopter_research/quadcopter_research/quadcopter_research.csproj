@@ -94,6 +94,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="copter.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="copter_fis.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="D.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -103,14 +109,12 @@
     <Content Include="P.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="test.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /Y /S /D /E "$(ProjectDir)test_Data"  "$(ProjectDir)$(OutDir)test_Data\"</PostBuildEvent>
+    <PostBuildEvent>xcopy /Y /S /D /E "$(ProjectDir)copter_Data"  "$(ProjectDir)$(OutDir)copter_Data\"
+xcopy /Y /S /D /E "$(ProjectDir)copter_fis_Data"  "$(ProjectDir)$(OutDir)copter_fis_Data\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

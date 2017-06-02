@@ -183,11 +183,6 @@ namespace quadcopter_research
 
             i_sim = 0;
 
-            mass_frame_edit.Enabled = false;
-            mass_engine_edit.Enabled = false;
-            radius_edit.Enabled = false;
-            arm_length_edit.Enabled = false;
-
             random_effect_check.Enabled = false;
 
             end_time_edit.Enabled = false;
@@ -237,11 +232,6 @@ namespace quadcopter_research
             main_stopwatch.Reset();
             main_timer.Stop();
             main_time_label.Text = label_style_format;
-
-            mass_frame_edit.Enabled = true;
-            mass_engine_edit.Enabled = true;
-            radius_edit.Enabled = true;
-            arm_length_edit.Enabled = true;
 
             random_effect_check.Enabled = true;
 
@@ -314,6 +304,28 @@ namespace quadcopter_research
             z_chart.Series[2].Points.Clear();
             z_chart.ChartAreas[0].AxisX.Minimum = 0;
             z_chart.ChartAreas[0].AxisX.Maximum = chart_time_amount;
+
+            var sw = new StreamWriter("copter.txt");
+            sw.Close();
+            sw = new StreamWriter("copter_fis.txt");
+            sw.Close();
+
+            var outStream_copter = new FileStream("copter.txt", FileMode.Open, FileAccess.Write, FileShare.ReadWrite);
+            var sw_copter = new StreamWriter(outStream_copter);
+
+            sw_copter.WriteLine(x_initial_edit.Value.ToString());
+            sw_copter.WriteLine(y_initial_edit.Value.ToString());
+            sw_copter.WriteLine(z_initial_edit.Value.ToString());
+            sw_copter.Close();
+
+
+            var outStream_copter_fis = new FileStream("copter_fis.txt", FileMode.Open, FileAccess.Write, FileShare.ReadWrite);
+            var sw_copter_fis = new StreamWriter(outStream_copter_fis);
+
+            sw_copter_fis.WriteLine(x_initial_edit.Value.ToString());
+            sw_copter_fis.WriteLine(y_initial_edit.Value.ToString());
+            sw_copter_fis.WriteLine(z_initial_edit.Value.ToString());
+            sw_copter_fis.Close();
         }
 
         private void stop_button_Click(object sender, EventArgs e)
@@ -378,13 +390,13 @@ namespace quadcopter_research
             angles_fis = new vector3((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
             if (random_effect_check.Checked)
             {
-                qm.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt, (double)random_effect_edit.Value);
-                qm_fis.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt, (double)random_effect_edit.Value);
+                qm.init(0.5, 0.1, 0.25, 0.2, dt, (double)random_effect_edit.Value);
+                qm_fis.init(0.5, 0.1, 0.25, 0.2, dt, (double)random_effect_edit.Value);
             }
             else
             {
-                qm.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt, 0.0);
-                qm_fis.init((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt, 0.0);
+                qm.init(0.5, 0.1, 0.25, 0.2, dt, 0.0);
+                qm_fis.init(0.5, 0.1, 0.25, 0.2, dt, 0.0);
             }
             qm.set_angles((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
             qm_fis.set_angles((double)x_initial_edit.Value, (double)y_initial_edit.Value, (double)z_initial_edit.Value);
@@ -559,14 +571,22 @@ namespace quadcopter_research
             z_chart.Series[1].Points.AddXY(Math.Round(elapsed_time, 3), clamp(z_current_array[i_sim], max_angle_degree + 10));
             z_chart.Series[2].Points.AddXY(Math.Round(elapsed_time, 3), clamp(z_current_array_fis[i_sim], max_angle_degree + 10));
 
-            var outStream = new FileStream("test.txt", FileMode.Open, FileAccess.Write, FileShare.ReadWrite);
-            var sw = new StreamWriter(outStream);
+            var outStream_copter = new FileStream("copter.txt", FileMode.Open, FileAccess.Write, FileShare.ReadWrite);
+            var sw_copter = new StreamWriter(outStream_copter);
 
-            sw.WriteLine(x_current_array[i_sim].ToString());
-            sw.WriteLine(y_current_array[i_sim].ToString());
-            sw.WriteLine(z_current_array[i_sim].ToString());
+            sw_copter.WriteLine(x_current_array[i_sim].ToString());
+            sw_copter.WriteLine(y_current_array[i_sim].ToString());
+            sw_copter.WriteLine(z_current_array[i_sim].ToString());
+            sw_copter.Close();
 
-            sw.Close();
+
+            var outStream_copter_fis = new FileStream("copter_fis.txt", FileMode.Open, FileAccess.Write, FileShare.ReadWrite);
+            var sw_copter_fis = new StreamWriter(outStream_copter_fis);
+
+            sw_copter_fis.WriteLine(x_current_array_fis[i_sim].ToString());
+            sw_copter_fis.WriteLine(y_current_array_fis[i_sim].ToString());
+            sw_copter_fis.WriteLine(z_current_array_fis[i_sim].ToString());
+            sw_copter_fis.Close();
 
             if (elapsed_time > chart_time_amount)
             {
@@ -599,7 +619,7 @@ namespace quadcopter_research
         {
             double dt = (double)dt_const / timer_interval_divide;
             PID pid = new PID(dt, (double)x_max_effect_edit.Value, (double)x_max_integral_edit.Value, (double)x_P_edit.Value, 0.0, 0.0);
-            quadcopter_model qm = new quadcopter_model((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt);
+            quadcopter_model qm = new quadcopter_model(0.5, 0.1, 0.25, 0.2, dt);
             zn.init(pid, qm, dt);
             vector3 PID = zn.get_phi_PID();
             x_P_edit.Value = (decimal)PID.x;
@@ -611,7 +631,7 @@ namespace quadcopter_research
         {
             double dt = (double)dt_const / timer_interval_divide;
             PID pid = new PID(dt, (double)y_max_effect_edit.Value, (double)y_max_integral_edit.Value, (double)y_P_edit.Value, 0.0, 0.0);
-            quadcopter_model qm = new quadcopter_model((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt);
+            quadcopter_model qm = new quadcopter_model(0.5, 0.1, 0.25, 0.2, dt);
             zn.init(pid, qm, dt);
             vector3 PID = zn.get_theta_PID();
             y_P_edit.Value = (decimal)PID.x;
@@ -623,7 +643,7 @@ namespace quadcopter_research
         {
             double dt = (double)dt_const / timer_interval_divide;
             PID pid = new PID(dt, (double)z_max_effect_edit.Value, (double)z_max_integral_edit.Value, (double)z_P_edit.Value, 0.0, 0.0);
-            quadcopter_model qm = new quadcopter_model((double)mass_frame_edit.Value, (double)mass_engine_edit.Value, (double)radius_edit.Value, (double)arm_length_edit.Value, dt);
+            quadcopter_model qm = new quadcopter_model(0.5, 0.1, 0.25, 0.2, dt);
             zn.init(pid, qm, dt);
             vector3 PID = zn.get_psi_PID();
             z_P_edit.Value = (decimal)PID.x;
@@ -651,11 +671,15 @@ namespace quadcopter_research
 
         private void main_form_Load(object sender, EventArgs e)
         {
-            Process p = Process.Start("test.exe", "-popupwindow");
-            //Thread.Sleep(500);
+            Process p = Process.Start("copter.exe", "-popupwindow");
             p.WaitForInputIdle();
-            SetWindowPos(p.MainWindowHandle, this.Handle, 1000, 20, 0, 0, 0);
+            SetWindowPos(p.MainWindowHandle, this.Handle, 985, 12, 0, 0, 0);
             SetParent(p.MainWindowHandle, this.Handle);
+
+            Process p_fis = Process.Start("copter_fis.exe", "-popupwindow");
+            p_fis.WaitForInputIdle();
+            SetWindowPos(p_fis.MainWindowHandle, this.Handle, 985, 372, 0, 0, 0);
+            SetParent(p_fis.MainWindowHandle, this.Handle);
         }
     }
 }

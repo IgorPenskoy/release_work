@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea76 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend76 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series226 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series227 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series228 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea77 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend77 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series229 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series230 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series231 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea78 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend78 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series232 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series233 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series234 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series28 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series29 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series30 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series31 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series32 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series33 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series34 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series35 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series36 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.main_timer = new System.Windows.Forms.Timer(this.components);
             this.z_reference_label = new System.Windows.Forms.Label();
             this.y_reference_label = new System.Windows.Forms.Label();
@@ -149,6 +149,8 @@
             this.main_time_label = new System.Windows.Forms.Label();
             this.end_time_label = new System.Windows.Forms.Label();
             this.end_time_edit = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.x_reference_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.y_reference_edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.z_reference_edit)).BeginInit();
@@ -724,35 +726,40 @@
             // 
             // x_chart
             // 
-            chartArea76.Name = "ChartArea1";
-            this.x_chart.ChartAreas.Add(chartArea76);
-            legend76.Alignment = System.Drawing.StringAlignment.Center;
-            legend76.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend76.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend76.Name = "Legend1";
-            this.x_chart.Legends.Add(legend76);
+            chartArea10.Name = "ChartArea1";
+            this.x_chart.ChartAreas.Add(chartArea10);
+            legend10.Alignment = System.Drawing.StringAlignment.Center;
+            legend10.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            legend10.IsTextAutoFit = false;
+            legend10.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend10.Name = "Legend1";
+            this.x_chart.Legends.Add(legend10);
             this.x_chart.Location = new System.Drawing.Point(5, 115);
             this.x_chart.Name = "x_chart";
-            series226.BorderWidth = 3;
-            series226.ChartArea = "ChartArea1";
-            series226.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series226.Legend = "Legend1";
-            series226.Name = "Требуемое значение угла крена";
-            series227.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDotDot;
-            series227.BorderWidth = 3;
-            series227.ChartArea = "ChartArea1";
-            series227.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series227.Legend = "Legend1";
-            series227.Name = "Текущее значение угла крена";
-            series228.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            series228.BorderWidth = 3;
-            series228.ChartArea = "ChartArea1";
-            series228.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series228.Legend = "Legend1";
-            series228.Name = "Текущее значение угла крена (ННС)";
-            this.x_chart.Series.Add(series226);
-            this.x_chart.Series.Add(series227);
-            this.x_chart.Series.Add(series228);
+            series28.BorderWidth = 3;
+            series28.ChartArea = "ChartArea1";
+            series28.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series28.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            series28.Legend = "Legend1";
+            series28.Name = "Требуемое значение угла крена";
+            series29.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            series29.BorderWidth = 3;
+            series29.ChartArea = "ChartArea1";
+            series29.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series29.Color = System.Drawing.Color.Blue;
+            series29.Legend = "Legend1";
+            series29.Name = "Метод Зиглера-Никольса";
+            series30.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            series30.BorderWidth = 3;
+            series30.ChartArea = "ChartArea1";
+            series30.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series30.Color = System.Drawing.Color.Red;
+            series30.Legend = "Legend1";
+            series30.Name = "Нейро-нечеткая сеть";
+            this.x_chart.Series.Add(series28);
+            this.x_chart.Series.Add(series29);
+            this.x_chart.Series.Add(series30);
             this.x_chart.Size = new System.Drawing.Size(705, 565);
             this.x_chart.TabIndex = 21;
             this.x_chart.Text = "Угол вокруг оси X";
@@ -1092,33 +1099,33 @@
             // 
             // y_chart
             // 
-            chartArea77.Name = "ChartArea1";
-            this.y_chart.ChartAreas.Add(chartArea77);
-            legend77.Alignment = System.Drawing.StringAlignment.Center;
-            legend77.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend77.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend77.Name = "Legend1";
-            this.y_chart.Legends.Add(legend77);
+            chartArea11.Name = "ChartArea1";
+            this.y_chart.ChartAreas.Add(chartArea11);
+            legend11.Alignment = System.Drawing.StringAlignment.Center;
+            legend11.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend11.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend11.Name = "Legend1";
+            this.y_chart.Legends.Add(legend11);
             this.y_chart.Location = new System.Drawing.Point(5, 115);
             this.y_chart.Name = "y_chart";
-            series229.BorderWidth = 3;
-            series229.ChartArea = "ChartArea1";
-            series229.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series229.Legend = "Legend1";
-            series229.Name = "Требуемое значение угла тангажа";
-            series230.BorderWidth = 3;
-            series230.ChartArea = "ChartArea1";
-            series230.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series230.Legend = "Legend1";
-            series230.Name = "Текущее значение угла тангажа";
-            series231.BorderWidth = 3;
-            series231.ChartArea = "ChartArea1";
-            series231.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series231.Legend = "Legend1";
-            series231.Name = "Текущее значение угла тангажа (ННС)";
-            this.y_chart.Series.Add(series229);
-            this.y_chart.Series.Add(series230);
-            this.y_chart.Series.Add(series231);
+            series31.BorderWidth = 3;
+            series31.ChartArea = "ChartArea1";
+            series31.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series31.Legend = "Legend1";
+            series31.Name = "Требуемое значение угла тангажа";
+            series32.BorderWidth = 3;
+            series32.ChartArea = "ChartArea1";
+            series32.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series32.Legend = "Legend1";
+            series32.Name = "Текущее значение угла тангажа";
+            series33.BorderWidth = 3;
+            series33.ChartArea = "ChartArea1";
+            series33.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series33.Legend = "Legend1";
+            series33.Name = "Текущее значение угла тангажа (ННС)";
+            this.y_chart.Series.Add(series31);
+            this.y_chart.Series.Add(series32);
+            this.y_chart.Series.Add(series33);
             this.y_chart.Size = new System.Drawing.Size(705, 565);
             this.y_chart.TabIndex = 22;
             this.y_chart.Text = "Угол вокруг оси X";
@@ -1457,33 +1464,33 @@
             // 
             // z_chart
             // 
-            chartArea78.Name = "ChartArea1";
-            this.z_chart.ChartAreas.Add(chartArea78);
-            legend78.Alignment = System.Drawing.StringAlignment.Center;
-            legend78.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend78.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend78.Name = "Legend1";
-            this.z_chart.Legends.Add(legend78);
+            chartArea12.Name = "ChartArea1";
+            this.z_chart.ChartAreas.Add(chartArea12);
+            legend12.Alignment = System.Drawing.StringAlignment.Center;
+            legend12.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend12.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend12.Name = "Legend1";
+            this.z_chart.Legends.Add(legend12);
             this.z_chart.Location = new System.Drawing.Point(5, 115);
             this.z_chart.Name = "z_chart";
-            series232.BorderWidth = 3;
-            series232.ChartArea = "ChartArea1";
-            series232.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series232.Legend = "Legend1";
-            series232.Name = "Требуемое значение угла рысканья";
-            series233.BorderWidth = 3;
-            series233.ChartArea = "ChartArea1";
-            series233.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series233.Legend = "Legend1";
-            series233.Name = "Текущее значение угла рысканья";
-            series234.BorderWidth = 3;
-            series234.ChartArea = "ChartArea1";
-            series234.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series234.Legend = "Legend1";
-            series234.Name = "Текущее значение угла рысканья (ННС)";
-            this.z_chart.Series.Add(series232);
-            this.z_chart.Series.Add(series233);
-            this.z_chart.Series.Add(series234);
+            series34.BorderWidth = 3;
+            series34.ChartArea = "ChartArea1";
+            series34.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series34.Legend = "Legend1";
+            series34.Name = "Требуемое значение угла рысканья";
+            series35.BorderWidth = 3;
+            series35.ChartArea = "ChartArea1";
+            series35.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series35.Legend = "Legend1";
+            series35.Name = "Текущее значение угла рысканья";
+            series36.BorderWidth = 3;
+            series36.ChartArea = "ChartArea1";
+            series36.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series36.Legend = "Legend1";
+            series36.Name = "Текущее значение угла рысканья (ННС)";
+            this.z_chart.Series.Add(series34);
+            this.z_chart.Series.Add(series35);
+            this.z_chart.Series.Add(series36);
             this.z_chart.Size = new System.Drawing.Size(705, 565);
             this.z_chart.TabIndex = 22;
             this.z_chart.Text = "Угол вокруг оси X";
@@ -1620,11 +1627,31 @@
             0,
             0});
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1143, 180);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "Загрузка...";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1143, 540);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.TabIndex = 38;
+            this.label2.Text = "Загрузка...";
+            // 
             // main_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1348, 729);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.random_effect_edit);
             this.Controls.Add(this.random_effect_check);
             this.Controls.Add(this.end_time_edit);
@@ -1802,6 +1829,8 @@
         private System.Windows.Forms.Label main_time_label;
         private System.Windows.Forms.Label end_time_label;
         private System.Windows.Forms.NumericUpDown end_time_edit;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

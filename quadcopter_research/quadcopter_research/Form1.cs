@@ -124,9 +124,6 @@ namespace quadcopter_research
         [DllImport("user32.dll")]
         private extern static bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, int uFlags);
 
-        [DllImport("user32.dll")]
-        static extern bool BringWindowToTop(IntPtr hWnd);
-
         public main_form()
         {
             InitializeComponent();

@@ -2,7 +2,7 @@
 
 namespace quadcopter_research
 {
-    class PID
+    public class PID
     {
         protected const double error_epsilon = 1;
 

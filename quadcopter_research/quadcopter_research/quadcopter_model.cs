@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace quadcopter_research
 {
-    class vector3
+    public class vector3
     {
         public double x { get; set; }
         public double y { get; set; }
@@ -20,7 +20,7 @@ namespace quadcopter_research
         }
     }
 
-    class quadcopter_model
+    public class quadcopter_model
     {
         private const double k = 0.01;
         private const double b = 0.001;

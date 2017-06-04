@@ -329,6 +329,7 @@
             0,
             0,
             0});
+            this.z_initial_edit.ValueChanged += new System.EventHandler(this.z_initial_edit_ValueChanged);
             // 
             // y_initial_edit
             // 
@@ -354,6 +355,7 @@
             0,
             0,
             0});
+            this.y_initial_edit.ValueChanged += new System.EventHandler(this.y_initial_edit_ValueChanged);
             // 
             // x_initial_edit
             // 
@@ -379,6 +381,7 @@
             0,
             0,
             0});
+            this.x_initial_edit.ValueChanged += new System.EventHandler(this.x_initial_edit_ValueChanged);
             // 
             // control_process_tabs
             // 

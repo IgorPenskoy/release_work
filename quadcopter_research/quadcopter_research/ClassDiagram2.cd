@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="quadcopter_research.ANFIS">
+    <Position X="4" Y="0.5" Width="1.75" />
+    <Members>
+      <Field Name="gain" Hidden="true" />
+      <Method Name="learnNetwork" Hidden="true" />
+      <Method Name="learnNetworkEpoch" Hidden="true" />
+      <Method Name="learnNetworkError" Hidden="true" />
+      <Field Name="mu" Hidden="true" />
+      <Field Name="mu_const" Hidden="true" />
+      <Field Name="NB_a" Hidden="true" />
+      <Field Name="NB_b" Hidden="true" />
+      <Field Name="NB_c" Hidden="true" />
+      <Field Name="NM_a" Hidden="true" />
+      <Field Name="NM_b" Hidden="true" />
+      <Field Name="NM_c" Hidden="true" />
+      <Field Name="NS_a" Hidden="true" />
+      <Field Name="NS_b" Hidden="true" />
+      <Field Name="NS_c" Hidden="true" />
+      <Field Name="PB_a" Hidden="true" />
+      <Field Name="PB_b" Hidden="true" />
+      <Field Name="PB_c" Hidden="true" />
+      <Field Name="PM_a" Hidden="true" />
+      <Field Name="PM_b" Hidden="true" />
+      <Field Name="PM_c" Hidden="true" />
+      <Field Name="PS_a" Hidden="true" />
+      <Field Name="PS_b" Hidden="true" />
+      <Field Name="PS_c" Hidden="true" />
+      <Method Name="validateLearned" Hidden="true" />
+      <Method Name="writeEpochError2File" Hidden="true" />
+      <Method Name="writeEpochErrorForEta2File" Hidden="true" />
+      <Method Name="writeLearnedParams2File" Hidden="true" />
+      <Method Name="writeRelativeError2File" Hidden="true" />
+      <Field Name="ZO_a" Hidden="true" />
+      <Field Name="ZO_b" Hidden="true" />
+      <Field Name="ZO_c" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>tMABAIKBwAEAAACAAAFC0AgAAAAQAH8EARCAAMBCAAA=</HashCode>
+      <FileName>ANFIS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="quadcopter_research.ANFISPID">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAJEEAAAAIAAAAAAAAAACg=</HashCode>
+      <FileName>ANFISPID.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="quadcopter_research.Conclusion">
+    <Position X="4" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAGAAAAAAAAAGABAABAAAA=</HashCode>
+      <FileName>Conclusion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="quadcopter_research.MembershipFunction">
+    <Position X="4" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAwAAAAAAAAAAgAUAAACgAQAAAABAAAA=</HashCode>
+      <FileName>MembershipFunction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="quadcopter_research.PID">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAEAAAAAAIAAAAAAAAAAAISAAAAAIAAAYCBCBAAAA=</HashCode>
+      <FileName>PID.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="quadcopter_research.vector3">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAQAAAAA=</HashCode>
+      <FileName>quadcopter_model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="quadcopter_research.quadcopter_model">
+    <Position X="6" Y="0.5" Width="2" />
+    <Members>
+      <Field Name="air_p" Hidden="true" />
+      <Field Name="air_x" Hidden="true" />
+      <Field Name="air_y" Hidden="true" />
+      <Field Name="air_z" Hidden="true" />
+      <Field Name="arm_length_const" Hidden="true" />
+      <Field Name="c_d" Hidden="true" />
+      <Field Name="dt_const" Hidden="true" />
+      <Field Name="g" Hidden="true" />
+      <Field Name="mass_engine_const" Hidden="true" />
+      <Field Name="mass_frame_const" Hidden="true" />
+      <Field Name="radius_const" Hidden="true" />
+      <Field Name="rand" Hidden="true" />
+      <Field Name="random_effect" Hidden="true" />
+      <Field Name="s_x" Hidden="true" />
+      <Field Name="s_y" Hidden="true" />
+      <Field Name="s_z" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>EIBQAIFOCAIqAQAAAgAAAAwZ4GFIAEIogRRkASAEEEg=</HashCode>
+      <FileName>quadcopter_model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="quadcopter_research.Rule">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgEAAAAAAAAAAAAAAAAgAAAAAAAAACE=</HashCode>
+      <FileName>Rule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="quadcopter_research.TNorm">
+    <Position X="2.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TNorm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="quadcopter_research.ZieglerNichols">
+    <Position X="2.25" Y="5" Width="1.5" />
+    <Members>
+      <Field Name="d_coef_const" Hidden="true" />
+      <Field Name="i_coef_const" Hidden="true" />
+      <Field Name="p_coef_const" Hidden="true" />
+      <Field Name="period" Hidden="true" />
+      <Field Name="periods" Hidden="true" />
+      <Field Name="periods_amount" Hidden="true" />
+      <Field Name="pid" Hidden="true" />
+      <Field Name="qm" Hidden="true" />
+      <Field Name="reference_x" Hidden="true" />
+      <Field Name="reference_y" Hidden="true" />
+      <Field Name="reference_z" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEEAAYAAIQBAoAAAAIQAAAAAIECCQABiBAgQQ=</HashCode>
+      <FileName>ZieglerNichols.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

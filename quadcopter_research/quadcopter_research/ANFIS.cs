@@ -5,7 +5,7 @@ using System.IO;
 
 namespace quadcopter_research
 {
-    class ANFIS
+    public class ANFIS
     {
         private const double NB_a = -1;
         private const double NB_b = -1;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace quadcopter_research
 {
-    class Pair
+    public class Pair
     {
         public double x;
 

@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quadcopter_research", "quadcopter_research\quadcopter_research.csproj", "{465D0106-2C8C-4B6D-8D13-4834F2CE2509}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quadcopter_research_test", "quadcopter_research_test\quadcopter_research_test.csproj", "{642C21EA-E467-4001-940F-91696B1B3CDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{465D0106-2C8C-4B6D-8D13-4834F2CE2509}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{465D0106-2C8C-4B6D-8D13-4834F2CE2509}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{465D0106-2C8C-4B6D-8D13-4834F2CE2509}.Release|Any CPU.Build.0 = Release|Any CPU
+		{642C21EA-E467-4001-940F-91696B1B3CDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{642C21EA-E467-4001-940F-91696B1B3CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{642C21EA-E467-4001-940F-91696B1B3CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{642C21EA-E467-4001-940F-91696B1B3CDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

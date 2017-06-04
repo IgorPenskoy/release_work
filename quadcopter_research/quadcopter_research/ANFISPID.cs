@@ -2,23 +2,12 @@
 
 namespace quadcopter_research
 {
-    class ANFISPID
+    public class ANFISPID : PID
     {
         private ANFIS fis_P;
         private ANFIS fis_I;
         private ANFIS fis_D;
         private double d_err;
-        private double i_max;
-        private double max;
-        private double dt;
-        private double sumErr;
-        private double prevErr;
-        private double error_epsilon = 0.1;
-        private double force;
-
-        private double P;
-        private double I;
-        private double D;
 
         public ANFISPID(double dt_in = 0.001, double max_in = 0.0, double i_max_in = 0.0)
         {

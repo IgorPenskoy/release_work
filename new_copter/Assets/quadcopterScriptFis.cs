@@ -4,20 +4,22 @@ using System.IO;
 using System.Threading;
 using System.Net;
 
-public class quadcopterScript : MonoBehaviour {
+public class quadcopterScriptFis : MonoBehaviour {
 
     private string str;
     private float phi;
     private float theta;
     private float psi;
-    
-	void Start () {
+
+    void Start()
+    {
         Screen.SetResolution(350, 350, false);
         Time.fixedDeltaTime = 0.02f;
     }
 
-    void FixedUpdate () {
-        var inStream = new FileStream("copter.txt", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+    void FixedUpdate()
+    {
+        var inStream = new FileStream("copter_fis.txt", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
         var sr = new StreamReader(inStream);
 
         string phi_s = sr.ReadLine();
@@ -36,7 +38,7 @@ public class quadcopterScript : MonoBehaviour {
     private void OnGUI()
     {
         GUI.contentColor = Color.black;
-        GUI.Label(new Rect(10, 10, 200, 20), "Классический ПИД-регулятор");
+        GUI.Label(new Rect(10, 10, 200, 20), "Нейро-нечеткий ПИД-регулятор");
         GUI.Label(new Rect(10, 40, 100, 50), phi.ToString("X: 0.00"));
         GUI.Label(new Rect(10, 60, 100, 70), theta.ToString("Y: 0.00"));
         GUI.Label(new Rect(10, 80, 100, 90), psi.ToString("Z: 0.00"));

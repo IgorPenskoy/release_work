@@ -307,6 +307,13 @@ namespace quadcopter_research
             sw = new StreamWriter("copter_fis.txt");
             sw.Close();
 
+            initial_value_set_procedure();
+
+
+        }
+
+        private void initial_value_set_procedure()
+        {
             var outStream_copter = new FileStream("copter.txt", FileMode.Open, FileAccess.Write, FileShare.ReadWrite);
             var sw_copter = new StreamWriter(outStream_copter);
 
@@ -670,13 +677,30 @@ namespace quadcopter_research
         {
             Process p = Process.Start("copter.exe", "-popupwindow");
             p.WaitForInputIdle();
-            SetWindowPos(p.MainWindowHandle, this.Handle, 985, 12, 0, 0, 0);
-            SetParent(p.MainWindowHandle, this.Handle);
+            SetWindowPos(p.MainWindowHandle, Handle, 985, 12, 0, 0, 0);
+            SetParent(p.MainWindowHandle, Handle);
 
             Process p_fis = Process.Start("copter_fis.exe", "-popupwindow");
             p_fis.WaitForInputIdle();
-            SetWindowPos(p_fis.MainWindowHandle, this.Handle, 985, 372, 0, 0, 0);
-            SetParent(p_fis.MainWindowHandle, this.Handle);
+            SetWindowPos(p_fis.MainWindowHandle, Handle, 985, 372, 0, 0, 0);
+            SetParent(p_fis.MainWindowHandle, Handle);
+
+            Activate();
+        }
+
+        private void x_initial_edit_ValueChanged(object sender, EventArgs e)
+        {
+            initial_value_set_procedure();
+        }
+
+        private void y_initial_edit_ValueChanged(object sender, EventArgs e)
+        {
+            initial_value_set_procedure();
+        }
+
+        private void z_initial_edit_ValueChanged(object sender, EventArgs e)
+        {
+            initial_value_set_procedure();
         }
     }
 }

@@ -1119,12 +1119,14 @@
             series4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             series4.Legend = "Legend1";
             series4.Name = "Требуемое значение угла тангажа";
+            series5.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
             series5.BorderWidth = 3;
             series5.ChartArea = "ChartArea1";
             series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series5.Color = System.Drawing.Color.Blue;
             series5.Legend = "Legend1";
             series5.Name = "Метод Зиглера-Никольса";
+            series6.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
             series6.BorderWidth = 3;
             series6.ChartArea = "ChartArea1";
             series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;

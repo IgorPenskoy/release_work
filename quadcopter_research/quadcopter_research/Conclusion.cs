@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace quadcopter_research
 {
-    class Conclusion
+    public class Conclusion
     {
         public double p;
 

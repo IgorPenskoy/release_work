@@ -131,7 +131,13 @@ namespace quadcopter_research
             mass = mass_frame + 4 * mass_engine;
             equilibrium_thrust = mass * g / (4 * k);
             thrust = equilibrium_thrust;
+            u1 = u2 = u3 = u4 = equilibrium_thrust;
             random_effect = angle_to_radian(random_effect_in);
+        }
+
+        public void set_random_effect(double random_effect)
+        {
+            this.random_effect = random_effect;
         }
 
         public void set_angles(double phi_in, double theta_in, double psi_in)
@@ -150,14 +156,39 @@ namespace quadcopter_research
             u1 = u2 = u3 = u4 = equilibrium_thrust;
         }
 
-        private void update_coordinates()
+        public void set_speed(double v_x, double v_y, double v_z)
+        {
+            this.v_x = v_x;
+            this.v_y = v_y;
+            this.v_z = v_z;
+        }
+
+        public vector3 get_coordinates()
+        {
+            return new vector3(x, y, z);
+        }
+
+        public void update_coordinates()
         {
             x += v_x * dt;
             y += v_y * dt;
             z += v_z * dt;
         }
 
-        private void update_speed()
+        public vector3 get_speed()
+        {
+            return new vector3(v_x, v_y, v_z);
+        }
+
+        public void set_forces(double u1, double u2, double u3, double u4)
+        {
+            this.u1 = u1;
+            this.u2 = u2;
+            this.u3 = u3;
+            this.u4 = u4;
+        }
+
+        public void update_speed()
         {
             double F_div_mass = k * (u1 + u2 + u3 + u4) / mass;
             v_x += dt * (Math.Cos(psi) * Math.Sin(theta) * Math.Cos(phi) + Math.Sin(psi) * Math.Sin(phi)) * F_div_mass - Math.Sign(v_x) * v_x * v_x * air_x;
@@ -165,7 +196,12 @@ namespace quadcopter_research
             v_z += dt * (Math.Cos(phi) * Math.Cos(theta) * F_div_mass - g - Math.Sign(v_z) * v_z * v_z * air_z);
         }
 
-        private void update_angles()
+        public vector3 get_angles()
+        {
+            return new vector3(radian_to_angle(phi), radian_to_angle(theta), radian_to_angle(psi));
+        }
+
+        public void update_angles()
         {
             if (rand.NextDouble() > 0.9)
             {
@@ -180,25 +216,42 @@ namespace quadcopter_research
                 psi += dt * w_z;
             }
         }
-        private void update_angular_speed()
+
+        public vector3 get_angular_speed()
+        {
+            return new vector3(w_x, w_y, w_z);
+        }
+
+        public void update_angular_speed()
         {
             w_x += dt * (arm_length * k * (u4 - u2) / Jxx);
             w_y += dt * (arm_length * k * (u3 - u1) / Jyy);
             w_z += dt * (b * (- u1 + u2 - u3 + u4) / Jzz);
         }
 
-        private void update_forces(double phi_effect, double theta_effect, double psi_effect)
+        public double[] get_forces()
+        {
+            double[] forces = new double[4];
+            forces[0] = u1;
+            forces[1] = u2;
+            forces[2] = u3;
+            forces[3] = u4;
+
+            return forces;
+        }
+
+        public double get_equilibrium_thrust()
+        {
+            return equilibrium_thrust;
+        }
+
+        public void update_forces(double phi_effect, double theta_effect, double psi_effect)
         {
             u1 = u2 = u3 = u4 = thrust;
             u1 += -theta_effect - psi_effect;
             u2 += -phi_effect + psi_effect;
             u3 += theta_effect - psi_effect;
             u4 += phi_effect + psi_effect;
-        }
-
-        public vector3 get_angles()
-        {
-            return new vector3(radian_to_angle(phi), radian_to_angle(theta), radian_to_angle(psi));
         }
 
         public void update(double phi_effect, double theta_effect, double psi_effect)

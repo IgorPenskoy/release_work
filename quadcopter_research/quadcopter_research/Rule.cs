@@ -1,6 +1,6 @@
 ﻿namespace quadcopter_research
 {
-    class Rule
+    public class Rule
     {
         public MembershipFunction mfA;
         public MembershipFunction mfB;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace quadcopter_research
 {
-    class MembershipFunction
+    public class MembershipFunction
     {
         public double a;
 

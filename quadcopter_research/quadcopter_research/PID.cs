@@ -35,6 +35,11 @@ namespace quadcopter_research
             i_max = i_max_in;
         }
 
+        public void set_sumError(double sumErr)
+        {
+            this.sumErr = sumErr;
+        }
+
         public virtual double get_effect(double current, double target)
         {
             err = target - current;

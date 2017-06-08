@@ -161,16 +161,28 @@ namespace quadcopter_research
             x_chart.ChartAreas[0].AxisY.Interval = axis_y_interval;
             x_chart.ChartAreas[0].AxisX.Interval = axis_x_interval;
             x_chart.ChartAreas[0].AxisX.LabelStyle.Format = chart_label_style_format;
+            x_chart.ChartAreas[0].AxisX.Title = "С";
+            x_chart.ChartAreas[0].AxisX.TitleAlignment = StringAlignment.Far;
+            x_chart.ChartAreas[0].AxisY.Title = "Градус";
+            x_chart.ChartAreas[0].AxisY.TitleAlignment = StringAlignment.Far;
             y_chart.ChartAreas[0].AxisY.Minimum = -max_angle_degree;
             y_chart.ChartAreas[0].AxisY.Maximum = max_angle_degree;
             y_chart.ChartAreas[0].AxisY.Interval = axis_y_interval;
             y_chart.ChartAreas[0].AxisX.Interval = axis_x_interval;
             y_chart.ChartAreas[0].AxisX.LabelStyle.Format = chart_label_style_format;
+            y_chart.ChartAreas[0].AxisX.Title = "С";
+            y_chart.ChartAreas[0].AxisX.TitleAlignment = StringAlignment.Far;
+            y_chart.ChartAreas[0].AxisY.Title = "Градус";
+            y_chart.ChartAreas[0].AxisY.TitleAlignment = StringAlignment.Far;
             z_chart.ChartAreas[0].AxisY.Minimum = -max_angle_degree;
             z_chart.ChartAreas[0].AxisY.Maximum = max_angle_degree;
             z_chart.ChartAreas[0].AxisY.Interval = axis_y_interval;
             z_chart.ChartAreas[0].AxisX.Interval = axis_x_interval;
             z_chart.ChartAreas[0].AxisX.LabelStyle.Format = chart_label_style_format;
+            z_chart.ChartAreas[0].AxisX.Title = "С";
+            z_chart.ChartAreas[0].AxisX.TitleAlignment = StringAlignment.Far;
+            z_chart.ChartAreas[0].AxisY.Title = "Градус";
+            z_chart.ChartAreas[0].AxisY.TitleAlignment = StringAlignment.Far;
             stop_procedure();
         }
 
